@@ -53,9 +53,11 @@ group :test do
   gem 'chromedriver-helper'
 end
 
+gem 'slim-rails'
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'neo4j', '~> 9.2.0'
 gem 'neo4j-core'
 gem 'neo4j-rake_tasks'
+gem 'devise-neo4j'

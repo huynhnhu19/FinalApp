@@ -48,3 +48,40 @@ Caused by: org.neo4j.helpers.PortBindException: Address localhost:7472 is alread
 	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:884)
 	at java.lang.Thread.run(Thread.java:748)
 2019-02-27 03:28:17.155+0000 INFO  Neo4j Server shutdown initiated by request
+2019-03-10 03:41:15.974+0000 INFO  ======== Neo4j 3.4.1 ========
+2019-03-10 03:41:16.035+0000 INFO  Starting...
+2019-03-10 03:41:18.992+0000 INFO  Bolt enabled on localhost:7472.
+2019-03-10 03:41:22.096+0000 INFO  Started.
+2019-03-10 03:41:23.366+0000 INFO  Remote interface available at http://localhost:7474/
+2019-03-10 04:55:59.961+0000 INFO  Neo4j Server shutdown initiated by request
+2019-03-10 04:55:59.987+0000 INFO  Stopping...
+2019-03-10 04:56:00.032+0000 INFO  Stopped.
+2019-03-10 04:56:12.284+0000 INFO  ======== Neo4j 3.4.1 ========
+2019-03-10 04:56:12.320+0000 INFO  Starting...
+2019-03-10 04:56:15.513+0000 INFO  Bolt enabled on localhost:7472.
+2019-03-10 04:56:18.212+0000 INFO  Started.
+2019-03-10 04:56:19.532+0000 INFO  Remote interface available at http://localhost:7474/
+2019-03-11 06:32:00.299+0000 INFO  Neo4j Server shutdown initiated by request
+2019-03-11 06:32:00.327+0000 INFO  Stopping...
+2019-03-11 06:32:00.383+0000 INFO  Stopped.
+2019-03-11 06:46:48.727+0000 INFO  ======== Neo4j 3.4.1 ========
+2019-03-11 06:46:48.782+0000 INFO  Starting...
+2019-03-11 06:47:02.412+0000 INFO  Bolt enabled on localhost:7472.
+2019-03-11 06:47:06.261+0000 INFO  Started.
+2019-03-11 06:47:07.597+0000 INFO  Remote interface available at http://localhost:7474/
+2019-03-11 07:24:22.659+0000 INFO  Neo4j Server shutdown initiated by request
+2019-03-11 07:24:22.671+0000 INFO  Stopping...
+2019-03-11 07:24:22.722+0000 INFO  Stopped.
+2019-03-12 02:49:04.890+0000 INFO  ======== Neo4j 3.4.1 ========
+2019-03-12 02:49:04.950+0000 INFO  Starting...
+2019-03-12 02:49:09.147+0000 INFO  Bolt enabled on localhost:7472.
+2019-03-12 02:49:12.826+0000 INFO  Started.
+2019-03-12 02:49:14.399+0000 INFO  Remote interface available at http://localhost:7474/
+2019-03-12 11:03:14.617+0000 INFO  Neo4j Server shutdown initiated by request
+2019-03-12 11:03:14.680+0000 INFO  Stopping...
+2019-03-12 11:03:14.794+0000 INFO  Stopped.
+2019-03-13 02:05:48.534+0000 INFO  ======== Neo4j 3.4.1 ========
+2019-03-13 02:05:48.604+0000 INFO  Starting...
+2019-03-13 02:05:52.531+0000 INFO  Bolt enabled on localhost:7472.
+2019-03-13 02:05:55.798+0000 INFO  Started.
+2019-03-13 02:05:57.143+0000 INFO  Remote interface available at http://localhost:7474/
