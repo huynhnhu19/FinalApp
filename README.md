@@ -1,24 +1,27 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Our project is about a Social Network for Health by using Graph DB.
 
-Things you may want to cover:
+Things we may want to cover:
 
-* Ruby version
+* Ruby version 2.6.0
 
-* System dependencies
+* Rails version 5.2.2
 
-* Configuration
+* Install Neo4j(latest version, development)
 
-* Database creation
+* Use Gem neo4j-core, neo4j-rake_tasks
 
-* Database initialization
+* Authentication: gem devise-neo4j
 
-* How to run the test suite
+* File attachment: gem neo4jrb-paperclip, gem carrierwave-neo4j
 
-* Services (job queues, cache servers, search engines, etc.)
+* Pagination: gem neo4j-will_paginate_redux, gem kaminari-neo4j
 
-* Deployment instructions
+* ElasticSearch Integration: gem neo4j-searchkick
 
-* ...
+* Admin User Interface: gem rails_admin
+
+* Detail about using Neo4j from Ruby: https://neo4j.com/developer/ruby/
+
+* Document about Neo4j for Ruby here: https://neo4jrb.readthedocs.io/en/stable/ActiveNode.html
