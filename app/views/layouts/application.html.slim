@@ -1,0 +1,32 @@
+head
+  title FinalApp
+  = csrf_meta_tags
+  = csp_meta_tag
+
+  = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+  = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+
+body
+
+  header.navbar.navbar-defaulf role="navigation"
+    .navbar-inner
+      .container
+        #logo.navbar-brand
+          = link_to "Ten App", root_path()
+        / nav.collapse.navbar-collapse.navbar-ex1-collapse
+        .abc
+          - if  person_signed_in?
+            ul.nav.navbar-nav.navbar-right
+              li = link_to "Account", edit_person_registration_path()
+              li = link_to "Log out", destroy_person_session_path, method: :delete
+          - else
+            ul.nav.navbar-nav.pull-right
+              li = link_to "Sign up", new_person_registration_path()
+              li = link_to "Sign in", new_person_session_path()
+            
+  #main.container
+    - flash.each do |name, msg|
+      = content_tag :div, msg, class:"alert alert-#{name}"
+    #container.col-md-9.center-block
+      = yield
+

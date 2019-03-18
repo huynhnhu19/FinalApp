@@ -1,0 +1,2 @@
+module ListPostHelper
+end

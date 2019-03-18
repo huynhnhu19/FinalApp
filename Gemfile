@@ -61,3 +61,7 @@ gem 'neo4j', '~> 9.2.0'
 gem 'neo4j-core'
 gem 'neo4j-rake_tasks'
 gem 'devise-neo4j'
+
+gem 'jquery-rails', '~> 4.3', '>= 4.3.3'
+gem 'bootstrap', '~> 4.3', '>= 4.3.1'
+gem 'coffee-script', '~> 2.4', '>= 2.4.1'
