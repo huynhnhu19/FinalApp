@@ -25,5 +25,5 @@
 
 # neo4j
 /config/neo4j.yml
-/db/neo4j/development/logs/*
-/db/neo4j/development/run/*
+/db/neo4j/development/logs/*.log
+/db/neo4j/development/run/*.pid
