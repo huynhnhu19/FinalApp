@@ -22,3 +22,6 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+# neo4j
+/config/neo4j.yml
