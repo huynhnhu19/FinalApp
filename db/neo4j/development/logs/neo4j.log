@@ -85,3 +85,11 @@ Caused by: org.neo4j.helpers.PortBindException: Address localhost:7472 is alread
 2019-03-13 02:05:52.531+0000 INFO  Bolt enabled on localhost:7472.
 2019-03-13 02:05:55.798+0000 INFO  Started.
 2019-03-13 02:05:57.143+0000 INFO  Remote interface available at http://localhost:7474/
+2019-03-23 08:47:51.825+0000 INFO  Neo4j Server shutdown initiated by request
+2019-03-23 08:47:52.174+0000 INFO  Stopping...
+2019-03-23 08:47:52.460+0000 INFO  Stopped.
+2019-03-23 08:48:02.170+0000 INFO  ======== Neo4j 3.4.1 ========
+2019-03-23 08:48:02.229+0000 INFO  Starting...
+2019-03-23 08:48:17.100+0000 INFO  Bolt enabled on localhost:7472.
+2019-03-23 08:48:20.331+0000 INFO  Started.
+2019-03-23 08:48:21.763+0000 INFO  Remote interface available at http://localhost:7474/

@@ -1,7 +1,9 @@
 class Post
 	include Neo4j::ActiveNode
-	property :tittle, type: String
+	property :title, type: String
 	property :content, type: String
+	property :mode, type: Boolean
+
 
 	has_many :in, :comments, origin: :post
 	has_one :out, :author, type: :author, model_class: :Person
