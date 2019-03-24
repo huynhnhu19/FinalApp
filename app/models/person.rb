@@ -38,13 +38,12 @@ class Person
          :recoverable, :rememberable, :validatable
 
   
-  id_property :personal_id
+  id_property :personal_id, auto: :uuid
   property :first_name, type: String
   property :last_name, type: String
 
-
   has_many :in, :posts, origin: :author
-	has_many :in, :comments, origin: :author
+  has_many :in, :comments, origin: :author
   has_many :in, :send_messages, origin: :sender
   has_many :in, :receive_messages, origin: :receiver
 	has_many :in, :written_things, type: :wrote, model_class: [:Post, :Comment]

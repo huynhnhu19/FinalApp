@@ -3,5 +3,7 @@ Rails.application.routes.draw do
   devise_for :persons
   root to: "home#index"
 
-  resources :persons
+  resources :persons do
+  	resources :posts
+  end
 end
