@@ -18,7 +18,6 @@
 - CONSTRAINT ON ( group:Group ) ASSERT group.uuid IS UNIQUE
 - CONSTRAINT ON ( message:Message ) ASSERT message.uuid IS UNIQUE
 - CONSTRAINT ON ( person:Person ) ASSERT person.personal_id IS UNIQUE
-- CONSTRAINT ON ( person:Person ) ASSERT person.uuid IS UNIQUE
 - CONSTRAINT ON ( post:Post ) ASSERT post.uuid IS UNIQUE
 :indexes: []
 :versions:
@@ -28,3 +27,4 @@
 - '20190313024336'
 - '20190313032924'
 - '20190316035738'
+- '20190324060312'
