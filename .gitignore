@@ -27,3 +27,4 @@
 /config/neo4j.yml
 /db/neo4j/development/logs/*.log
 /db/neo4j/development/run/*.pid
+/db/neo4j/development/data/databases/*.db
