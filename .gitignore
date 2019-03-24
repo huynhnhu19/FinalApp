@@ -22,3 +22,9 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+# neo4j
+/config/neo4j.yml
+/db/neo4j/development/logs/*.log
+/db/neo4j/development/run/*.pid
+/db/neo4j/development/data/databases/*.db
