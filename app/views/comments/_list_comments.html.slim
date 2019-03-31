@@ -5,12 +5,12 @@
 		= @post.comments.count 
 		|  Comments
 		hr
-	- @post.comments.each do |cm|
-		.row
-			col-md-3 avatar
-			col-md-9
-				.body-comment
-					.user-comment
-						= cm.author.first_name
-					p.comment-text
-						= cm.content
+	- @post.comments.each do |comment|
+		= render partial: "comments/comment_body", locals: {name: comment.author.email, content: comment.content}
+
+		= render partial: "replies/reply_comment", locals: {reply: @reply, comment: comment}
+		.list-comment-reply
+			- comment.replies.each do |reply|
+				= render partial: "comments/comment_body", locals: {name: reply.author&.email, content: reply&.content}
+
+

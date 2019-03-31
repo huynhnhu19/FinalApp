@@ -17,8 +17,10 @@
 - CONSTRAINT ON ( comment:Comment ) ASSERT comment.uuid IS UNIQUE
 - CONSTRAINT ON ( person:Person ) ASSERT person.personal_id IS UNIQUE
 - CONSTRAINT ON ( post:Post ) ASSERT post.id IS UNIQUE
+- CONSTRAINT ON ( reply:Reply ) ASSERT reply.uuid IS UNIQUE
 :indexes: []
 :versions:
 - '20190330061616'
 - '20190330061721'
 - '20190330074409'
+- '20190331075925'

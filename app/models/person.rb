@@ -44,6 +44,7 @@ class Person
 
   has_many :in, :posts, origin: :author
   has_many :in, :comments, origin: :author
+  has_many :in, :replies, origin: :author
   has_many :in, :send_messages, origin: :sender
   has_many :in, :receive_messages, origin: :receiver
 	has_many :in, :written_things, type: :wrote, model_class: [:Post, :Comment]
