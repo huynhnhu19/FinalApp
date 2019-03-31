@@ -8,4 +8,4 @@
 	= f.submit "Edit"
 	hr
 = render "comments/comment", locals: {post: @post, comment: @comment }
-= render "comments/index", locals: {post: @post}
+= render "comments/list_comments", locals: {post: @post}
