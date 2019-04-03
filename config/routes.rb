@@ -6,4 +6,9 @@ Rails.application.routes.draw do
   resources :persons do
   	resources :posts
   end
+  
+  resources :posts do
+  	resources :comments
+  end
+
 end

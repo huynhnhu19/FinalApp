@@ -14,10 +14,11 @@
 :constraints:
 - CONSTRAINT ON ( `neo4j::migrations::schemamigration`:`Neo4j::Migrations::SchemaMigration`
   ) ASSERT `neo4j::migrations::schemamigration`.migration_id IS UNIQUE
+- CONSTRAINT ON ( comment:Comment ) ASSERT comment.uuid IS UNIQUE
 - CONSTRAINT ON ( person:Person ) ASSERT person.personal_id IS UNIQUE
 - CONSTRAINT ON ( post:Post ) ASSERT post.id IS UNIQUE
 :indexes: []
 :versions:
-- '20190403022752'
-- '20190403023111'
-- '20190403023153'
+- '20190330061616'
+- '20190330061721'
+- '20190330074409'

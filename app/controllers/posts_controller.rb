@@ -2,6 +2,12 @@ class PostsController < ApplicationController
 	def index
 		@posts = current_person.posts.all
 	end
+
+	def show
+		@post = Post.find(params[:id])
+		@comment = @post.comments.new
+	end
+
 	def new
 		@post = current_person.posts.new
 	end
