@@ -36,6 +36,7 @@ Our project is about a Social Network for Health by using Graph DB.
 - Step 2: Run 'rake neo4j:install[community-latest]', if it have errors 'Ignoring Gem because its extensions are not built' -> run 'gem pristine --all', then run the last command again
 - Step 3: check whether java is installed, if not, run 'apt-get update && apt-get upgrade', then run "apt-get install default-jdk" to install java
 - Step 4: `rails neo4j:start`
+- Step 4: `rails neo4j:schema:load`
 - Step 5: `rails neo4j:migrate`
 - Step 6: `rails s`
 
