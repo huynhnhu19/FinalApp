@@ -1,11 +1,4 @@
-= form_for [current_person, @post], url: person_posts_path(current_person, @post) do |f|
-	.form-group
-		= f.label :title
-		= f.text_field :title, class: "form-control"
-	.form-group
-		= f.label :content
-		= f.text_field :content,class: "form-control"
-	= f.submit "Edit"
-	hr
+= render "post_content", locals: {post: @post}
+= render "post_infor", locals: {post: @post}
 = render "comments/new_comment", locals: {post: @post, comment: @comment }
-= render "comments/list_comments", locals: {post: @post, reply: @reply}
+= render "comments/list_comments", locals: {post: @post}
