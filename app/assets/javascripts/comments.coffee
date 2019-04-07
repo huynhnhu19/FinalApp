@@ -1,6 +1,10 @@
 $ ->
-	showInputFieldReply() 
+	run: ->
+		showInputFieldReply()
+		
+	showInputFieldReply: ->
+		$(".reply-comment").on "click", (e) ->
+			debugger
 
-	showInputFieldReply = ->
-		alert("abc")
+			alert("abc")
 		

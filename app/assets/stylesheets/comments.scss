@@ -40,12 +40,21 @@
 			color: #9B9B9B;
 		}
 
-		.reply-comment{
-			cursor: pointer;
-		}
 	}
 	.list-comment-reply{
-		margin-left: 50px
+		margin-left: 50px;
+	}
+	.comment-user{
+		.box_form_comment{
+			display: none;
+		}
+		.reply-comment{
+			margin-left: 52px;
+			cursor: pointer;
+		}
+		.comment-text{
+			margin-bottom: 0;
+		}
 	}
 
 }
