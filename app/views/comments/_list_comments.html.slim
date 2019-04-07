@@ -1,16 +1,11 @@
 .list-comment
 	.list-header
-		i.masterial-icons
-		span 
-		= @post.comments.count 
-		|  Comments
-		hr
 	- @post.comments.each do |cm|
 		.row
 			col-md-3 avatar
 			col-md-9
 				.body-comment
-					.user-comment
-						= cm.author.first_name
+					.person-post-cm
+						= cm.author.email
 					p.comment-text
 						= cm.content

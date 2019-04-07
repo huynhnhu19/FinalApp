@@ -1,21 +1,17 @@
-h2 Log in
+h1 Log in
 
 = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| 
   .form-group
-    = f.label :email 
-    = f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control"
+    = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: 'Email', class: "form-control"
   .form-group
-
-    = f.label :password 
-    = f.password_field :password, autocomplete: "current-password", class: "form-control"
-
+    = f.password_field :password, autocomplete: "current-password", placeholder: 'Password', class: "form-control"
   -  if devise_mapping.rememberable? 
     .form-group
       = f.check_box :remember_me 
       = f.label :remember_me 
 
     .form-group
-      = f.submit "Log in" , class: "btn btn-lg btn-primary"
+      = f.submit "Log in" , class: "btn-login"
 
 = render "devise/shared/links" 
 

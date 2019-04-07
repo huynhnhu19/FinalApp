@@ -6,9 +6,13 @@
     		font-size: 16px;
     		color: #979797;
 		}
-		.btn-submit-comment{
-			float: right;
-			margin-top: 10px;
+		.comment-as{
+			font-family: "Noto Sans", Arial, sans-serif;
+		    font-size: 12px;
+		    font-weight: 400;
+		    line-height: 18px;
+		    color: rgb(28, 28, 28);
+		    margin-right: 4px;
 		}
 	}
 }
@@ -27,3 +31,16 @@
 		}
 	}
 }
+
+.person-comment{
+	font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+    color: rgb(68, 78, 89);
+}
+.person-post-cm{
+	font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+    color: rgb(0, 121, 211);
+ }
