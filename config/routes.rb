@@ -22,4 +22,10 @@ Rails.application.routes.draw do
     resources :groups
   end
 
+  resources :groups do
+    member do
+      post :join
+    end
+  end
+
 end
