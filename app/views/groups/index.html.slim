@@ -1,0 +1,5 @@
+- @groups.each do |gr|
+	= gr.group_name
+	br
+	= link_to "View", person_group_path(current_person, gr)
+	hr

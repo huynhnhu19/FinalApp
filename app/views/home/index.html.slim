@@ -1,6 +1,12 @@
 
 body.body_background
 	= current_person.email
+	br
 	= link_to "Create post", new_person_post_path(current_person)
 	br
 	= link_to "View All post", posts_path()
+	br
+	= link_to "Create group", new_person_group_path(current_person)
+	br
+	= link_to "View all group", person_groups_path(current_person)
+	
