@@ -2,3 +2,5 @@
 = render "post_infor", locals: {post: @post}
 = render "comments/new_comment", locals: {post: @post, comment: @comment }
 = render "comments/list_comments", locals: {post: @post, reply: @reply}
+javascript:
+  ReplyComment.run()
