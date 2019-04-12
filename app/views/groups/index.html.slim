@@ -3,5 +3,6 @@
 	br
 	= link_to "View", person_group_path(current_person, gr)
 	br
-	= button_to "Join", join_group_path(gr)
+	= button_to "Join", join_group_path(gr), class: "btn-join"
+	p#joined Joined
 	hr
