@@ -1,16 +1,22 @@
 .post-box{
+    padding: 10px;
+    .row{
+        margin-left: 0px;
+    }
     .post-author{
         font-size: 12px;
         font-weight: 700;
         color: rgb(28, 28, 28);
         display: inline;
         line-height: 20px;
-        vertical-align: baseline;
-        text-decoration: none;
+        .user{
+            display: inline;
+            margin-right: 5px;
+        }
+
     }
     .post-content{
         .post-title{
-            display: inline;
             color: rgb(26, 26, 27);
             overflow-wrap: break-word;
             font-size: 20px;
@@ -22,6 +28,8 @@
     
 }
 .post-box{
+    background-color: white;
+    border: 1px solid black;
     margin-bottom: 20px;
 }
 .post-content{
