@@ -1,6 +1,16 @@
-
-body.body_background
-	= current_person.email
-	= link_to "Create post", new_person_post_path(current_person)
-	br
-	= link_to "View All post", posts_path()
+- @posts.each do |post|
+	.post-box
+		.post-voted
+		.post-author
+			.user.user-avatar avatar
+			.user.user-email = post.author.email
+		.post-content
+			.post-title
+				= post.title
+			br
+			= post.content
+			br
+			.post-infor
+				.post-comment-infor
+					= link_to "Comment", person_post_path(post.author, post), class: "btn btn-post-infor"
+					= render 'posts/post_details', local: {post: @post}

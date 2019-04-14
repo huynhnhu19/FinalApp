@@ -105,3 +105,29 @@
 .post-box:hover{
     border: 0.5px solid black;
 }
+
+.new-post{
+    padding-bottom: 5%;
+    border-radius: 5px;
+    background-color: white;
+    .btn-group{
+        width: 100%;
+
+    }
+    #link-box, #video-box{
+        display: none;
+    }
+    .btn-post:hover, .btn-video:hover, .btn-link:hover{
+        background-color: #f5f8fd;
+    }
+    .btn{
+
+    }
+    .form-box{
+        margin: 20px;
+    }
+}
+
+.active{
+    display: block;
+}
