@@ -34,9 +34,11 @@ body
   #main.container
     - flash.each do |name, msg|
       = content_tag :div, msg, class:"alert alert-#{name}"
-    #container.col-md-9.center-block
-      = yield
-
+    .row
+      #container.col-md-9.center-block
+        = yield
+      .col-md-3.center-block
+        = render "home/create_post"
 
   
       

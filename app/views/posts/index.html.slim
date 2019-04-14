@@ -1,9 +1,9 @@
 - @posts.each do |post|
 	.post-box
+		.post-voted
 		.post-author
-			.row
-				col-md-3 avatar
-				col-md-9 = post.author.email
+			.user.user-avatar avatar
+			.user.user-email = post.author.email
 		.post-content
 			.post-title
 				= post.title
@@ -14,4 +14,3 @@
 				.post-comment-infor
 					= link_to "Comment", person_post_path(current_person, post), class: "btn btn-post-infor"
 					= render 'post_details', local: {post: @post}
-		hr

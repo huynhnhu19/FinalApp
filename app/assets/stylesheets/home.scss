@@ -1,0 +1,23 @@
+.box-create{
+	background-color: white;
+
+	.box-image{
+		height: 34px;
+		background-image: url(https://www.redditstatic.com/desktop2x/img/id-cards/banner@2x.png);
+		background-position: center;
+		background-repeat: no-repeat;;
+		background-size: cover;
+	}
+	.box-content{
+		margin: 10px;
+		}
+	.box-btn{
+		padding: 10%;
+	}
+	.btn-create-post{
+
+		margin: 0;
+		padding: 5px;
+		width: 210px;
+	}
+}

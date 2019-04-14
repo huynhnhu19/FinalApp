@@ -32,7 +32,17 @@ Our project is about a Social Network for Health by using Graph DB.
 
 
 #### How to launch project
+- Step 1: Run 'bundle install'
+- Step 2: check whether java is installed, if not, run 'apt-get update && apt-get upgrade', then run "apt-get install default-jdk" to install java
+- Step 3: Run 'rake neo4j:install[community-latest]', if it have errors 'Ignoring Gem because its extensions are not built' -> run 'gem pristine --all', then run the last command again
+- Step 4: `rails neo4j:start`
+- Step 4: `rails neo4j:schema:load`
+- Step 5: `rails neo4j:migrate`
+- Step 6: `rails s`
 
-- Step 1: `rails neo4j:start`
-- Step 2: `rails neo4j:migrate`
-- Step 3: `rails s`
+#### Features
+- User Neoj4 database to create a Social network that have basic features below:
+  1. Ability to create a User who can: create a Post, commet to a Post, to join a Group
+  2. Ability to upload a Post that have: title, content( text, pic, video), comments
+  ...
+

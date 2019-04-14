@@ -1,20 +1,13 @@
 .post-box{
-    .post-author{
-        font-size: 12px;
-        font-weight: 700;
-        color: rgb(28, 28, 28);
-        display: inline;
-        line-height: 20px;
-        vertical-align: baseline;
-        text-decoration: none;
+    padding: 10px;
+    .row{
+        margin-left: 0px;
     }
     .post-content{
         .post-title{
-            display: inline;
             color: rgb(26, 26, 27);
             overflow-wrap: break-word;
             font-size: 20px;
-            font-weight: 500;
             line-height: 24px;
             padding-right: 5px;
         }
@@ -22,6 +15,8 @@
     
 }
 .post-box{
+    border-radius: 5px;
+    background-color: white;
     margin-bottom: 20px;
 }
 .post-content{
@@ -77,4 +72,62 @@
     border-color: rgb(0, 121, 211);
     float: right;
     margin-top: 10px;
+}
+
+.post-author{
+    font-size: 12px;
+    font-weight: 700;
+    color: rgb(28, 28, 28);
+    display: inline;
+    line-height: 20px;
+    .user{
+        display: inline;
+        margin-right: 5px;
+    }
+
+}
+
+.post-form{
+    background-color: white;
+    padding: 10px 20px;
+    .post-comment-infor{
+        padding-bottom: 20px;
+    }
+}
+
+.post-title{
+    color: rgb(26, 26, 27);
+    overflow-wrap: break-word;
+    font-size: 20px;
+    line-height: 24px;
+    padding-right: 5px;
+}
+.post-box:hover{
+    border: 0.5px solid black;
+}
+
+.new-post{
+    padding-bottom: 5%;
+    border-radius: 5px;
+    background-color: white;
+    .btn-group{
+        width: 100%;
+
+    }
+    #link-box, #video-box{
+        display: none;
+    }
+    .btn-post:hover, .btn-video:hover, .btn-link:hover{
+        background-color: #f5f8fd;
+    }
+    .btn{
+
+    }
+    .form-box{
+        margin: 20px;
+    }
+}
+
+.active{
+    display: block;
 }
