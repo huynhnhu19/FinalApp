@@ -1,0 +1,13 @@
+.post-infor
+	.post-comment-infor
+		span.post-comment-infor-content
+		- if @post.comments.count > 1
+			= @post.comments.count 
+			|  Comments
+		- else 
+			= @post.comments.count 
+			|  Comment
+		button.btn-post-infor
+			span Like
+		button.btn-post-infor  
+			span Share

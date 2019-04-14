@@ -1,8 +1,6 @@
 = form_for @post, url: person_posts_path(current_person) do |f|
 	.form-group
-		= f.label :title
-		= f.text_field :title, class: "form-control"
+		= f.text_area :title, class: "form-control", placeholder: 'Title'
 	.form-group
-		= f.label :content
-		= f.text_field :content,class: "form-control"
-	= f.submit "Create"
+		= f.text_area :content, class: "form-control", placeholder: 'Text'
+		= f.submit "Create", class: "btn-create"

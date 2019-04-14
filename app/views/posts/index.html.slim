@@ -1,7 +1,16 @@
 - @posts.each do |post|
-	p Title 
-	= post.title
-	p Content
-	= post.content
-	= link_to "This post", person_post_path(current_person, post)
-	br
+	.post-box
+		.post-voted
+		.post-author
+			.user.user-avatar avatar
+			.user.user-email = post.author.email
+		.post-content
+			.post-title
+				= post.title
+			br
+			= post.content
+			br
+			.post-infor
+				.post-comment-infor
+					= link_to "Comment", person_post_path(current_person, post), class: "btn btn-post-infor"
+					= render 'post_details', local: {post: @post}
