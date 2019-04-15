@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
 	def index
-		@posts = current_person.posts.all
+		@posts = current_person.posts.all.order(updated_at: :asc)
 	end
 
 	def show
@@ -15,13 +15,15 @@ class PostsController < ApplicationController
 
 	def create
 		@post = Post.create!(post_params)
+		@post.image = post_params[:image] unless post_params[:image].nil?
+    	@post.save!
 		current_person.posts.create(@post)
-		redirect_to person_posts_path(current_person)		
+		redirect_to person_posts_path(current_person)
 	end
 
 	private
 	def post_params
-		params.require(:post).permit(:title, :content)
+		params.require(:post).permit(:title, :content, :image)
 	end
 
 end

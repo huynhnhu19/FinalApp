@@ -13,14 +13,18 @@
 		.post-voted
 		.post-author
 			.user.user-avatar avatar
-			.user.user-email = post.author.email
+			.user.user-email = post.author&.email
 		.post-content
 			.post-title
-				= post.title
-			br
-			= post.content
-			br
+        		= post.title
+        	br
+        	- if post.image.present?
+        		.post-image 
+        			= image_tag post.image_url
+        	- else
+        		= post.content
 			.post-infor
 				.post-comment-infor
-					= link_to "Comment", person_post_path(post.author, post), class: "btn btn-post-infor"
-					= render 'posts/post_details', local: {post: @post}
+          			- if post.author
+  						= link_to "Comment", person_post_path(post.author, post), class: "btn btn-post-infor"
+  						= render 'posts/post_details', local: {post: @post}

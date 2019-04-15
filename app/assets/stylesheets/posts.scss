@@ -11,6 +11,17 @@
             line-height: 24px;
             padding-right: 5px;
         }
+        .post-image{
+            padding-left: 17%;
+        }
+        .post-image img{
+            margin: 20px 0;
+            width: 80%;
+            height: auto;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
     }
     
 }
@@ -92,6 +103,16 @@
     padding: 10px 20px;
     .post-comment-infor{
         padding-bottom: 20px;
+    }
+    .post-content{
+        .post-image img{
+            margin: 20px 0;
+            width: 100%;
+            height: auto;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
     }
 }
 

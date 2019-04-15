@@ -3,6 +3,8 @@
 	.user.user-email = @post.author.email
 .post-content
 	.post-title
-		= @post.title
-	br
-	= @post.content
+    = @post.title
+    br
+    - if @post.image.present?
+    	.post-image  
+      		= image_tag @post.image_url

@@ -9,6 +9,9 @@
 				= post.title
 			br
 			= post.content
+      		- if post.image.present?
+        		.post-image  
+      				= image_tag post.image_url
 			br
 			.post-infor
 				.post-comment-infor
