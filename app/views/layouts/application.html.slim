@@ -17,10 +17,10 @@ body
           input.form-control placeholder="Search" type="text" /
           .input-group-btn
             button.btn.btn-info type="submit" @
-      - if  person_signed_in?
+      - if person_signed_in?
         ul.nav.navbar-right
           .btn-group
-            button.btn.btn-info type="button" 
+            button.btn.btn-info type="button"
               = current_person.email
             button.btn.btn-info.dropdown-toggle.dropdown-toggle-split aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" type="button"
             .dropdown-menu
@@ -30,15 +30,16 @@ body
         ul.nav.navbar-right.nav-right-custom
           li = link_to "Log in", new_person_session_path(), class: "btn btn-login"
           li = link_to "Sign up", new_person_registration_path(), class: "btn btn-signup"
-            
+
   #main.container
     - flash.each do |name, msg|
       = content_tag :div, msg, class:"alert alert-#{name}"
     .row
-      #container.col-md-9.center-block
+      .col-md-1
+      #container.col-md-7.center-block
         = yield
       .col-md-3.center-block
         = render "home/create_post"
+      .col-md-1
 
-  
-      
+
