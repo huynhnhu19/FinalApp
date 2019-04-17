@@ -14,7 +14,7 @@ class GroupsController < ApplicationController
   def create
   	@group = Group.create!(group_params)
   	@group.author = current_person
-  	redirect_to person_groups_path(current_person)
+  	redirect_to root_path()
   end
 
   def join
