@@ -1,3 +1,4 @@
+= render "persons/profile_bar"
 - @posts.each do |post|
 	.post-box
 		.post-voted
@@ -10,7 +11,7 @@
 			br
 			= post.content
       		- if post.image.present?
-        		.post-image  
+        		.post-image
       				= image_tag post.image_url
 			br
 			.post-infor

@@ -8,8 +8,19 @@ Rails.application.routes.draw do
 
   resources :persons do
   	resources :posts
+    collection do
+      get 'profile'
+      get 'overview'
+      get 'comments'
+      get 'saved'
+      get 'saved'
+      get 'hidden'
+      get 'upvoted'
+      get 'upvoted'
+      get 'downvoted'
+    end
   end
-  
+
   resources :posts do
   	resources :comments
   end

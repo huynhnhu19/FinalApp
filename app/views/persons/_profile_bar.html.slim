@@ -1,0 +1,5 @@
+.profile-bar
+  .profile-bar-option
+    = link_to "Overview", overview_persons_path(current_person), class:"option"
+    = link_to "Posts", person_posts_path(current_person), class:"option"
+    = link_to "Comments", comments_persons_path(current_person), class:"option"
