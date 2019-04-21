@@ -1,39 +1,46 @@
-= render "profile_bar"
-.user-post-list
-  - @posts.each do |post|
-    .user-post-box
-      .post-vote
-      .post.content
-        .post-image
-          - if post.image.present?
-            = image_tag post.image_url
-          - else
-            .post-icon
-              = fa_icon "align-left"
-        .post-things
-          .post-title
-            = post.title
-          .post-user-info
-            = post.author.email
-            span -
-            span = t("posts.post_time", email: post.author.email)
-          .post-option
-            .comment.option-style
-              span = fa_icon "comment"
-              span Comments
-            .share.option-style
-              span = fa_icon "share"
-              span Share
-            = link_to edit_post_path(post) do
-              .edit-post.option-style
-                span = fa_icon "pencil"
-                span Edit Post
-            .save.option-style
-              span = fa_icon "bookmark"
-              span Save
-            .hide.option-style
-              span = fa_icon "ban"
-              span Hide
+.container-fluid
+  = render "profile_bar"
+  .row
+    .col-md-9.center-block
+      .user-post-list
+        - @posts.each do |post|
+          .user-post-box
+            .post-vote
+            .post.content
+              .post-image
+                - if post.image.present?
+                  = image_tag post.image_url
+                - else
+                  .post-icon
+                    = fa_icon "align-left"
+              .post-things
+                .post-title
+                  = post.title
+                .post-user-info
+                  = post.author.email
+                  span -
+                  span = t("posts.post_time", email: post.author.email)
+                .post-option
+                  .comment.option-style
+                    span = fa_icon "comment"
+                    span Comments
+                  .share.option-style
+                    span = fa_icon "share"
+                    span Share
+                  = link_to edit_post_path(post) do
+                    .edit-post.option-style
+                      span = fa_icon "pencil"
+                      span Edit Post
+                  .save.option-style
+                    span = fa_icon "bookmark"
+                    span Save
+                  .hide.option-style
+                    span = fa_icon "ban"
+                    span Hide
+    .col-md-3
+      = render "home/create_post"
+
+
 
 
 

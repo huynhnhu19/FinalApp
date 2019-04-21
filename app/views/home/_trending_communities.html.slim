@@ -1,0 +1,11 @@
+.group-box-info
+  .group-header.tmol
+    .title TRENDING COMMUNITIES
+  .trending-communities
+    - @groups.each do |group|
+      .communinty
+        .name.il.tmol
+          = link_to group.group_name, group_path(group)
+        .il.pull-right
+          = link_to "JOIN", join_group_path(group), method: :post, class: "btn btn-join"
+

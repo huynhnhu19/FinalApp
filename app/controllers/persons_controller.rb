@@ -1,4 +1,6 @@
 class PersonsController < ApplicationController
+  layout "persons"
+
   def profile
   end
 

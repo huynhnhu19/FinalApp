@@ -1,20 +1,7 @@
-= render "persons/profile_bar"
-- @posts.each do |post|
-	.post-box
-		.post-voted
-		.post-author
-			.user.user-avatar avatar
-			.user.user-email = post.author.email
-		.post-content
-			.post-title
-				= post.title
-			br
-			= post.content
-      		- if post.image.present?
-        		.post-image
-      				= image_tag post.image_url
-			br
-			.post-infor
-				.post-comment-infor
-					= link_to "Comment", person_post_path(current_person, post), class: "btn btn-post-infor"
-					= render 'post_details', local: {post: @post}
+.container-fluid
+  = render "persons/profile_bar"
+  .row
+    .col-md-9.center-block
+      = render partial: "posts/index", locals: {posts: @posts}
+    .col-md-3
+      = render "home/create_post"

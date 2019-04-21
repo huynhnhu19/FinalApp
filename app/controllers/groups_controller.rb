@@ -1,4 +1,5 @@
 class GroupsController < ApplicationController
+  layout "groups"
   def index
   	@groups = Group.all
   end
@@ -8,6 +9,7 @@ class GroupsController < ApplicationController
     @post = @group.posts.new
     @comment = @post.comments.new
     @reply = @comment.replies.new
+    @posts = @group.posts.all
   end
 
   def new

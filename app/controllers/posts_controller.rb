@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  layout "persons"
 	before_action :get_group
 	def index
 		@posts = current_person.posts.all.order(updated_at: :asc)

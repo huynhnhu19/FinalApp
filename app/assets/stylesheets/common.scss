@@ -24,3 +24,17 @@ body{
     background-color: #EDEFF1;
     border-radius: 2px;
   }
+
+.tmol {
+  align-items: center;
+  // justify-content: center;
+  display: flex;
+}
+.tc {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+.il {
+  display: inline !important;
+}

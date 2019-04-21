@@ -43,3 +43,59 @@
     width: 100px;
     justify-content: flex-end;
 }
+.group-header{
+  background-color: #7e53c1;
+  .group-banner{
+    color: white;
+    .group-name{
+      margin: 0 100px;;
+      height: 64px;
+      .name{
+        height: 64px;
+        font-size: 150%;
+      }
+    }
+  }
+}
+.group-option{
+  background-color: #ebe5f6;
+  margin-bottom: 20px;
+  .option{
+    margin: 0 100px;
+  }
+}
+.group-box-info{
+  border-radius: 5px;
+  background-color: white;
+  .group-header{
+    border-radius: 5px 5px 0 0;
+    background-color: #7e53c1;
+    height: 30px;
+    .title{
+      font-weight: bold;
+      color: white;
+      font-size: 10px;
+      margin-left: 10px;
+    }
+  }
+  .group-info{
+    padding: 10px;
+  }
+  .btn-join-group, .btn-create-post{
+    margin-bottom: 10px;
+    width: 100%;
+  }
+  .btn-join-group{
+    border: 1px solid black;
+    border-radius: 5px;
+  }
+}
+.group-box-info{
+  .trending-communities{
+    padding: 10px;
+  }
+  .communinty{
+    height: 30px;
+    margin-bottom: 15px;
+  }
+}
