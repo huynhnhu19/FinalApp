@@ -7,19 +7,23 @@ Rails.application.routes.draw do
   devise_for :persons
 
   resources :persons do
-  	resources :posts
+    resources :groups
   end
   
+  resources :groups do
+    resources :posts
+  end
+
+ resources :persons do
+    resources :posts
+  end
+
   resources :posts do
-  	resources :comments
+    resources :comments
   end
 
   resources :comments do
-  	resources :replies
-  end
-
-  resources :persons do
-    resources :groups
+    resources :replies
   end
 
   resources :groups do
@@ -27,5 +31,11 @@ Rails.application.routes.draw do
       post :join
     end
   end
+
+  # resources :groups do
+  #   member do
+  #     post :create_post
+  #   end
+  # end
 
 end

@@ -39,7 +39,7 @@ body
         = yield
       .col-md-3.center-block
         = render "home/create_post"
-        = render "groups/view_all_group"
+        = render "groups/view_all_group", locals: {groups: @groups}
 
 
 
