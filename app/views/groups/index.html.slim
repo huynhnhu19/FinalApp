@@ -1,0 +1,8 @@
+/ = render 'groups/view_all_group', local: {group: @group}
+- @groups.each do |gr|
+	.box-group
+		.group-name = gr.group_name
+		= button_to "Join", join_group_path(gr), class: "btn btn-join"
+		= link_to "View", person_group_path(current_person, gr)
+		
+	/ p#joined Joined

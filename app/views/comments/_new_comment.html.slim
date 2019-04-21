@@ -1,0 +1,9 @@
+.box_form_comment.form-group
+	= form_for @comment, url: post_comments_path(@post)  do |cm|
+		.comment
+			span.comment-as
+				| Comment as 
+				= current_person.email
+			= cm.text_area :content, placeholder: "Please comment here", class: "form-control"
+			= cm.submit "Comment", class: "btn btn-create btn-submit-comment"
+			hr

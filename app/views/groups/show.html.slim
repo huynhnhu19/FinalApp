@@ -1,0 +1,9 @@
+= render partial: 'groups_banner', local: {group: @group}
+.container
+  .row
+    .col-md-8.center-block
+      = render "posts/index", locals: {post: @posts}
+    .col-md-4
+      = render "group_info", locals: {group: @group}
+
+

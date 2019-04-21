@@ -1,8 +1,39 @@
-= form_for @post, url: person_posts_path(current_person) do |f|
-	.form-group
-		= f.label :title
-		= f.text_field :title, class: "form-control"
-	.form-group
-		= f.label :content
-		= f.text_field :content,class: "form-control"
-	= f.submit "Create"
+- if @group.nil?
+	- @url = person_posts_path(current_person)
+- else
+	- @url = group_posts_path(@group)
+
+h5 Create a Post
+hr
+.new-post
+	.btn-group role="group" aria-label="..."
+	  button.btn.btn-post type="button" Post
+	  button.btn.btn-video type="button" Image & Video
+	  button.btn.btn-link type="button" Link
+	#post-box
+		.form-box
+			= form_for @post, url: @url do |f|
+				.form-group
+					= f.text_field :title, class: "form-control", placeholder: 'Title'
+				.form-group
+					= f.text_area :content, class: "form-control", placeholder: 'Text'
+					= f.submit "Create", class: "btn-create"
+	#video-box
+      .form-box
+        = form_for @post, url: @url do |f|
+          .form-group
+            = f.text_field :title, class: "form-control", placeholder: 'Title'
+          .form-group
+            = f.file_field :image, class: "form-control", placeholder: 'Text'
+            = f.submit "Create", class: "btn-create"
+	#link-box
+		.form-box
+			= form_for @post, url: @url do |f|
+				.form-group
+					= f.text_field :title, class: "form-control", placeholder: 'Title'
+				.form-group
+					= f.text_area :content, class: "form-control", placeholder: 'Text'
+					= f.submit "Create", class: "btn-create"
+
+javascript:
+	Post.run()

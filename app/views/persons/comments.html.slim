@@ -1,0 +1,39 @@
+.container-fluid
+  = render "profile_bar"
+  .row
+    .col-md-9.center-block
+      .user-comment-list
+        - @comments.each do |comment|
+          .user-comments-box
+            .post-summary-box
+              .icon-color.inline
+                span = fa_icon "comment"
+              .summary.inline
+                .post-title.inline
+                  = link_to "#{current_person.email}", overview_person_path(current_person)
+                  span = t("person.comments.comment_on")
+                  span = comment.post.title
+                .post-owner-info.inline
+                  span = t("posts.post_by")
+                  = link_to "#{comment.author.email}", overview_person_path(comment.author)
+            .post-summary-comment
+              .person
+                = link_to "#{current_person.email}", overview_person_path(current_person)
+              .comment-content
+                = comment.content
+              .post-option
+                .comment.option-style
+                  span = fa_icon "bolt"
+                  span Reply
+                .share.option-style
+                  span = fa_icon "share"
+                  span Share
+                .report.option-style
+                  span = fa_icon "flag"
+                  span Report
+                .save.option-style
+                  span = fa_icon "bookmark"
+                  span Save
+    .col-md-3
+      = render "home/create_post"
+

@@ -1,6 +1,7 @@
 class HomeController < ApplicationController
 	def index
 		@person = Person.all
-		@post = Post.all
+		@posts = Post.all.order(updated_at: :desc)
+		@groups = Group.all
 	end
 end

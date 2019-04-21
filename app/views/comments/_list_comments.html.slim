@@ -1,0 +1,19 @@
+.list-comment
+	.list-header
+		i.masterial-icons
+		span 
+		= @post.comments.count 
+		|  Comments
+		hr
+	- @post.comments.each do |comment|
+		.comment-user
+			= render partial: "comments/comment_body", locals: {name: comment.author.email, content: comment.content}
+
+			= render partial: "replies/reply_comment", locals: {reply: @reply, comment: comment}
+			.reply-comment Reply
+		hr
+		.list-comment-reply
+			- comment.replies.each do |reply|
+				= render partial: "comments/comment_body", locals: {name: reply.author&.email, content: reply&.content}
+
+

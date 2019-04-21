@@ -1,0 +1,9 @@
+.post-vote
+.post.content
+  .post-image
+    - if @post.image.present?
+      = file_field_tag @post.image.url
+  .post-things
+    .post-title
+    .post-user-info
+    .post-option
