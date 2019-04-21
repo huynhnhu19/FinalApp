@@ -1,3 +1,8 @@
+- if @group.nil?
+	- @url = person_posts_path(current_person)
+- else
+	- @url = group_posts_path(@group)
+
 h5 Create a Post
 hr
 .new-post
@@ -7,7 +12,7 @@ hr
 	  button.btn.btn-link type="button" Link
 	#post-box
 		.form-box
-			= form_for @post, url: person_posts_path(current_person) do |f|
+			= form_for @post, url: @url do |f|
 				.form-group
 					= f.text_field :title, class: "form-control", placeholder: 'Title'
 				.form-group
@@ -15,7 +20,7 @@ hr
 					= f.submit "Create", class: "btn-create"
 	#video-box
       .form-box
-        = form_for @post, url: person_posts_path(current_person) do |f|
+        = form_for @post, url: @url do |f|
           .form-group
             = f.text_field :title, class: "form-control", placeholder: 'Title'
           .form-group
@@ -23,7 +28,7 @@ hr
             = f.submit "Create", class: "btn-create"
 	#link-box
 		.form-box
-			= form_for @post, url: person_posts_path(current_person) do |f|
+			= form_for @post, url: @url do |f|
 				.form-group
 					= f.text_field :title, class: "form-control", placeholder: 'Title'
 				.form-group
