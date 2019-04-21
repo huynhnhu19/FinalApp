@@ -7,6 +7,14 @@ Rails.application.routes.draw do
   devise_for :persons
 
   resources :persons do
+    resources :groups
+  end
+
+  resources :groups do
+    resources :posts
+  end
+
+  resources :persons do
   	resources :posts
     collection do
       get 'profile'
@@ -25,12 +33,12 @@ Rails.application.routes.draw do
   	resources :comments
   end
 
-  resources :comments do
-  	resources :replies
+  resources :posts do
+    resources :comments
   end
 
-  resources :persons do
-    resources :groups
+  resources :comments do
+    resources :replies
   end
 
   resources :groups do
