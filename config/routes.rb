@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   resources :persons do
   	resources :posts
-    collection do
+    member do
       get 'profile'
       get 'overview'
       get 'comments'

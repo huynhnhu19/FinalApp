@@ -22,7 +22,7 @@ body
           = current_person.email
           span class="caret"
           ul.dropdown-menu
-            li = link_to "My profile", overview_persons_path(current_person)
+            li = link_to "My profile", overview_person_path(current_person)
             li = link_to "Edit Account", edit_person_registration_path()
             li = link_to "Log out", destroy_person_session_path, method: :delete
       - else

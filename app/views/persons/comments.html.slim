@@ -7,15 +7,15 @@
           span = fa_icon "comment"
         .summary.inline
           .post-title.inline
-            = link_to "#{current_person.email}", overview_persons_path(current_person)
+            = link_to "#{current_person.email}", overview_person_path(current_person)
             span = t("person.comments.comment_on")
             span = comment.post.title
           .post-owner-info.inline
             span = t("posts.post_by")
-            = link_to "#{comment.author.email}", overview_persons_path(comment.author)
+            = link_to "#{comment.author.email}", overview_person_path(comment.author)
       .post-summary-comment
         .person
-          = link_to "#{current_person.email}", overview_persons_path(current_person)
+          = link_to "#{current_person.email}", overview_person_path(current_person)
         .comment-content
           = comment.content
         .post-option
