@@ -1,0 +1,17 @@
+.user-box-info
+  .user-box
+    .user-banner
+    .user-avatar
+    .user-info
+      .user-display-name
+      .user-email
+        = link_to current_person.email, profile_person_path(current_person)
+      .user-about
+        span lalala lalal lala lala alla lala lala lala llal lal lla
+      .user-things
+        .user-birthday Cake day
+        .user-birthday-time
+          = fa_icon 'birthday-cake'
+          p.il September 29, 2017
+
+

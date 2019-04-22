@@ -26,6 +26,13 @@ Rails.application.routes.draw do
       get 'upvoted'
       get 'upvoted'
       get 'downvoted'
+      get 'all_settings'
+      post 'account_setting'
+      get 'account'
+      post 'profile_setting'
+      get 'user_profile'
+      post 'feed_setting'
+      get 'feed'
     end
   end
 

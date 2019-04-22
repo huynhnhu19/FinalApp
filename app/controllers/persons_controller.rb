@@ -28,4 +28,25 @@ class PersonsController < ApplicationController
   def downvoted
   end
 
+  def all_settings
+  end
+
+  def account
+  end
+
+  def user_profile
+  end
+
+  def feed
+  end
+
+  def account_setting
+  end
+
+  def profile_setting
+  end
+
+  def feed_setting
+  end
+
 end

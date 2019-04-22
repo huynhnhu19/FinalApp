@@ -1,0 +1,117 @@
+#person-settings{
+  background-color: white;
+}
+
+.setting-header{
+  margin: 0 50px 20px;
+  .user-header{
+    .header{
+      font-size: 18px;
+      font-weight: bold;
+    }
+  }
+  .setting-options{
+    .options a{
+      margin-right: 20px;
+    }
+  }
+}
+
+.account-setting{
+  .account-setting-header{
+    .account-header{
+      padding: 20px 0;
+      .header{
+        font-size: 20px;
+        font-weight: bold;
+      }
+    }
+  }
+  .option-settings{
+
+    .option-title{
+      font-size: 10px;
+      font-weight: bold;
+      border-bottom: 2px solid #dae0e6;
+      margin-bottom: 30px;
+      .account-preferences{
+
+      }
+    }
+  }
+  .user-preferences{
+    .user-email, .user-password{
+      margin-bottom: 30px;
+    }
+    .email, .password {
+      font-size: 12px;
+      color: rgb(124, 124, 124);
+    }
+  }
+  .user-deactivate{
+    color: red;
+    margin-bottom: 30px;
+    font-size: 12;
+    font-weight: bold;
+    span{
+      margin-right: 5px;
+    }
+  }
+}
+// user profile setting
+.customize-profile{
+  margin-bottom: 30px;
+  p {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0;
+  }
+  .note{
+    font-size: 12px;
+    color: rgb(124, 124, 124);
+    margin-bottom: 10px;
+  }
+}
+//user post info
+
+.user-box-info{
+  border: 0.5px solid #33a8ff;
+  border-radius: 5px;
+  .user-banner{
+    height: 100px;
+    background-color: blue;
+  }
+  .user-avatar{
+    border: 2px solid white;
+    border-radius: 10px;
+    position: absolute;
+    margin: -50px 10px;
+    background-color: purple;
+    width: 80px;
+    height: 80px;
+  }
+  .user-info{
+    padding: 30px 10px 20px;
+    .user-email a{
+      color: black;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: bold;
+    }
+    .user-things{
+      font-weight: bold;
+      font-size: 14px;
+      .user-birthday-time{
+        p {
+          font-weight: 400;
+          font-size: 12px;
+          color: rgb(124, 124, 124);
+        }
+        i {
+          color: #33a8ff;
+          margin-right: 4px;
+        }
+      }
+    }
+  }
+}

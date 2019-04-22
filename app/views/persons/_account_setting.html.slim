@@ -1,0 +1,29 @@
+.account-setting
+  .account-setting-header
+    .account-header
+      .header Account settings
+  .option-settings
+    .option-title.tmol
+      .account-preferences ACCOUNT PREFERENCES
+  .user-preferences
+    .user-email
+      .row
+        .col-md-6
+          .title Email Address
+          .email = current_person.email
+        .col-md-6
+          .btn.btn-primary.pull-right Change
+    .user-password
+      .row
+        .col-md-6
+          .title Change password
+          .password Password must be at least 6 characters long
+        .col-md-6
+          .btn.btn-primary.pull-right Change
+  .option-settings
+    .option-title.tmol
+      .account-preferences DEACTIVATE ACCOUNT
+  .user-deactivate.pull-right
+    span = fa_icon "trash"
+    p.il DEACTIVATE ACCOUNT
+

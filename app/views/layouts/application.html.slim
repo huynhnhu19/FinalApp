@@ -14,7 +14,7 @@ body
         = link_to "Ten App", root_path()
       form.navbar-form.navbar-left
         .input-group
-          input.form-control placeholder="Search" type="text" /
+          input.form-control placeholder="Search" type="text"
           .input-group-btn
             button.btn.btn-info type="submit" @
       - if person_signed_in?
@@ -23,6 +23,7 @@ body
           span class="caret"
           ul.dropdown-menu
             li = link_to "My profile", overview_person_path(current_person)
+            li = link_to "User Settings", all_settings_person_path(current_person)
             li = link_to "Edit Account", edit_person_registration_path()
             li = link_to "Log out", destroy_person_session_path, method: :delete
       - else
