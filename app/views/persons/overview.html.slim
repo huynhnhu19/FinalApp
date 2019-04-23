@@ -20,7 +20,14 @@
           .post-option
             .comment.option-style
               span = fa_icon "comment"
-              span Comments
+              - if post.comments.count > 1
+                = post.comments.count 
+                - @comment = 'Comments'
+              - else 
+                = post.comments.count 
+                - @comment = 'Comment'
+              span = link_to @comment, person_post_path(current_person, post), class: "btn btn-post-infor"
+               
             .share.option-style
               span = fa_icon "share"
               span Share

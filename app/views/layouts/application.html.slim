@@ -21,10 +21,10 @@ body
         button.btn.btn-primary.dropdown-toggle type="button" data-toggle="dropdown"
           = current_person.email
           span class="caret"
-          ul.dropdown-menu
-            li = link_to "My profile", overview_person_path(current_person)
-            li = link_to "Edit Account", edit_person_registration_path()
-            li = link_to "Log out", destroy_person_session_path, method: :delete
+        ul.dropdown-menu
+          li = link_to "My profile", overview_person_path(current_person)
+          li = link_to "Edit Account", edit_person_registration_path()
+          li = link_to "Log out", destroy_person_session_path(), method: :delete
       - else
         ul.nav.navbar-right.nav-right-custom
           li = link_to "Log in", new_person_session_path(), class: "btn btn-login"
