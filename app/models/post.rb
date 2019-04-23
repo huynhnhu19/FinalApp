@@ -6,6 +6,8 @@ class Post
 	property :content, type: String
 	property :image, type: String
 	mount_uploader :image, ImageUploader
+	property :created_at, type: DateTime
+  	property :updated_at, type: DateTime
 
 	id_property :id, auto: :uuid
 
