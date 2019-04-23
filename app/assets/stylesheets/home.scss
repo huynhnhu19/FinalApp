@@ -1,5 +1,6 @@
 .box-create{
 	background-color: white;
+	margin-bottom: 20px;
 
 	.box-image{
 		height: 34px;
@@ -19,5 +20,30 @@
 		margin: 0;
 		padding: 5px;
 		width: 210px;
+		box-sizing: border-box;
+	    text-align: center;
+	    font-size: 12px;
+	    font-weight: 700;
+	    letter-spacing: 0.5px;
+	    line-height: 24px;
+	    text-transform: uppercase;
+	    background-color: rgb(0, 121, 211);
+	    color: rgb(255, 255, 255);
+	}
+	.btn-create-group{
+
+		margin-top: 10px;
+		padding: 5px;
+		width: 210px;
+		box-sizing: border-box;
+	    text-align: center;
+	    font-size: 12px;
+	    font-weight: 700;
+	    letter-spacing: 0.5px;
+	    line-height: 24px;
+	    text-transform: uppercase;
+	    background-color: transparent;
+    	color: rgb(0, 121, 211);
+    	border-color: rgb(0, 121, 211);
 	}
 }

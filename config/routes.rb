@@ -7,19 +7,38 @@ Rails.application.routes.draw do
   devise_for :persons
 
   resources :persons do
-  	resources :posts
+    resources :groups
   end
-  
+
+  resources :groups do
+    resources :posts
+  end
+
+  resources :persons do
+  	resources :posts
+    member do
+      get 'profile'
+      get 'overview'
+      get 'comments'
+      get 'saved'
+      get 'saved'
+      get 'hidden'
+      get 'upvoted'
+      get 'upvoted'
+      get 'downvoted'
+    end
+  end
+
   resources :posts do
   	resources :comments
   end
 
-  resources :comments do
-  	resources :replies
+  resources :posts do
+    resources :comments
   end
 
-  resources :persons do
-    resources :groups
+  resources :comments do
+    resources :replies
   end
 
   resources :groups do

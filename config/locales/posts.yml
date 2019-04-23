@@ -1,0 +1,7 @@
+en:
+  posts:
+    post_time: 'Posted by %{email} 1 day ago'
+    post_by: 'Posted by '
+  person:
+    comments:
+      comment_on: ' commented on '

@@ -4,8 +4,8 @@ class Post
 	# property :posts_id, auto: :uuid
 	property :title, type: String
 	property :content, type: String
-  property :image, type: String
-  mount_uploader :image, ImageUploader
+	property :image, type: String
+	mount_uploader :image, ImageUploader
 
 	id_property :id, auto: :uuid
 

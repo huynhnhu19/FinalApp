@@ -7,3 +7,5 @@
 	.box-btn
 		- if current_person
 			= link_to "Create post", new_person_post_path(current_person), class: "btn btn-success btn-create-post"
+			= link_to "Create Community", new_person_group_path(current_person), class: "btn  btn-create-group"
+			= link_to "view group", groups_path(), class: "btn  btn-create-group"

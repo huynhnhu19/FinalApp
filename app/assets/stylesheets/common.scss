@@ -1,3 +1,40 @@
 body{
 	background-color: dae0e6
 }
+
+.dot{
+  height: 5px;
+  width: 5px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+}
+.option-style {
+  margin-right: 10px;
+  display: inline;
+  font-size: 12px;
+  font-weight: bold;
+  color: rgb(120, 124, 126);
+  span{
+    padding-right: 3px;
+  }
+}
+
+.option-style:hover{
+    background-color: #EDEFF1;
+    border-radius: 2px;
+  }
+
+.tmol {
+  align-items: center;
+  // justify-content: center;
+  display: flex;
+}
+.tc {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+.il {
+  display: inline !important;
+}

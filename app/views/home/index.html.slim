@@ -19,7 +19,7 @@
         		= post.title
         	br
         	- if post.image.present?
-        		.post-image 
+        		.post-image
         			= image_tag post.image_url
         	- else
         		= post.content
@@ -27,4 +27,4 @@
 				.post-comment-infor
           			- if post.author
   						= link_to "Comment", person_post_path(post.author, post), class: "btn btn-post-infor"
-  						= render 'posts/post_details', local: {post: @post}
+  						= render partial: 'posts/post_details', local: {post: @post}

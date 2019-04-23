@@ -1,3 +1,101 @@
-// Place all the styles related to the Groups controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.box-create{
+	.box-title-community{
+		p{
+			font-size: 15px;
+		    font-weight: 700;
+		    color: rgb(28, 28, 28);
+		    display: inline;
+		    line-height: 20px;
+		}
+	}
+	.box-display{
+		.box-group{
+			display: flex;
+			.group_name{
+				font-size: 15px;
+			    font-weight: 700;
+			    color: rgb(28, 28, 28);
+			    display: inline;
+			    line-height: 20px;
+			}
+		}
+	}
+}
+.btn-join{
+	box-sizing: border-box;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    line-height: 24px;
+    text-transform: uppercase;
+    background-color: rgb(0, 121, 211);
+    color: rgb(255, 255, 255);
+    fill: rgb(255, 255, 255);
+    display: block;
+    border-width: 1px;
+    border-style: solid;
+    border-image: initial;
+    border-radius: 4px;
+    text-decoration: none;
+    padding: 3px 16px;
+    border-color: rgb(0, 121, 211);
+    width: 100px;
+    justify-content: flex-end;
+}
+.group-header{
+  background-color: #7e53c1;
+  .group-banner{
+    color: white;
+    .group-name{
+      margin: 0 100px;;
+      height: 64px;
+      .name{
+        height: 64px;
+        font-size: 150%;
+      }
+    }
+  }
+}
+.group-option{
+  background-color: #ebe5f6;
+  margin-bottom: 20px;
+  .option{
+    margin: 0 100px;
+  }
+}
+.group-box-info{
+  border-radius: 5px;
+  background-color: white;
+  .group-header{
+    border-radius: 5px 5px 0 0;
+    background-color: #7e53c1;
+    height: 30px;
+    .title{
+      font-weight: bold;
+      color: white;
+      font-size: 10px;
+      margin-left: 10px;
+    }
+  }
+  .group-info{
+    padding: 10px;
+  }
+  .btn-join-group, .btn-create-post{
+    margin-bottom: 10px;
+    width: 100%;
+  }
+  .btn-join-group{
+    border: 1px solid black;
+    border-radius: 5px;
+  }
+}
+.group-box-info{
+  .trending-communities{
+    padding: 10px;
+  }
+  .communinty{
+    height: 30px;
+    margin-bottom: 15px;
+  }
+}
