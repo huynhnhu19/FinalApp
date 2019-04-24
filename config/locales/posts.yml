@@ -1,7 +1,9 @@
 en:
   posts:
-    post_time: 'Posted by %{email} 1 day ago'
+    post_time: 'Posted by %{email} at %{created_at}'
     post_by: 'Posted by '
+    post_create: 'At %{created_at}'
   person:
     comments:
       comment_on: ' commented on '
+  

@@ -3,6 +3,8 @@ class PostsController < ApplicationController
 	before_action :get_group
 	def index
 		@posts = current_person.posts.all.order(updated_at: :asc)
+		# @post = Post.find(params[:id])
+		# @time = Time.now.min - @post.created_at.min
 	end
 
 	def show
