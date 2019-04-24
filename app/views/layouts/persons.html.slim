@@ -13,7 +13,7 @@ body#person-settings
         = link_to "Ten App", root_path()
       form.navbar-form.navbar-left
         .input-group
-          input.form-control placeholder="Search" type="text" /
+          input.form-control placeholder="Search" type="text"
           .input-group-btn
             button.btn.btn-info type="submit" @
       - if person_signed_in?
@@ -26,10 +26,13 @@ body#person-settings
               span.icon-profile = fa_icon "user"
               = link_to "My profile", overview_person_path(current_person)
             li.dropdown-item.box-option-user
+              span.icon-profile = fa_icon "cog"
+              = link_to "User Settings", all_settings_person_path(current_person)
+            li.dropdown-item.box-option-user
               span.icon-profile = fa_icon "edit"
               = link_to "Edit Account", edit_person_registration_path()
             .dropdown-divider
-            li.dropdown-item.box-option-user 
+            li.dropdown-item.box-option-user
               span.icon-profile = fa_icon "sign-out"
               = link_to "Log out", destroy_person_session_path, method: :delete
       - else

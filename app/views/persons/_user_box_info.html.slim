@@ -6,7 +6,7 @@
     .user-avatar
       - if current_person.avatar_url
         = image_tag current_person.avatar_url
-    .user-info
+    .user-info-setting
       .user-display-name
       .user-email
         = link_to current_person.email, profile_person_path(current_person)
