@@ -21,13 +21,15 @@
   .customize-profile
     p Avatar and banner image
     .note Images must be .png or .jpg format
-    .row
-      .col-md-6
-        .image-upload
-          = file_field_tag :avatar, class: "image-input"
-      .col-md-6
-        .image-upload
-          = file_field_tag :banner
+    = form_for current_person, url: account_setting_person_path(current_person), method: :post do |p|
+      .row
+        .col-md-6
+          .image-upload
+            = p.file_field :avatar, class: "image-input"
+        .col-md-6
+          .image-upload
+              = p.file_field :banner, class: "image-input"
+      = p.button 'Save'
   .option-settings
     .option-title.tmol
       .account-preferences ADVANCED

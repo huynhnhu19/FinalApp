@@ -41,6 +41,14 @@ class PersonsController < ApplicationController
   end
 
   def account_setting
+    if params[:person][:avatar]
+      current_person.avatar = params[:person][:avatar]
+      current_person.save!
+    end
+    if params[:person][:banner]
+      current_person.banner = params[:person][:banner]
+      current_person.save!
+    end
   end
 
   def profile_setting

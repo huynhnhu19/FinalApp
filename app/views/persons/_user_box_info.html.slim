@@ -1,7 +1,11 @@
 .user-box-info
   .user-box
     .user-banner
+      - if current_person.banner_url
+        = image_tag current_person.banner_url
     .user-avatar
+      - if current_person.avatar_url
+        = image_tag current_person.avatar_url
     .user-info
       .user-display-name
       .user-email
