@@ -1,40 +1,54 @@
 .post-box{
-    padding: 10px;
-    .row{
-        margin-left: 0px;
+  cursor: pointer;
+  padding: 10px 10px 10px 40px;
+  .row{
+    margin-left: 0px;
+  }
+  .post-content{
+    .post-title{
+      color: rgb(26, 26, 27);
+      overflow-wrap: break-word;
+      font-size: 20px;
+      line-height: 24px;
+      padding-right: 5px;
     }
-    .post-content{
-        .post-title{
-            color: rgb(26, 26, 27);
-            overflow-wrap: break-word;
-            font-size: 20px;
-            line-height: 24px;
-            padding-right: 5px;
-        }
-        .post-image{
-            padding-left: 15%;
-        }
-        .post-image img{
-            margin: 20px 0;
-            width: 90%;
-            height: auto;
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: center;
-        }
+    .post-image{
+      padding-left: 15%;
     }
-
+    .post-image img{
+      margin: 20px 0;
+      width: 90%;
+      height: auto;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+  }
+  .post-voted{
+    position: absolute;
+    left: 20px;
+    width: 30px;
+    padding-left: 7px;
+    span{
+      margin: -2px;
+      font-size: 12px;
+      font-weight: bold;
+    }
+    a, i{
+      padding: 5px 2.25px 5px;
+    }
+  }
 }
+
 .post-box{
-    border-radius: 5px;
-    background-color: white;
-    margin-bottom: 20px;
+  border-radius: 5px;
+  background-color: white;
 }
 .post-content{
 	display: inline;
-    position: relative;
-    text-decoration: none;
-    word-break: break-word;
+  position: relative;
+  text-decoration: none;
+  word-break: break-word;
 }
 
 .post_infor{
@@ -44,115 +58,152 @@
 
 .post-comment-infor{
 	font-size: 12px;
-    font-weight: 700;
-    line-height: 16px;
-    word-break: normal;
-    white-space: nowrap;
-    min-width: 25px;
-    color: rgb(135, 138, 140);
+  font-weight: 700;
+  line-height: 16px;
+  word-break: normal;
+  white-space: nowrap;
+  min-width: 25px;
+  color: rgb(135, 138, 140);
 }
 
 .btn-post-infor{
 	border: none;
 	color: rgb(135, 138, 140);
 	font-size: 12px;
-    font-weight: 700;
-    line-height: 16px;
-    word-break: normal;
-    white-space: nowrap;
-    min-width: 25px;
+  font-weight: 700;
+  line-height: 16px;
+  word-break: normal;
+  white-space: nowrap;
+  min-width: 25px;
 }
 
 .btn-create{
-    box-sizing: border-box;
-    text-align: center;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-    line-height: 24px;
-    text-transform: uppercase;
-    background-color: rgb(0, 121, 211);
-    color: rgb(255, 255, 255);
-    width: 100px;
-    border-width: 1px;
-    border-style: solid;
-    border-image: initial;
-    border-radius: 4px;
-    text-decoration: none;
-    padding: 3px 16px;
-    border-color: rgb(0, 121, 211);
-    float: right;
-    margin-top: 10px;
+  box-sizing: border-box;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  line-height: 24px;
+  text-transform: uppercase;
+  background-color: rgb(0, 121, 211);
+  color: rgb(255, 255, 255);
+  width: 100px;
+  border-width: 1px;
+  border-style: solid;
+  border-image: initial;
+  border-radius: 4px;
+  text-decoration: none;
+  padding: 3px 16px;
+  border-color: rgb(0, 121, 211);
+  float: right;
+  margin-top: 10px;
 }
 
 .post-author{
-    font-size: 12px;
-    font-weight: 700;
-    color: rgb(28, 28, 28);
+  font-size: 12px;
+  font-weight: 700;
+  color: rgb(28, 28, 28);
+  display: inline;
+  line-height: 20px;
+  .user{
     display: inline;
-    line-height: 20px;
-    .user{
-        display: inline;
-        margin-right: 5px;
-    }
-
+    margin-right: 5px;
+  }
 }
+
 .timestamp-post{
-    color: rgb(120, 124, 126);
-    font-style: italic;
-    font-weight: normal;
+  color: rgb(120, 124, 126);
+  font-style: italic;
+  font-weight: normal;
 }
 .post-form{
-    background-color: white;
-    padding: 10px 20px;
-    .post-comment-infor{
-        padding-bottom: 20px;
+  background-color: white;
+  .post-comment-infor{
+    padding-bottom: 20px;
+  }
+  .post-content{
+    .post-image img{
+      margin: 20px 0;
+      width: 100%;
+      height: auto;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
     }
-    .post-content{
-        .post-image img{
-            margin: 20px 0;
-            width: 100%;
-            height: auto;
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: center;
-        }
-    }
+  }
 }
 
 .post-title{
-    color: rgb(26, 26, 27);
-    overflow-wrap: break-word;
-    font-size: 20px;
-    line-height: 24px;
-    padding-right: 5px;
+  color: rgb(26, 26, 27);
+  overflow-wrap: break-word;
+  font-size: 20px;
+  line-height: 24px;
+  padding-right: 5px;
 }
-.post-box:hover{
-    border: 0.5px solid black;
+.post-box-index:hover{
+  border: 0.5px solid black;
 }
 
 .new-post{
-    padding-bottom: 5%;
-    border-radius: 5px;
-    background-color: white;
-    .btn-group{
-        width: 100%;
+  padding-bottom: 5%;
+  border-radius: 5px;
+  background-color: white;
+  .btn-group{
+    width: 100%;
 
-    }
-    #link-box, #video-box{
-        display: none;
-    }
-    .btn-post:hover, .btn-video:hover, .btn-link:hover{
-        background-color: #f5f8fd;
-    }
-    .btn{
+  }
+  #link-box, #video-box{
+    display: none;
+  }
+  .btn-post:hover, .btn-video:hover, .btn-link:hover{
+    background-color: #f5f8fd;
+  }
+  .btn{
 
-    }
-    .form-box{
-        margin: 20px;
-    }
+  }
+  .form-box{
+      margin: 20px;
+  }
 }
 
 .active{
     display: block;
+}
+.post-container{
+  background-color: red;
+  .post-box-content{
+    background-color: #dae0e6;
+  }
+}
+
+.post-header{
+  margin-bottom: 20px;
+  color: white;
+  padding: 10px;
+  background-color: black;
+  .user-summary{
+    margin-left: 30px;
+    .post-voted{
+      border-right: 1px solid white;
+      border-left: 1px solid white;
+    }
+    i {
+      margin: 0 10px;
+      color: white;
+    }
+    .post-header-title.il{
+      margin-left: 10px;
+    }
+  }
+  .btn-close-post a{
+    text-decoration: none;
+    color: #bcb2b2;
+  }
+  .btn-close-post:hover{
+    background-color: gray;
+  }
+}
+.post-user-comment{
+  background-color: white;
+  padding: 0px 20px 20px 40px;
 }

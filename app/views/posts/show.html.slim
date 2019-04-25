@@ -1,7 +1,16 @@
-.post-form
-	= render "post_content", locals: {post: @post}
-	= render "post_infor", locals: {post: @post}
-	= render "comments/new_comment", locals: {post: @post, comment: @comment }
-	= render "comments/list_comments", locals: {post: @post, reply: @reply}
+.container-fluid.post-container
+  .container.post-box-content
+    = render "post_header", locals: {post: @post}
+    .row
+      .col-md-9.center-block
+        .post-form
+        	= render "post_content", locals: {post: @post}
+        .post-user-comment
+        	= render "post_infor", locals: {post: @post}
+        	= render "comments/new_comment", locals: {post: @post, comment: @comment }
+        	= render "comments/list_comments", locals: {post: @post, reply: @reply}
+      .col-md-3
+        = render "home/create_post"
+        / # = render "home/trending_communities", locals: {groups: @groups}
 javascript:
 	ReplyComment.run()

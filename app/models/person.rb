@@ -58,7 +58,7 @@ class Person
   has_many :in, :creates, type: :create_by, model_class: :Group, unique: true
   has_many :in, :groups, origin: :joins, model_class: :Group
 
-  has_many :out, :friends,type: :friend_with, model_class: :Person, unique: true
+  has_many :out, :friends, type: :friend_with, model_class: :Person, unique: true
 
   after_create :add_default_images
 
