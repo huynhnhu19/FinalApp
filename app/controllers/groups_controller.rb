@@ -1,5 +1,5 @@
 class GroupsController < ApplicationController
-  layout "groups"
+  layout "persons"
   def index
   	@groups = Group.all
   end
@@ -18,7 +18,10 @@ class GroupsController < ApplicationController
 
   def create
   	@group = Group.create!(group_params)
+    @group.icon = group_params[:icon] if group_params[:icon].present?
+    @group.banner = group_params[:banner] if group_params[:banner].present?
   	@group.author = current_person
+    @group.save!
   	redirect_to root_path()
   end
 
@@ -40,7 +43,7 @@ class GroupsController < ApplicationController
 
   private
   def group_params
-  	params.require(:group).permit(:group_name)
+  	params.require(:group).permit(:group_name, :about, :icon, :banner)
   end
   def post_params
     params.require(:post).permit(:title, :content, :image)

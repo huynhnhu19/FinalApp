@@ -1,0 +1,137 @@
+.account-setting
+  .account-setting-header
+    .account-header
+      .header Community Information
+  .option-settings
+    .option-title.tmol
+      .account-preferences Community Information
+  = form_for @group, url: person_groups_path(current_person) do |f|
+    .customize-profile
+      p Community Name
+      .note Set a community name. This name cannot change.
+      = f.text_field :group_name, class: "form-control", placeholder: 'Community Name'
+      .note 30 Characters
+    .customize-profile
+      p About (optional)
+      .note A brief description of your community shown on your community.
+      = f.text_area :about, class: 'form-control', placeholder: "About (optional)"
+      .note 200 Characters
+    .option-settings
+      .option-title.tmol
+        .account-preferences IMAGES
+    .customize-profile
+      p Icon and banner image
+      .note Images must be .png or .jpg format
+      .row
+        .col-md-6
+          .image-upload
+            = f.file_field :icon, class: "image-input"
+        .col-md-6
+          .image-upload
+              = f.file_field :banner, class: "image-input"
+    .option-settings
+      .option-title.tmol
+        .account-preferences ADVANCED
+    .customize-profile
+      p Active in communities visibility
+      .note Show which communities I am active in on my profile.
+    .option-settings
+      .option-title.tmol
+        .account-preferences Them
+    .customize-profile
+      p Community Them
+      .note Pick a color to custome your community color. This can change later.
+    .customize-profile
+      .color-them
+        .row.row-color
+          .col-md-1
+          .col-md-1
+            .color
+              = fa_icon "check"
+          .col-md-1
+            .color.blue
+              = fa_icon "check"
+          .col-md-1
+            .color.green
+              = fa_icon "check"
+          .col-md-1
+            .color.green
+              = fa_icon "check"
+          .col-md-1
+            .color.green
+              = fa_icon "check"
+          .col-md-1
+            .color.green
+              = fa_icon "check"
+          .col-md-1
+            .color.green
+              = fa_icon "check"
+          .col-md-1
+            .color.green
+              = fa_icon "check"
+          .col-md-1
+            .color.green
+              = fa_icon "check"
+          .col-md-1
+        .row.row-color
+          .col-md-1
+          .col-md-1
+            .color.orange
+              = fa_icon "check"
+          .col-md-1
+            .color.blue
+              = fa_icon "check"
+          .col-md-1
+            .color.green
+              = fa_icon "check"
+          .col-md-1
+            .color.green
+              = fa_icon "check"
+          .col-md-1
+            .color.green
+              = fa_icon "check"
+          .col-md-1
+            .color.green
+              = fa_icon "check"
+          .col-md-1
+            .color.green
+              = fa_icon "check"
+          .col-md-1
+            .color.green
+              = fa_icon "check"
+          .col-md-1
+            .color.green
+              = fa_icon "check"
+          .col-md-1
+        .row.row-color
+          .col-md-1
+          .col-md-1
+            .color.orange
+              = fa_icon "check"
+          .col-md-1
+            .color.blue
+              = fa_icon "check"
+          .col-md-1
+            .color.green
+              = fa_icon "check"
+          .col-md-1
+            .color.green
+              = fa_icon "check"
+          .col-md-1
+            .color.green
+              = fa_icon "check"
+          .col-md-1
+            .color.green
+              = fa_icon "check"
+          .col-md-1
+            .color.green
+              = fa_icon "check"
+          .col-md-1
+            .color.green
+              = fa_icon "check"
+          .col-md-1
+            .color.green
+              = fa_icon "check"
+          .col-md-1
+      = f.hidden_field :them
+    = f.submit "Create", class: "btn-create"

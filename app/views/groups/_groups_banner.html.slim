@@ -1,5 +1,7 @@
 .group-header
   .group-banner
+    - if @group.banner.present?
+      = image_tag @group.banner_url
     .group-name
       .name.tmol
         = @group.group_name

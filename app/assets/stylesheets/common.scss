@@ -46,3 +46,33 @@ body{
 .image-input{
 
 }
+
+.color{
+  cursor: pointer;
+  height: 40px;
+  width: 40px;
+  background-color: red;
+  border-radius: 50%;
+  i {
+    margin: 30%;
+  }
+}
+.red{
+  background-color: red;
+}
+.orange{
+  background-color: orange;
+}
+.green{
+  background-color: green;
+}
+.yellow{
+  background-color: yellow;
+}
+.blue{
+  background-color: blue;
+}
+.row-color{
+  margin-bottom: 20px;
+}
+
