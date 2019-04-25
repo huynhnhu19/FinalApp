@@ -20,7 +20,7 @@
                 .post-user-info
                   = post.author.email
                   span -
-                  span.timestamp-post = t("posts.post_time", email: post.author.email, created_at: post.created_at.ctime)
+                  span.timestamp-post = t("posts.post_time", email: post.author.email, created_at: post.created_at&.ctime)
                 .post-option
                   .comment.option-style
                     span = fa_icon "comment"
