@@ -12,6 +12,9 @@ Rails.application.routes.draw do
 
   resources :groups do
     resources :posts
+    member do
+      post :join
+    end
   end
 
   resources :persons do
@@ -38,6 +41,9 @@ Rails.application.routes.draw do
 
   resources :posts do
   	resources :comments
+    member do
+      post 'vote'
+    end
   end
 
   resources :posts do
@@ -46,12 +52,6 @@ Rails.application.routes.draw do
 
   resources :comments do
     resources :replies
-  end
-
-  resources :groups do
-    member do
-      post :join
-    end
   end
 
 end
