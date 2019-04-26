@@ -65,5 +65,6 @@
         .account-preferences DEACTIVATE ACCOUNT
     .user-deactivate.pull-right
       span = fa_icon "trash"
-      p.il DEACTIVATE ACCOUNT
+      = link_to 'DEACTIVATE ACCOUNT', registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete
+
 
