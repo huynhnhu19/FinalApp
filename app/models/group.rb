@@ -6,6 +6,7 @@ class Group
 	property :group_name
   property :about, type: String
   property :them, type: String
+  property :text_color, type: String
 
   property :icon, type: String
   mount_uploader :icon, GroupBannerUploader

@@ -43,7 +43,7 @@ class GroupsController < ApplicationController
 
   private
   def group_params
-  	params.require(:group).permit(:group_name, :about, :icon, :banner)
+  	params.require(:group).permit(:group_name, :about, :icon, :banner, :them, :text_color)
   end
   def post_params
     params.require(:post).permit(:title, :content, :image)

@@ -1,10 +1,11 @@
-.group-header
-  .group-banner
-    - if @group.banner.present?
+- if @group.banner.present?
+  .group-header
+    .group-banner
       = image_tag @group.banner_url
-    .group-name
-      .name.tmol
-        = @group.group_name
-.group-option
-  .option
-    = link_to "Post", group_posts_path(@group)
+-else
+  .group-name id="#{@group.them}"
+    .name.tmol
+      span = @group.group_name
+.group-option id="#{@group.them}"
+  .option.tmol
+    = link_to "Posts", group_posts_path(@group)
