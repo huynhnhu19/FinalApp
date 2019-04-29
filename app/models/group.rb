@@ -20,4 +20,20 @@ class Group
 	has_many :in, :members, type: :joins, model_class: :Person
 	has_many :in, :posts, origin: :belong_to
 
+	def check_color
+		self.text_color.present? ? self.text_color : '_0079d3'
+	end
+	
+	def check_them
+		self.them.present? ? self.them : '_0079d3'
+	end
+
+	def check_view mode_view, params
+		if params.nil? && mode_view == 'large'
+			self.text_color
+		else				
+			mode_view == params ? self.text_color : 'gray'
+		end
+	end
+			
 end

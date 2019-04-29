@@ -2,10 +2,10 @@
   .group-header
     .group-banner
       = image_tag @group.banner_url
--else
-  .group-name id="#{@group.them}"
+- else
+  .group-name id="#{@group.check_them}"
     .name.tmol
       span = @group.group_name
-.group-option id="#{@group.them}"
+.group-option class="b#{@group.check_them}"
   .option.tmol
-    = link_to "Posts", group_posts_path(@group)
+    = link_to "Posts", group_posts_path(@group), class:"c#{@group.check_color}"

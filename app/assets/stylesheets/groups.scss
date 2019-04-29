@@ -66,19 +66,14 @@
 }
 .group-option{
   background-color: #ebe5f6;
-  margin-bottom: 20px;
-  opacity: 0.5;
-  .option{
+    .option{
     height: 40px;
     a{
     text-decoration: none;
     font-weight: bold;
-    color: white;
     margin: 0 100px;
     }
-    a:visited{
-      border-bottom: 4px solid #ebe5f6;
-    }
+    a:visited{border-bottom: 4px solid #ebe5f6;}
   }
 }
 .group-box-info{
@@ -95,15 +90,12 @@
       margin-left: 10px;
     }
   }
-  .group-info{
-    padding: 10px;
-  }
-  .btn-join-group, .btn-create-post{
+  .group-info{padding: 10px;}
+  .btn-join-group, .btn-create-post, .btn-joined{
     margin-bottom: 10px;
     width: 100%;
   }
-  .btn-join-group{
-    border: 1px solid black;
+  .btn-join-group, .btn-joined{
     border-radius: 5px;
   }
 }
@@ -122,5 +114,53 @@
     color: white;
     font-size: 24px;
     margin: 30px 100px;
+  }
+}
+
+.box-btn{
+  a{color: white;
+    font-weight: bold;
+  }
+}
+.btn-joined{
+  color: black !important;
+  border: 0.5px solid black;
+}
+
+.btn-joined:after{content: 'JOINED'}
+.btn-joined:hover:after{content: 'LEAVE'}
+.btn:hover{opacity: 0.75}
+
+.sort-bar-header{
+  background-color: white;
+  margin-bottom: 20px;
+  .sort-bar{margin-left: 100px;}
+  span{
+    font-weight: bold;
+    font-size: 10px;
+    margin: 10px 0;
+    margin-right: 10px;
+  }
+}
+
+.line-split{border-bottom: 1px solid white;}
+.view-large, .view-medium, .view-small{margin: 10px 2px;}
+
+.view-large{
+  table{width: 15px; height: 20px;}
+  table tr{
+    height: 9px;
+  }
+}
+.view-medium{
+  table{width: 15px; height: 20px;}
+  table tr{
+    height: 6px;
+  }
+}
+.view-small{
+  table{width: 15px; height: 20px;}
+  table tr{
+    height: 5px;
   }
 }

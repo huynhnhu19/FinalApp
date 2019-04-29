@@ -1,7 +1,8 @@
 = render partial: 'groups_banner', local: {group: @group}
+= render partial: 'sort_bar', local: {group: @group}
 .container
   .row
-    .col-md-8.center-block
+    .col-md-8#view-group
       = render "home/index", locals: {posts: @posts}
     .col-md-4
       = render "group_info", locals: {group: @group}

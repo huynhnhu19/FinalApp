@@ -1,0 +1,32 @@
+.sort-bar-header
+	.sort-bar.tmol
+		span VIEW
+		= link_to group_path(@group, view: "large"), remote:true do
+			.view-large
+				table
+					tr.line-split class="#{@group.check_view('large', params[:view])}"
+						td
+					tr class="#{@group.check_view('large', params[:view])}"
+						td
+		= link_to group_path(@group, view: "medium"), remote: true do
+			.view-medium
+				table
+					tr.line-split class="#{@group.check_view('medium', params[:view])}"
+						td 
+					tr.line-split class="#{@group.check_view('medium', params[:view])}"
+						td
+					tr class="#{@group.check_view('medium', params[:view])}"
+						td
+		= link_to group_path(@group, view: "small"), remote:true do
+			.view-small
+				table
+					tr.line-split class="#{@group.check_view('small', params[:view])}"
+						td
+					tr.line-split class="#{@group.check_view('small', params[:view])}"
+						td
+					tr.line-split class="#{@group.check_view('small', params[:view])}"
+						td
+					tr class="#{@group.check_view('small', params[:view])}"
+						td
+
+

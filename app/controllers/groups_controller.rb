@@ -1,19 +1,25 @@
 class GroupsController < ApplicationController
-  layout "persons"
+  layout "groups"
+  before_action :get_group
   def index
   	@groups = Group.all
   end
 
   def show
-    @group = Group.find(params[:id])
     @post = @group.posts.new
     @comment = @post.comments.new
     @reply = @comment.replies.new
     @posts = @group.posts.all
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def new
   	@group = current_person.groups.new
+    render layout: 'persons'
   end
 
   def create
@@ -26,10 +32,21 @@ class GroupsController < ApplicationController
   end
 
   def join
-  	@group = Group.find(params[:id])
   	@group.members << current_person
-  	redirect_to root_path()
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
+
+  def leave
+    @group.members.delete current_person
+    respond_to do |format|
+      format.html
+      format.js {render :join}
+    end
+  end
+
 
   # def create_post
   #   @group = Group.find(params[:id])
@@ -42,6 +59,10 @@ class GroupsController < ApplicationController
   # end
 
   private
+  def get_group
+    return unless params[:id]
+    @group = Group.find(params[:id])
+  end
   def group_params
   	params.require(:group).permit(:group_name, :about, :icon, :banner, :them, :text_color)
   end
