@@ -7,7 +7,7 @@
 		hr
 	- @post.comments.each do |comment|
 		.comment-user
-			= render partial: "comments/comment_body", locals: {name: comment.author.email, content: comment.content}
+			= render partial: "comments/comment_body", locals: {name: comment.author.email, content: comment.content, create_at: comment.created_at.ctime}
 
 			= render partial: "replies/reply_comment", locals: {reply: @reply, comment: comment}
 			.reply-comment Reply

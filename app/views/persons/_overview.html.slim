@@ -1,0 +1,41 @@
+.user-post-list
+  - @posts.each do |post|
+    .user-post-box
+      .post-box.user-box
+        .post-voted
+          = link_to vote_post_path(post, vote: :upvote), method: :post do
+            = fa_icon "arrow-up", class:"#{post.upvote.include?(current_person) ? 'upvoted' : ""}"
+          span.tc.vote-number = post.votes
+          = link_to vote_post_path(post, vote: :downvote), method: :post do
+            = fa_icon "arrow-down", class:"#{post.downvote.include?(current_person) ? 'downvoted' : ""}"
+      .post-overview-content
+        .post-image
+          - if post.image.present?
+            = image_tag post.image_url
+          - else
+            .post-icon
+              = fa_icon "align-left"
+        .post-things
+          .post-title
+            = post.title
+          .post-user-info
+            = post.author.email
+            span -
+            span.timestamp-post = t("posts.post_time", email: post.author.email, created_at: post.created_at&.ctime)
+          .post-option
+            .comment.option-style
+              span = fa_icon "comment"
+              span Comments
+            .share.option-style
+              span = fa_icon "share"
+              span Share
+            = link_to edit_post_path(post) do
+              .edit-post.option-style
+                span = fa_icon "pencil"
+                span Edit Post
+            .save.option-style
+              span = fa_icon "bookmark"
+              span Save
+            .hide.option-style
+              span = fa_icon "ban"
+              span Hide

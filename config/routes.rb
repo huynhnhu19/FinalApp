@@ -12,6 +12,10 @@ Rails.application.routes.draw do
 
   resources :groups do
     resources :posts
+    member do
+      post :join
+      delete :leave
+    end
   end
 
   resources :persons do
@@ -26,11 +30,21 @@ Rails.application.routes.draw do
       get 'upvoted'
       get 'upvoted'
       get 'downvoted'
+      get 'all_settings'
+      get 'account'
+      post 'account_setting'
+      get 'person_profile'
+      post 'profile_setting'
+      get 'feed'
+      post 'feed_setting'
     end
   end
 
   resources :posts do
   	resources :comments
+    member do
+      post 'vote'
+    end
   end
 
   resources :posts do
@@ -39,12 +53,6 @@ Rails.application.routes.draw do
 
   resources :comments do
     resources :replies
-  end
-
-  resources :groups do
-    member do
-      post :join
-    end
   end
 
 end

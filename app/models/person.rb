@@ -37,10 +37,17 @@ class Person
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  
+
   id_property :personal_id, auto: :uuid
   property :first_name, type: String
   property :last_name, type: String
+  property :display_name, type: String
+  property :about, type: String
+
+  property :avatar, type: String
+  mount_uploader :avatar, AvatarUploader
+  property :banner, type: String
+  mount_uploader :banner, UserBannerUploader
 
   has_many :in, :posts, origin: :author
   has_many :in, :comments, origin: :author
@@ -51,7 +58,19 @@ class Person
   has_many :in, :creates, type: :create_by, model_class: :Group, unique: true
   has_many :in, :groups, origin: :joins, model_class: :Group
 
-  has_many :out, :friends,type: :friend_with, model_class: :Person, unique: true
+  has_many :out, :friends, type: :friend_with, model_class: :Person, unique: true
+
+  after_create :add_default_images
+
+  def add_default_images
+    File.open('public/icon-default.jpg') do |f|
+      self.avatar = f
+    end
+    File.open('public/banner-default.jpg') do |f|
+      self.banner = f
+    end
+    self.save!
+  end
 
 end
 

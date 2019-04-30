@@ -1,0 +1,42 @@
+.account-setting
+  .account-setting-header
+    .account-header
+      .header Customize Profile
+  .option-settings
+    .option-title.tmol
+      .account-preferences PROFILE INFORMATION
+  .customize-profile
+    p Display name (optional)
+    .note Set a display name. This does not change your username.
+    = text_field_tag :user_name, nil, class: 'form-control', placeholder: "Display name (optional)"
+    .note 30 Characters
+  .customize-profile
+    p About (optional)
+    .note A brief description of yourself shown on your profile.
+    = text_area_tag :user_name, nil, class: 'form-control', placeholder: "About (optional)"
+    .note 200 Characters
+  .option-settings
+    .option-title.tmol
+      .account-preferences IMAGES
+  .customize-profile
+    p Avatar and banner image
+    .note Images must be .png or .jpg format
+    = form_for current_person, url: account_setting_person_path(current_person), method: :post do |p|
+      .row
+        .col-md-6
+          .image-upload
+            = p.file_field :avatar, class: "image-input"
+        .col-md-6
+          .image-upload
+              = p.file_field :banner, class: "image-input"
+      = p.button 'Save'
+  .option-settings
+    .option-title.tmol
+      .account-preferences ADVANCED
+  .customize-profile
+    p Active in communities visibility
+    .note Show which communities I am active in on my profile.
+
+
+
+

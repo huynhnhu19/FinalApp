@@ -1,7 +1,9 @@
 body{
-	background-color: dae0e6
+	background-color: #dae0e6;
 }
-
+.post-box{
+  margin-bottom: 20px;
+}
 .dot{
   height: 5px;
   width: 5px;
@@ -38,3 +40,57 @@ body{
 .il {
   display: inline !important;
 }
+
+.form-control:focus {
+  box-shadow: none;
+}
+
+.image-input{
+
+}
+
+.color, .them{
+  cursor: pointer;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  i {
+    color: white !important;
+    display: none;
+    margin: 30%;
+  }
+}
+
+.them-checked{
+  display: inline-block !important;
+}
+
+.color-checked{
+  display: inline-block !important;
+}
+
+.row-color{
+  margin-bottom: 20px;
+}
+
+.fa-arrow-up:hover, .upvoted{
+  color: red !important;
+}
+.fa-arrow-down:hover, .downvoted{
+  color: #7193ff !important;
+}
+.fa{
+  color: gray;
+}
+
+.overlength {
+  color: rgb(215, 218, 220);
+  font-size: 14px;
+  font-weight: bold;
+  display: inline-grid;
+  width: 700px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+

@@ -28,4 +28,33 @@ class PersonsController < ApplicationController
   def downvoted
   end
 
+  def all_settings
+  end
+
+  def account
+  end
+
+  def user_profile
+  end
+
+  def feed
+  end
+
+  def account_setting
+    if params[:person][:avatar]
+      current_person.avatar = params[:person][:avatar]
+      current_person.save!
+    end
+    if params[:person][:banner]
+      current_person.banner = params[:person][:banner]
+      current_person.save!
+    end
+  end
+
+  def profile_setting
+  end
+
+  def feed_setting
+  end
+
 end

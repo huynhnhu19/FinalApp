@@ -7,29 +7,38 @@ head
   = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
 
 body
-
   nav.navbar.navbar-defaulf.navigation role="navigation"
     .container-fluid
       #logo.navbar-brand
         = link_to "Ten App", root_path()
       form.navbar-form.navbar-left
         .input-group
-          input.form-control placeholder="Search" type="text" /
+          input.form-control placeholder="Search" type="text"
           .input-group-btn
             button.btn.btn-info type="submit" @
       - if person_signed_in?
-        button.btn.btn-primary.dropdown-toggle type="button" data-toggle="dropdown"
-          = current_person.email
-          span class="caret"
-          ul.dropdown-menu
-            li = link_to "My profile", overview_person_path(current_person)
-            li = link_to "Edit Account", edit_person_registration_path()
-            li = link_to "Log out", destroy_person_session_path, method: :delete
+        .btn-group
+          button.btn.dropdown-toggle.user-info data-toggle="dropdown"
+           .user-name = current_person.email
+          ul.dropdown-menu.menu-user
+            p.heading my stuff
+            li.dropdown-item.box-option-user
+              span.icon-profile = fa_icon "user"
+              = link_to "My profile", overview_person_path(current_person)
+            li.dropdown-item.box-option-user
+              span.icon-profile = fa_icon "cog"
+              = link_to "User Settings", all_settings_person_path(current_person)
+            li.dropdown-item.box-option-user
+              span.icon-profile = fa_icon "edit"
+              = link_to "Edit Account", edit_person_registration_path()
+            .dropdown-divider
+            li.dropdown-item.box-option-user
+              span.icon-profile = fa_icon "sign-out"
+              = link_to "Log out", destroy_person_session_path, method: :delete
       - else
         ul.nav.navbar-right.nav-right-custom
           li = link_to "Log in", new_person_session_path(), class: "btn btn-login"
           li = link_to "Sign up", new_person_registration_path(), class: "btn btn-signup"
-
   #main
     - flash.each do |name, msg|
       = content_tag :div, msg, class:"alert alert-#{name}"

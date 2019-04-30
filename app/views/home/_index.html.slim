@@ -1,0 +1,24 @@
+- @posts.each do |post|
+  .post-box.post-box-index
+    .post-voted
+      = link_to vote_post_path(post, vote: :upvote), method: :post do
+        = fa_icon "arrow-up", class:"#{post.upvote.include?(current_person) ? 'upvoted' : ""}"
+      span.tc.vote-number = post.votes
+      = link_to vote_post_path(post, vote: :downvote), method: :post do
+        = fa_icon "arrow-down", class:"#{post.downvote.include?(current_person) ? 'downvoted' : ""}"
+    .post-author
+      .user.user-avatar avatar
+      .user.user-email = post.author&.email
+    .post-content
+      .post-title
+        = post.title
+        - if post.image.present?
+          .post-image
+            = image_tag post.image_url
+        - else
+          = post.content
+      .post-infor
+        .post-comment-infor
+            - if post.author
+              = link_to "Comment", person_post_path(post.author, post), class: "btn btn-post-infor"
+              = render partial: 'posts/post_details', local: {post: @post}

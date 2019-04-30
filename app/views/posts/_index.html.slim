@@ -4,6 +4,7 @@
     .post-author
       .user.user-avatar avatar
       .user.user-email = post.author.email
+      span.timestamp-post = t("posts.post_create", created_at: post.created_at&.ctime)
     .post-content
       .post-title
         = post.title

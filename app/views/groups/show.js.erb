@@ -1,0 +1,7 @@
+<%if params[:view] == 'large'%>
+	$(".sort-bar-header").html("<%=j render :partial => 'groups/sort_bar', :locals => { group: @group, view: 'large' , order_sort: params[:order_sort] } %>");
+	$("#view-group").html("<%=j render :partial => 'home/index', :locals => { group: @group} %>");
+<%elsif params[:view] == 'medium'%>	
+	$(".sort-bar-header").html("<%=j render :partial => 'groups/sort_bar', :locals => { group: @group, view: 'medium', order_sort: params[:order_sort] } %>");
+	$("#view-group").html("<%=j render :partial => 'persons/overview', :locals => { group: @group} %>");
+<%end%>
