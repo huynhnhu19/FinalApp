@@ -10,6 +10,9 @@ class GroupsController < ApplicationController
     @comment = @post.comments.new
     @reply = @comment.replies.new
     @posts = @group.posts.all
+    @posts = @posts.order(created_at: :desc) if params[:order_sort] == 'new'
+    @posts = @posts.order(upvotes: :desc) if params[:order_sort] == 'hot'
+    @posts = @posts.order(controversial: :desc) if params[:order_sort] == 'controversial'
 
     respond_to do |format|
       format.html

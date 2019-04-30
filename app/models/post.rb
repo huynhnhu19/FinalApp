@@ -23,4 +23,7 @@ class Post
     self.upvotes - self.downvotes
   end
 
+	def controversial
+		self.upvotes - self.downvotes 
+	end
 end
