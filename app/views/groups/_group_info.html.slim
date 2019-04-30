@@ -1,5 +1,5 @@
 .group-box-info
-  .group-header.tmol
+  .group-header.tmol id="#{@group.check_them}"
     .title COMMUNITY DETAILS
   .group-info
     .title
@@ -8,6 +8,8 @@
     .box-content
       p  A place for sharing videos, gifs, and images of people being total bros.
     .box-btn
-      - if current_person
-        = link_to "JOIN", join_group_path(@group), method: :post, class: "btn btn-join-group"
-        = link_to "CREATE POST", new_group_post_path(@group), class: "btn btn-success btn-create-post"
+      - if @group.members.include?(current_person)
+        = link_to " ", leave_group_path(@group), method: :delete , remote: true, class: "btn btn-joined"
+      - else
+        = link_to "JOIN", join_group_path(@group), method: :post, remote:true, class: "btn btn-join-group bi#{@group.check_color}"
+      = link_to "CREATE POST", new_group_post_path(@group), class: "btn btn-create-post bi#{@group.check_color}"

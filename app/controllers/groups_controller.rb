@@ -1,32 +1,55 @@
 class GroupsController < ApplicationController
   layout "groups"
+  before_action :get_group
   def index
   	@groups = Group.all
   end
 
   def show
-    @group = Group.find(params[:id])
     @post = @group.posts.new
     @comment = @post.comments.new
     @reply = @comment.replies.new
     @posts = @group.posts.all
+    @posts = @posts.order(created_at: :desc) if params[:order_sort] == 'new'
+    @posts = @posts.order(upvotes: :desc) if params[:order_sort] == 'hot'
+    @posts = @posts.order(controversial: :desc) if params[:order_sort] == 'controversial'
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def new
   	@group = current_person.groups.new
+    render layout: 'persons'
   end
 
   def create
   	@group = Group.create!(group_params)
+    @group.icon = group_params[:icon] if group_params[:icon].present?
+    @group.banner = group_params[:banner] if group_params[:banner].present?
   	@group.author = current_person
+    @group.save!
   	redirect_to root_path()
   end
 
   def join
-  	@group = Group.find(params[:id])
   	@group.members << current_person
-  	redirect_to root_path()
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
+
+  def leave
+    @group.members.delete current_person
+    respond_to do |format|
+      format.html
+      format.js {render :join}
+    end
+  end
+
 
   # def create_post
   #   @group = Group.find(params[:id])
@@ -39,8 +62,12 @@ class GroupsController < ApplicationController
   # end
 
   private
+  def get_group
+    return unless params[:id]
+    @group = Group.find(params[:id])
+  end
   def group_params
-  	params.require(:group).permit(:group_name)
+  	params.require(:group).permit(:group_name, :about, :icon, :banner, :them, :text_color)
   end
   def post_params
     params.require(:post).permit(:title, :content, :image)
