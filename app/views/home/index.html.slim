@@ -1,6 +1,7 @@
+= render partial: 'sort_bar_index', locals: {view: 'large', order_sort: 'best'}
 .container
   .row
-    .col-md-9.center-block
+    .col-md-9#home-index
       = render partial: "index", locals: {posts: @posts}
     .col-md-3
       = render "home/create_post"

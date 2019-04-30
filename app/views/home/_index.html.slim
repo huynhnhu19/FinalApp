@@ -1,4 +1,4 @@
-- posts.each do |post|
+- @posts.each do |post|
   .post-box.post-box-index
     .post-voted
       = link_to vote_post_path(post, vote: :upvote), method: :post do

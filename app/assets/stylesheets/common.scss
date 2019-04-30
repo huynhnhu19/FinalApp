@@ -49,6 +49,30 @@ body{
 
 }
 
+.color, .them{
+  cursor: pointer;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  i {
+    color: white !important;
+    display: none;
+    margin: 30%;
+  }
+}
+
+.them-checked{
+  display: inline-block !important;
+}
+
+.color-checked{
+  display: inline-block !important;
+}
+
+.row-color{
+  margin-bottom: 20px;
+}
+
 .fa-arrow-up:hover, .upvoted{
   color: red !important;
 }
@@ -69,3 +93,4 @@ body{
   white-space: nowrap;
   text-overflow: ellipsis;
 }
+

@@ -1,8 +1,11 @@
-.group-header
-  .group-banner
-    .group-name
-      .name.tmol
-        = @group.group_name
-.group-option
-  .option
-    = link_to "Post", group_posts_path(@group)
+- if @group.banner.present?
+  .group-header
+    .group-banner
+      = image_tag @group.banner_url
+- else
+  .group-name id="#{@group.check_them}"
+    .name.tmol
+      span = @group.group_name
+.group-option class="b#{@group.check_them}"
+  .option.tmol
+    = link_to "Posts", group_posts_path(@group), class:"c#{@group.check_color}"
