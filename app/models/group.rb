@@ -16,7 +16,7 @@ class Group
 	property :created_at, type: DateTime
 	property :updated_at, type: DateTime
 
-	has_one :out, :author, type: :author, model_class: :Person
+	has_one :out, :author, type: :create_by, model_class: :Person
 	has_many :in, :members, type: :joins, model_class: :Person
 	has_many :in, :posts, origin: :belong_to
 
