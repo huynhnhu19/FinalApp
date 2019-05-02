@@ -1,0 +1,35 @@
+- if person_signed_in?
+  .btn-group
+    button.btn.dropdown-toggle.user-action data-toggle="dropdown"
+     .user-name 
+      span u/
+      span = current_person.email
+    ul.dropdown-menu.menu-user
+      p.heading feeds
+      = link_to root_path() do
+        li.dropdown-item.box-user-action
+          span.icon-profile = fa_icon "home"
+          span Home
+      = link_to root_path() do
+        li.dropdown-item.box-user-action
+          span.icon-profile = fa_icon "line-chart"
+          span Popular
+      = link_to root_path() do
+        li.dropdown-item.box-user-action
+          span.icon-profile = fa_icon "bar-chart"
+          span All
+      p.heading moderating subs
+      - current_person.groups.each do |group|
+        = link_to group_path(group) do
+          li.dropdown-item.box-user-action
+            span.icon-profile = fa_icon "globe"
+            span = group.group_name
+      p.heading other
+      = link_to new_person_post_path(current_person) do
+        li.dropdown-item.box-user-action
+          span.icon-profile = fa_icon "pencil"
+          span Create post
+      = link_to new_person_group_path(current_person) do
+        li.dropdown-item.box-user-action
+          span.icon-profile = fa_icon "pencil"
+          span Create community

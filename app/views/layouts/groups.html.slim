@@ -7,15 +7,41 @@ head
   = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
 
 body
-  nav.navbar.navbar-defaulf.navigation role="navigation"
+  nav.navbar.navbar-defaulf.navigation.navbar-main role="navigation"
     .container-fluid
-      #logo.navbar-brand
-        = link_to "Ten App", root_path()
-      form.navbar-form.navbar-left
-        .input-group
-          input.form-control placeholder="Search" type="text"
-          .input-group-btn
-            button.btn.btn-info type="submit" @
+      .nav.nav-left
+        #logo.navbar-brand.app-name.tmol
+          = link_to "Ten App", root_path()
+          = render partial: 'home/user_action_sort', locals: {view: 'large', order_sort: 'best'}
+        form.navbar-form
+          .input-group
+            .input-search
+              span.icon-search = fa_icon "search"
+              input.form-control placeholder="Search" type="text"
+      .nav.nav-right.tmol
+        .menu-home
+          .menu-icon
+            = link_to root_path() do
+              span.menu-icon-option = fa_icon "line-chart"
+          .menu-icon
+            = link_to root_path() do
+              span.menu-icon-option = fa_icon "bar-chart"
+          .menu-icon
+            = link_to root_path() do
+              span.menu-icon-option = fa_icon "line-chart"
+        .menu-noti
+          .menu-icon
+            = link_to root_path() do
+              span.menu-icon-option = fa_icon "shield"
+          .menu-icon
+            = link_to root_path() do
+              span.menu-icon-option = fa_icon "comments"
+          .menu-icon
+            = link_to root_path() do
+              span.menu-icon-option = fa_icon "envelope"
+          .menu-icon
+            = link_to new_person_post_path(current_person) do
+              span.menu-icon-option = fa_icon "pencil"
       - if person_signed_in?
         .btn-group
           button.btn.dropdown-toggle.user-info data-toggle="dropdown"
@@ -35,7 +61,7 @@ body
                 span.icon-profile = fa_icon "edit"
                 span Edit Account
             .dropdown-divider
-            = link_to edit_person_registration_path(),method: :delete do
+            = link_to destroy_person_session_path(),method: :delete do
               li.dropdown-item.box-option-user
                 span.icon-profile = fa_icon "sign-out"
                 span Log out
