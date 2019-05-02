@@ -37,6 +37,7 @@ Rails.application.routes.draw do
       post 'profile_setting'
       get 'feed'
       post 'feed_setting'
+      post 'follow'
     end
   end
 

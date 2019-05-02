@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
-	before_action :get_group, :get_post
+	before_action :get_group, :get_post, :get_user
 	def index
-		@posts = current_person.posts.all.order(updated_at: :asc).page(1).per 10
+		@posts = @person.posts.all.order(updated_at: :asc).page(1).per 10
 		# @post = Post.find(params[:id])
 		# @time = Time.now.min - @post.created_at.min
 	end
@@ -83,4 +83,8 @@ class PostsController < ApplicationController
 		params.require(:post).permit(:title, :content, :image)
 	end
 
+  def get_user
+    return unless params[:person_id]
+    @person = Person.find(params[:person_id])
+  end
 end

@@ -44,6 +44,7 @@ class Person
   property :display_name, type: String
   property :about, type: String
 
+
   property :avatar, type: String
   mount_uploader :avatar, AvatarUploader
   property :banner, type: String
@@ -58,7 +59,9 @@ class Person
   has_many :in, :creates, origin: :author, unique: true
   has_many :in, :groups, type: :joins, model_class: :Group
 
-  has_many :out, :friends, type: :friend_with, model_class: :Person, unique: true
+  has_many :in, :followings, type: :following, model_class: :Person 
+  has_many :in, :followers, type: :followed_by, model_class: :Person
+
 
   after_create :add_default_images
 
