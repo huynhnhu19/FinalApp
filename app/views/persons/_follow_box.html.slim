@@ -1,0 +1,25 @@
+.user-box-info
+  .user-box
+    .user-banner
+      - if @person.banner_url
+        = image_tag @person.banner_url
+    .user-avatar
+      - if @person.avatar_url
+        = image_tag @person.avatar_url
+    .user-info-setting
+      .user-display-name
+      .user-email
+        = link_to @person.email, overview_person_path(@person)
+      .user-about
+        span lalala lalal lala lala alla lala lala lala llal lal lla
+      .user-followers
+       	=  @person.followers.count
+       	span Followers
+      .user-following
+      	=  @person.followings.count
+       	span Following
+      .box-btn
+      	- if @person.followers.include?(current_person)
+			= link_to "Unfollow", follow_person_path(@person, type: 'unfollow'), remote: true, method: :post, class: "btn btn-signup"
+		- else
+			= link_to "Follow", follow_person_path(@person, type: 'follows'), remote: true, method: :post, class: "btn btn-login"

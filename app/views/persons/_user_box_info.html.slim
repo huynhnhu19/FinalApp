@@ -1,15 +1,15 @@
 .user-box-info
   .user-box
     .user-banner
-      - if current_person.banner_url
-        = image_tag current_person.banner_url
+      - if @person.banner_url
+        = image_tag @person.banner_url
     .user-avatar
-      - if current_person.avatar_url
-        = image_tag current_person.avatar_url
+      - if @person.avatar_url
+        = image_tag @person.avatar_url
     .user-info-setting
       .user-display-name
       .user-email
-        = link_to current_person.email, profile_person_path(current_person)
+        = link_to @person.email, profile_person_path(@person)
       .user-about
         span lalala lalal lala lala alla lala lala lala llal lal lla
       .user-things

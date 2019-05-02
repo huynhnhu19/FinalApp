@@ -3,7 +3,7 @@
     .post-voted
     .post-author
       .user.user-avatar avatar
-      .user.user-email = post.author.email
+      .user.user-email = link_to post.author.email, overview_person_path(post.author)
       span.timestamp-post = t("posts.post_create", created_at: post.created_at&.ctime)
     .post-content
       .post-title

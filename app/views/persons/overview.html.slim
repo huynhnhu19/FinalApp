@@ -2,9 +2,13 @@
   = render "profile_bar"
   .row
     .col-md-9.center-block
-      = render partial: "overview", locals: {posts: @posts}
-    .col-md-3
-      = render "home/create_post"
+      = render partial: "overview", locals: {posts: @posts, person: @person}
+    .col-md-3#user-box
+    	- if @person == current_person
+      		= render "persons/user_box_info"
+      	- else
+      		= render "persons/follow_box", locals: {person: @person}
+
 
 
 
