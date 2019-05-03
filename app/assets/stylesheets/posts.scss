@@ -284,10 +284,45 @@
         .form-check{
           .form-check-label{
             font-size: 14px;
+            font-weight: 500;
           }
         }
       }
 
+  }
+  .form-box{
+    .form-group.upload-box{
+      .upload{
+        height: 300px;
+        border: 5px dashed rgb(237, 239, 241);
+        margin-bottom: 20px;
+        .fa{
+          position: absolute;
+          font-size: 80px;
+          margin-top: 12%;
+          margin-left: 45%;
+        }
+        .upload-image{
+          height: 300px;
+          input{
+            position: absolute;
+            height: 300px;
+            opacity: 0;
+          }
+        }
+      }
+    }
+  }
+  .form-box{
+    .form-group.form-for-textlink{
+      border: 1px solid rgb(237, 239, 241);
+      border-radius: 4px;
+      margin-bottom: 20px;
+      textarea{
+        border: none;
+        font-size: 14px;
+      }
+    }
   }
 }
 

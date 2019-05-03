@@ -57,52 +57,53 @@
 									span NSFW
 								= f.submit "Create", class: "btn-create"
 								button.btn.btn-cancel type="button" Cancel
-						.form-group.option-for-oc
-							p Use the OC tag if you want to take credit for your post as Original Content.
-							p Share your content with
-							.btn-group.btn-choose-category
-					            button.btn.dropdown-toggle.option-oc data-toggle="dropdown" Choose a Category
-					            ul.dropdown-menu.menu-oc
-							        li.dropdown-item.option-cactegory
-							          span None
-							        li.dropdown-item.option-cactegory
-							          span General
-							        li.dropdown-item.option-cactegory
-							          span Medical technology
-							        li.dropdown-item.option-cactegory
-							          span Medicine
-							        li.dropdown-item.option-cactegory
-							          span Obstetric
-							        li.dropdown-item.option-cactegory
-							          span Dentistry
-							        li.dropdown-item.option-cactegory
-							          span Physiotherapists
-							        li.dropdown-item.option-cactegory
-							          span Medical tests
-							        li.dropdown-item.option-cactegory
-							          span Traditional medicine
-						.form-group.send-noti.tmol
-							.form-check
-								input#checkNoti.form-check-input type="checkbox" /
-								label.form-check-label for="checkNoti" Send me post reply notifications
+						= render "posts/sort_category_post"
+						= render "posts/footer_create_post"
 			#video-box
 		      .form-box
 		        = form_for @post, url: @url do |f|
-		          .form-group
-		            = f.text_field :title, class: "form-control", placeholder: 'Title'
-		          .form-group
-		          	.aaa
-		          		.aaaa
-				            = f.file_field :image, class: "form-control", placeholder: 'Text'
-				            = f.submit "Create", class: "btn-create"
+		        	.form-group.form-title
+		            	= f.text_field :title, class: "form-control", placeholder: 'Title'
+		        	.form-group.upload-box
+		          		.upload
+							span.post-icon-option = fa_icon "plus"
+			          		.upload-image
+					        	= f.file_field :image, class: "form-control", placeholder: 'Text' 
+				    .form-group.action-for-post
+							.more-option-post
+								button.btn.btn-oc type="button"
+									span.post-icon-option = fa_icon "plus"
+									span OC
+								button.btn.btn-oc type="button"
+									span.post-icon-option = fa_icon "plus"
+									span Spoiler
+								button.btn.btn-oc type="button"
+									span.post-icon-option = fa_icon "plus"
+									span NSFW
+								= f.submit "Create", class: "btn-create"
+								button.btn.btn-cancel type="button" Cancel
+					= render "posts/footer_create_post"
 			#link-box
 				.form-box
 					= form_for @post, url: @url do |f|
-						.form-group
+						.form-group.form-title
 							= f.text_field :title, class: "form-control", placeholder: 'Title'
-						.form-group
-							= f.text_area :content, class: "form-control", placeholder: 'Text'
-							= f.submit "Create", class: "btn-create"
+						.form-group.form-for-textlink
+							= f.text_area :content, class: "form-control", placeholder: 'Url'
+						.form-group.action-for-post
+							.more-option-post
+								button.btn.btn-oc type="button"
+									span.post-icon-option = fa_icon "plus"
+									span OC
+								button.btn.btn-oc type="button"
+									span.post-icon-option = fa_icon "plus"
+									span Spoiler
+								button.btn.btn-oc type="button"
+									span.post-icon-option = fa_icon "plus"
+									span NSFW
+								= f.submit "Create", class: "btn-create"
+								button.btn.btn-cancel type="button" Cancel
+					= render "posts/footer_create_post"
     .col-md-3
       = render "home/create_post"
 
