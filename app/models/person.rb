@@ -56,8 +56,8 @@ class Person
   has_many :in, :send_messages, origin: :sender
   has_many :in, :receive_messages, origin: :receiver
 	has_many :in, :written_things, type: :wrote, model_class: [:Post, :Comment]
-  has_many :in, :creates, origin: :author, unique: true
-  has_many :in, :groups, type: :joins, model_class: :Group
+  has_many :in, :groups, origin: :author
+  has_many :in, :join_groups, type: :joins, model_class: :Group
 
   has_many :in, :followings, type: :following, model_class: :Person 
   has_many :in, :followers, type: :followed_by, model_class: :Person

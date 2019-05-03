@@ -8,27 +8,93 @@
     .col-md-9.center-block
       	h5 Create a Post
 		hr
+		.sort-group
+        	= render partial: 'posts/sort_group_for_post', locals: {view: 'large', order_sort: 'best'}
 		.new-post
 			.btn-group role="group" aria-label="..."
-			  button.btn.btn-post type="button" Post
-			  button.btn.btn-video type="button" Image & Video
-			  button.btn.btn-link type="button" Link
+				button.btn.btn-post.btn-post-type type="button"
+              		span.post-icon-option = fa_icon "book"
+              		span.post-type Post
+				button.btn.btn-video.btn-post-type type="button"
+					span.post-icon-option = fa_icon "image"
+              		span.post-type  Image & Video
+				button.btn.btn-link.btn-post-type type="button"
+					span.post-icon-option = fa_icon "link"
+              		span.post-type Link
 			#post-box
 				.form-box
 					= form_for @post, url: @url do |f|
-						.form-group
+						.form-group.form-title
 							= f.text_field :title, class: "form-control", placeholder: 'Title'
-						.form-group
-							= f.text_area :content, class: "form-control", placeholder: 'Text'
-							= f.submit "Create", class: "btn-create"
+						.form-group.form-for-textarea
+							.option-text-area.tmol
+								span.post-icon-option title = "Bold" = fa_icon "bold"
+								span.post-icon-option title = "Italic" = fa_icon "italic"
+								span.post-icon-option title = "Link" = fa_icon "link"
+								span.post-icon-option title = "Strikethrough" = fa_icon "strikethrough"
+								span.post-icon-option title = "Code" = fa_icon "code"
+								span.post-icon-option title = "Superscript" = fa_icon "superscript"
+								span.post-icon-option title = "Spoiler" = fa_icon "exclamation-circle"
+								span.post-icon-option title = "Header" = fa_icon "header"
+								span.post-icon-option title = "Bullet list" = fa_icon "list-ul"
+								span.post-icon-option title = "Number list" = fa_icon "list-ol"
+								span.post-icon-option title = "Quote" = fa_icon "quote-left"
+								span.post-icon-option title = "Table" = fa_icon "table"
+								span.post-icon-option title = "Image" = fa_icon "image"
+								span.post-icon-option title = "Video" = fa_icon "video-camera"
+							.text-area-content
+								= f.text_area :content, class: "form-control", placeholder: 'Text'
+						.form-group.action-for-post
+							.more-option-post
+								button.btn.btn-oc type="button"
+									span.post-icon-option = fa_icon "plus"
+									span OC
+								button.btn.btn-oc type="button"
+									span.post-icon-option = fa_icon "plus"
+									span Spoiler
+								button.btn.btn-oc type="button"
+									span.post-icon-option = fa_icon "plus"
+									span NSFW
+								= f.submit "Create", class: "btn-create"
+								button.btn.btn-cancel type="button" Cancel
+						.form-group.option-for-oc
+							p Use the OC tag if you want to take credit for your post as Original Content.
+							p Share your content with
+							.btn-group.btn-choose-category
+					            button.btn.dropdown-toggle.option-oc data-toggle="dropdown" Choose a Category
+					            ul.dropdown-menu.menu-oc
+							        li.dropdown-item.option-cactegory
+							          span None
+							        li.dropdown-item.option-cactegory
+							          span General
+							        li.dropdown-item.option-cactegory
+							          span Medical technology
+							        li.dropdown-item.option-cactegory
+							          span Medicine
+							        li.dropdown-item.option-cactegory
+							          span Obstetric
+							        li.dropdown-item.option-cactegory
+							          span Dentistry
+							        li.dropdown-item.option-cactegory
+							          span Physiotherapists
+							        li.dropdown-item.option-cactegory
+							          span Medical tests
+							        li.dropdown-item.option-cactegory
+							          span Traditional medicine
+						.form-group.send-noti.tmol
+							.form-check
+								input#checkNoti.form-check-input type="checkbox" /
+								label.form-check-label for="checkNoti" Send me post reply notifications
 			#video-box
 		      .form-box
 		        = form_for @post, url: @url do |f|
 		          .form-group
 		            = f.text_field :title, class: "form-control", placeholder: 'Title'
 		          .form-group
-		            = f.file_field :image, class: "form-control", placeholder: 'Text'
-		            = f.submit "Create", class: "btn-create"
+		          	.aaa
+		          		.aaaa
+				            = f.file_field :image, class: "form-control", placeholder: 'Text'
+				            = f.submit "Create", class: "btn-create"
 			#link-box
 				.form-box
 					= form_for @post, url: @url do |f|
