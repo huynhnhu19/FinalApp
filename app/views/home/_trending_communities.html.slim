@@ -3,9 +3,24 @@
     .title TRENDING COMMUNITIES
   .trending-communities
     - @groups.each do |group|
-      .communinty
-        .name.il.tmol
-          = link_to group.group_name, group_path(group)
-        .il.pull-right
-          = link_to "JOIN", join_group_path(group), method: :post, class: "btn btn-join"
+    	.row.tmol.mb10
+    		.col-md-2
+	    		.group-box-info
+		    		.group-icon
+		            	= image_tag  group.icon_url if  group.icon.present? 
+    		.col-md-6
+		      .communinty
+		      	= link_to group_path(group), class:'post-group unset-text tmol' do 
+		        	.title.il.s12.mr5.black.tb700 = group.group_name
+		        .title.il.s12.mr5.black = t('group.members', members: group.members.count)
+		    .col-md-4
+		      .il.pull-right
+			      - if group.members.include?(current_person)
+			        = link_to " ", leave_group_path(group), method: :delete , remote: true, class: "btn btn-joined  btn-leave-small tmol mb0"
+		  	    	= link_to "JOIN", join_group_path(group), method: :post, remote: true, class: "btn btn-join-small s12 de-active"
+
+			      - else
+		  	    	= link_to "JOIN", join_group_path(group), method: :post, remote: true, class: "btn btn-join-small s12"
+			        = link_to " ", leave_group_path(group), method: :delete , remote: true, class: "btn btn-joined  btn-leave-small tmol de-active mb0"
+
 

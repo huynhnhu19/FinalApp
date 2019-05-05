@@ -18,24 +18,22 @@
         .post-things
           .post-title
             = post.title
+          .post-header-index.display-flex
+            - if post.belong_to.present?
+              = link_to group_path(post.belong_to), class:'post-group display-flex unset-text tmol' do 
+                .group-icon.mr5
+                  = image_tag post.belong_to.icon_url if post.belong_to.icon.present? 
+                .title.il.s12.tb.mr5.black = post.belong_to.group_name
+              - if !post.belong_to.members.include?(current_person)
+                = link_to join_group_path(post.belong_to), method: :post, remote: true, class:'btn btn-join-small p6 mr5 s10' do
+                  = fa_icon 'plus', class:'c_white'
+                = link_to leave_group_path(post.belong_to), method: :delete, remote: true, class:'btn btn-leave-small p6 mr5 de-active' do
+                  = fa_icon 'check'
+            span.s12.tmol.mr5 Posted by
+            .post-author.tmol
+              .user.user-email = link_to post.author.email, overview_person_path(post.author), class: "c_gray"
+            span.tmol.s12.c_gray = post.to_pretty
           .post-user-info
-            = post.author.email
-            span -
-            span.timestamp-post = t("posts.post_time", email: post.author.email, created_at: post.created_at&.ctime)
-          .post-option
-            .comment.option-style
-              span = fa_icon "comment"
-              span Comments
-            .share.option-style
-              span = fa_icon "share"
-              span Share
-            = link_to edit_post_path(post) do
-              .edit-post.option-style
-                span = fa_icon "pencil"
-                span Edit Post
-            .save.option-style
-              span = fa_icon "bookmark"
-              span Save
-            .hide.option-style
-              span = fa_icon "ban"
-              span Hide
+          = render partial: 'home/post_option', locals: {post: post}
+javascript:
+ Group.run()

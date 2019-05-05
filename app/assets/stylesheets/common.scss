@@ -1,3 +1,7 @@
+// tb => text style bold
+// s + number => text size
+// mtb + number => margin top-bot
+// mlr + number => margin left right
 body{
 	background-color: #dae0e6;
 }
@@ -94,3 +98,31 @@ body{
   text-overflow: ellipsis;
 }
 
+.navbar-header{
+    width: 100%;
+    position: fixed;
+    z-index: 1000;
+}
+.l10{
+  margin-left: 10px;
+}
+.tb{
+  font-weight: bold;
+}
+.s10{ font-size: 10px}
+.s12{ font-size: 12px}
+.s15{ font-size: 15px}
+.mtb10{margin: 10px 0}
+.mr5{margin-right: 5px}
+.display-flex { display: flex;}
+.unset-text{}
+.black{color: black}
+.c_gray{color: gray}
+.c_white{color: white}
+.m0{margin: 0}
+.p0{padding: 0}
+.p6{padding: 6px;}
+.mb10{margin-bottom: 10px;}
+.tb700{font-weight: 700;}
+.mb0{margin-bottom: 0px}
+.mb10{margin-bottom: 10px}

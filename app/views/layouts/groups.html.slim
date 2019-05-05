@@ -71,5 +71,5 @@ body
           li = link_to "Sign up", new_person_registration_path(), class: "btn btn-signup"
   #main
     - flash.each do |name, msg|
-      = content_tag :div, msg, class:"alert alert-#{name}"
+      = content_tag :div, msg, class:"alert alert-#{name}"  
     = yield
