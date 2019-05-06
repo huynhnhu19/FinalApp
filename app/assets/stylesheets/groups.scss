@@ -187,3 +187,15 @@
 .active{
   display: inline-block !important;
 }
+.tool-option:hover{
+  background-color: rgb(217, 221, 224);
+}
+.group-tool{
+  color: gray;
+  a{text-decoration: none;}
+  a:hover{color: black}
+  .tool-option, .tool-title{
+    padding-left: 20px;
+  }
+  .tool-title{margin-top: 20px}
+}

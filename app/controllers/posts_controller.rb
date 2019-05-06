@@ -36,17 +36,20 @@ class PostsController < ApplicationController
 
   def vote
     return unless params[:vote]
+    classColor = ''
     if @post.upvote.include?(current_person) || @post.downvote.include?(current_person)
       if @post.upvote.include?(current_person) && params[:vote] == "downvote"
           @post.upvotes -= 1
           @post.upvote.delete(current_person)
           @post.downvotes += 1
           @post.downvote << current_person
+          classColor = 'downvoted'
         elsif @post.downvote.include?(current_person) && params[:vote] == "upvote"
           @post.downvotes -= 1
           @post.downvote.delete(current_person)
           @post.upvotes += 1
           @post.upvote << current_person
+          classColor = 'upvoted'
         elsif @post.upvote.include?(current_person) && params[:vote] == "upvote"
           @post.upvotes -= 1
           @post.upvote.delete(current_person)
@@ -58,14 +61,24 @@ class PostsController < ApplicationController
       if params[:vote] == "upvote"
         @post.upvotes += 1
         @post.upvote << current_person
+        classColor = 'upvoted'
       else
         @post.downvotes += 1
         @post.downvote << current_person
+        classColor = 'downvoted'
+
       end
     end
     @post.save!
-
-    redirect_to root_path
+    render json: {vote:  @post.votes, classColor: classColor}
+    
+    # respond_to do |format|
+    #   format.html
+    #   format.js
+    #   format.json do 
+    #     render json: {vote:  @post.votes, classColor: classColor}
+    #   end
+    # end
   end
 
 	private

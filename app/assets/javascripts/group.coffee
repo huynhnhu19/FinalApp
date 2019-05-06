@@ -5,6 +5,7 @@ window.Group =
       tickThem()
       joinGroup()
       leaveGroup()
+      upvoteTick()
 tickColor = ->
   $(".color").on "click", (e) ->
     $(".color-checked").removeClass("color-checked")
@@ -26,3 +27,25 @@ leaveGroup = ->
   $(".btn-leave-small").on 'click', (e) ->
     $(this).removeClass("active").addClass("de-active")
     $(this).parent().find(".btn-join-small").removeClass("de-active").addClass("active")
+
+upvoteTick = ->
+  $(".up-vote, .down-vote").click (e) ->
+    e.preventDefault()
+    $this = $(this)
+    url = $this.data("url")
+    $.ajax
+      url: url
+      method: 'post'
+      datatype: 'JSON'
+      success: (data) ->
+        a = $this.parents(".post-voted")
+        a.find(".upvoted").removeClass("upvoted")
+        a.find(".downvoted").removeClass("downvoted")
+        a.find(".vote-number").text(data.vote)
+
+        if data.classColor == 'upvoted'
+          a.find(".fa-arrow-up").addClass(data.classColor)
+        else if data.classColor == 'downvoted'
+          a.find(".fa-arrow-down").addClass(data.classColor)
+
+

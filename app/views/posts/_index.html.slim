@@ -1,20 +1,37 @@
 - @posts.each do |post|
-  .post-box
+  .post-box.post-box-index
     .post-voted
-    .post-author
-      .user.user-avatar avatar
-      .user.user-email = link_to post.author.email, overview_person_path(post.author)
-      span.timestamp-post = t("posts.post_create", created_at: post.created_at&.ctime)
+      .up-vote.tc data-url="#{vote_post_path(post, vote: :upvote)}"
+        = fa_icon "arrow-up", class:"#{post.upvote.include?(current_person) ? 'upvoted' : ""}"
+      span.tc.vote-number = post.votes
+      .down-vote.tc data-url="#{vote_post_path(post, vote: :downvote)}"
+        = fa_icon "arrow-down", class:"#{post.downvote.include?(current_person) ? 'downvoted' : ""}"
+    .row
+      .col-md-9.p0.tmol
+        .post-header-index.display-flex
+          - if post.belong_to.present?
+            = link_to group_path(post.belong_to), class:'post-group display-flex unset-text tmol' do 
+              .group-icon.mr5
+                = image_tag  post.belong_to.icon_url if post.belong_to.icon.present? 
+              .title.il.s12.tb.mr5.black = post.belong_to.group_name
+          span.s12.tmol.mr5 Posted by
+          .post-author
+            .user.user-email = link_to post.author.email, overview_person_path(post.author), class: "c_gray"
+          span.tmol.s12.c_gray = post.to_pretty
+      .col-md-3
+        - if post.belong_to.present?
+          - if !post.belong_to.members.include?(current_person)
+            = link_to join_group_path(post.belong_to), method: :post, remote: true, class:'btn float-right btn-join-small s10' do
+              = fa_icon 'plus', class:'c_white mr5'
+              span JOIN
+            = link_to leave_group_path(post.belong_to), method: :delete, remote: true, class:'btn float-right btn-leave-small de-active' do
+              = fa_icon 'check'
+
     .post-content
-      .post-title
+      .post-title.mb10
         = post.title
-      br
-      = post.content
-          - if post.image.present?
-            .post-image
-              = image_tag post.image_url
-      br
-      .post-infor
-        .post-comment-infor
-          = link_to "Comment", person_post_path(current_person, post), class: "btn btn-post-infor"
-          = render 'posts/post_details', local: {post: post}
+      .mb10 = post.content
+      - if post.image.present?
+        .post-image
+          = image_tag post.image_url
+    = render partial: 'home/post_option', locals: {post: post}

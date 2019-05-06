@@ -20,6 +20,10 @@ class GroupsController < ApplicationController
     end
   end
 
+  def edit
+    @posts = @group.posts.all
+  end
+
   def new
   	@group = current_person.groups.new
     render layout: 'persons'

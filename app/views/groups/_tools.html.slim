@@ -1,0 +1,10 @@
+.group-tool
+	.tool-title
+		= fa_icon 'sun-o', class:"mr5"
+		span.s12 QUEUES
+	= link_to edit_group_path(@group, option: :mod_queue), class: 'c_gray' do
+		.tool-option.p6 Mod queue
+	= link_to edit_group_path(@group, option: :report), class: 'c_gray' do
+		.tool-option.p6 Report
+	= link_to edit_group_path(@group, option: :span), class: 'c_gray' do
+		.tool-option.p6 Spam
