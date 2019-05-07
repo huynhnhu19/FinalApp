@@ -19,29 +19,30 @@ body
               span.icon-search = fa_icon "search"
               input.form-control placeholder="Search" type="text"
       .nav.nav-right.tmol
-        .menu-home
-          .menu-icon
-            = link_to root_path() do
-              span.menu-icon-option = fa_icon "line-chart"
-          .menu-icon
-            = link_to root_path() do
-              span.menu-icon-option = fa_icon "bar-chart"
-          .menu-icon
-            = link_to root_path() do
-              span.menu-icon-option = fa_icon "line-chart"
-        .menu-noti
-          .menu-icon
-            = link_to root_path() do
-              span.menu-icon-option = fa_icon "shield"
-          .menu-icon
-            = link_to root_path() do
-              span.menu-icon-option = fa_icon "comments"
-          .menu-icon
-            = link_to root_path() do
-              span.menu-icon-option = fa_icon "envelope"
-          .menu-icon
-            = link_to new_person_post_path(current_person) do
-              span.menu-icon-option = fa_icon "pencil"
+        - if person_signed_in?
+          .menu-home
+            .menu-icon
+              = link_to root_path() do
+                span.menu-icon-option = fa_icon "line-chart"
+            .menu-icon
+              = link_to root_path() do
+                span.menu-icon-option = fa_icon "bar-chart"
+            .menu-icon
+              = link_to root_path() do
+                span.menu-icon-option = fa_icon "line-chart"
+          .menu-noti
+            .menu-icon
+              = link_to root_path() do
+                span.menu-icon-option = fa_icon "shield"
+            .menu-icon
+              = link_to root_path() do
+                span.menu-icon-option = fa_icon "comments"
+            .menu-icon
+              = link_to root_path() do
+                span.menu-icon-option = fa_icon "envelope"
+            .menu-icon
+              = link_to new_person_post_path(current_person) do
+                span.menu-icon-option = fa_icon "pencil"
         - if person_signed_in?
           .btn-group
             button.btn.dropdown-toggle.user-info data-toggle="dropdown"

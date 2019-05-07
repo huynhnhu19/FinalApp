@@ -1,0 +1,23 @@
+.container-fluid
+  .row
+    .col-md-1
+    .col-md-10
+    	.mod-queue
+    		h5 Mod queue
+    	.chec-box-list.white.mb10.display-flex
+	    	= check_box :all, nil, class:'bigger-checkbox m10'
+	    	.tmol.mr10 = fa_icon 'sort-desc'
+	    	.approve.tmol.mr10
+	    		.mr5 = fa_icon 'check'
+	    		span Approve 
+	    	.remove.tmol.mr10
+	    		.mr5 = fa_icon 'trash'
+	    		span Remove 
+	    	.remove.tmol.mr10
+	    		.mr5 = fa_icon 'window-close'
+	    		span Spam 
+	    = render partial: 'list_post/list_post_mod_group', locals: {posts: @posts}
+
+    .col-md-1
+
+

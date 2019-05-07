@@ -1,0 +1,23 @@
+.box-login-option
+  .heading-login-option
+    p Login with
+  = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| 
+    .form-box-option
+      .form-group.option-button
+        button.btn.btn-google.tmol
+          img alt="Google" src="https://assets.gitlab-static.net/assets/auth_buttons/google_64-9ab7462cd2115e11f80171018d8c39bd493fc375e83202fbb6d37a487ad01908.png"  /
+          span Google
+        button.btn.btn-google.tmol
+          img alt="Google" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Facebook_logo_%28square%29.png/600px-Facebook_logo_%28square%29.png" /
+          span Facebook
+      .form-group.option-button
+        button.btn.btn-google.tmol
+          img alt="Google" src="https://assets.gitlab-static.net/assets/auth_buttons/twitter_64-86860edb139fb2f62fc25ef62a4213a5c8b20122fd8752ab0df09e740eb53deb.png" /
+          span Twitter
+        button.btn.btn-google.tmol
+          img alt="Google" src="https://assets.gitlab-static.net/assets/auth_buttons/github_64-84041cd0ea392220da96f0fb9b9473c08485c4924b98c776be1bd33b0daab8c0.png" /
+          span GitHub
+      -  if devise_mapping.rememberable? 
+        .form-group.option-login-checkbox
+          = f.check_box :remember_me 
+          = f.label :remember_me 
