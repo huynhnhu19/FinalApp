@@ -43,6 +43,7 @@ class Person
   property :last_name, type: String
   property :display_name, type: String
   property :about, type: String
+  property :person_type, type: String
 
 
   property :avatar, type: String
