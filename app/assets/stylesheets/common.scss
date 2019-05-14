@@ -126,3 +126,24 @@ body{
 .tb700{font-weight: 700;}
 .mb0{margin-bottom: 0px}
 .mb10{margin-bottom: 10px}
+
+// popup
+
+.popup {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  text-align: center;
+  .message{
+    height: 75px;
+    span{margin: 20px;}
+  }
+  .message-box{
+    height: 60px;
+    background-color: red;
+    border-radius: 10px;
+    border: 0.5px solid blue;
+  }
+}
+
+.display-none{display: none}

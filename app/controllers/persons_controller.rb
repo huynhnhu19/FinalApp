@@ -1,6 +1,7 @@
 class PersonsController < ApplicationController
   layout "groups"
   before_action :get_user
+  before_action :get_post
 
   def profile
   end
@@ -18,6 +19,7 @@ class PersonsController < ApplicationController
   end
 
   def saved
+
   end
 
   def hidden
@@ -39,6 +41,17 @@ class PersonsController < ApplicationController
   end
 
   def feed
+  end
+
+  def post_options
+    if params[:option] == "save"
+      current_person.posts_saved.include?(@post) ? current_person.posts_saved.delete(@post) : current_person.posts_saved << @post
+    end
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def account_setting
@@ -77,6 +90,11 @@ class PersonsController < ApplicationController
   def get_user
     return unless params[:id]
     @person = Person.find(params[:id])
+  end
+
+  def get_post
+    return unless params[:post_id]
+    @post = Post.find_by(id: params[:post_id])
   end
 
 end

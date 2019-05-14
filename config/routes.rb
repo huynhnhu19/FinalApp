@@ -38,6 +38,7 @@ Rails.application.routes.draw do
       get 'feed'
       post 'feed_setting'
       post 'follow'
+      post "post_options"
     end
   end
 
