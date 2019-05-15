@@ -8,7 +8,22 @@ class PersonsController < ApplicationController
 
   def overview
     # tam thoi de day, chú ý khi xong thì chuyển xống index
-    @posts = @person.posts.all.order(updated_at: :asc)
+    case params[:view]
+    when 'save'
+      @posts = @person.posts_saved
+    when 'hidden'
+      @posts = @person.posts_hidden
+    when 'upvoted'
+      @posts = @person.upvote
+    when 'downvoted'
+      @posts = @person.downvote
+    else
+      @posts = @person.posts.all.order(updated_at: :asc)
+    end
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def index
@@ -23,6 +38,7 @@ class PersonsController < ApplicationController
   end
 
   def hidden
+    @posts = @person.posts_hidden
   end
 
   def upvoted
@@ -45,9 +61,28 @@ class PersonsController < ApplicationController
 
   def post_options
     if params[:option] == "save"
-      current_person.posts_saved.include?(@post) ? current_person.posts_saved.delete(@post) : current_person.posts_saved << @post
+      if current_person.posts_saved.include?(@post)
+        current_person.posts_saved.delete(@post)
+        @save_option = "Save"
+        @message = "Post unsaved successfully."
+      else
+        current_person.posts_saved << @post
+        @save_option = "Unsave"
+        @message = "Post saved successfully."
+      end
     end
 
+    if params[:option] == "hide"
+      if current_person.posts_hidden.include?(@post)
+        current_person.posts_hidden.delete(@post)
+        @hide_option = "Hide"
+        @message = "Post unhidden successfully."
+      else
+        current_person.posts_hidden << @post
+        @hide_option = "Unhide"
+        @message = "Post hidden successfully."
+      end
+    end
     respond_to do |format|
       format.html
       format.js

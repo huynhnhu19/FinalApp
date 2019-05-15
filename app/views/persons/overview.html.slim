@@ -1,7 +1,7 @@
 = render "profile_bar"
 .container-fluid
   .row
-    .col-md-9.center-block
+    .col-md-9.center-block#user-profile
       = render partial: "overview", locals: {posts: @posts, person: @person}
     .col-md-3#user-box
     	- if @person == current_person

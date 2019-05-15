@@ -1,0 +1,18 @@
+$(".profile-bar-option").find(".focus").removeClass("focus");
+<%case params[:view] %>
+<% when "save" %>
+  $("#saved").addClass("focus");
+  $("#user-profile").html("<%=j render :partial => 'persons/overview', locals: {posts: @posts} %>");
+<% when "hidden" %>
+  $("#hidden").addClass("focus");
+  $("#user-profile").html("<%=j render :partial => 'persons/overview', locals: {posts: @posts} %>");
+<% when "upvoted" %>
+  $("#upvoted").addClass("focus");
+  $("#user-profile").html("<%=j render :partial => 'persons/overview', locals: {posts: @posts} %>");
+<% when "downvoted" %>
+  $("#downvoted").addClass("focus");
+  $("#user-profile").html("<%=j render :partial => 'persons/overview', locals: {posts: @posts} %>");
+<%else%>
+  $("#overview").addClass("focus");
+  $("#user-profile").html("<%=j render :partial => 'persons/overview', locals: {posts: @posts} %>");
+<% end %>

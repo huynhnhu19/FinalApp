@@ -1,6 +1,6 @@
 .user-post-list
   - @posts.each do |post|
-    .user-post-box
+    .user-post-box id="#{post.id}"
       .post-box.user-box
         .post-voted
           = link_to vote_post_path(post, vote: :upvote), method: :post do

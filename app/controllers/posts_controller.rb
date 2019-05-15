@@ -38,32 +38,44 @@ class PostsController < ApplicationController
     return unless params[:vote]
     if @post.upvote.include?(current_person) || @post.downvote.include?(current_person)
       if @post.upvote.include?(current_person) && params[:vote] == "downvote"
+          # post
           @post.upvotes -= 1
           @post.upvote.delete(current_person)
           @post.downvotes += 1
           @post.downvote << current_person
+          # person
+          current_person.upvote.delete(@post)
+          current_person.downvote<< @post
         elsif @post.downvote.include?(current_person) && params[:vote] == "upvote"
           @post.downvotes -= 1
           @post.downvote.delete(current_person)
           @post.upvotes += 1
           @post.upvote << current_person
+          # person
+          current_person.upvote << @post
+          current_person.downvote.delete(@post)
         elsif @post.upvote.include?(current_person) && params[:vote] == "upvote"
           @post.upvotes -= 1
           @post.upvote.delete(current_person)
+          current_person.upvote.delete(@post)
         else
           @post.downvotes -= 1
           @post.downvote.delete(current_person)
+          current_person.downvote.delete(@post)
       end
     else
       if params[:vote] == "upvote"
         @post.upvotes += 1
         @post.upvote << current_person
+        current_person.upvote << @post
       else
         @post.downvotes += 1
+        @post.downvote << current_person
         @post.downvote << current_person
       end
     end
     @post.save!
+    current_person.save!
 
     redirect_to root_path
   end
