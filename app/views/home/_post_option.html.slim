@@ -12,7 +12,7 @@
   .save.option-style
     = link_to post_options_person_path(current_person, post_id: post.id, option: "save"), method: :post, remote: true do
       span = fa_icon "bookmark"
-      span Save
+      span = current_person.posts_saved.include?(post) ? 'Unsave' : 'Save'
   .hide.option-style
     span = fa_icon "ban"
     span Hide

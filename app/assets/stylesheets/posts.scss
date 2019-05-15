@@ -13,11 +13,11 @@
       padding-right: 5px;
     }
     .post-image{
-      padding-left: 15%;
+      text-align: center;
     }
     .post-image img{
       margin: 20px 0;
-      width: 90%;
+      max-width: 100%;
       height: auto;
       background-size: cover;
       background-repeat: no-repeat;
@@ -120,9 +120,10 @@
     padding-bottom: 20px;
   }
   .post-content{
+
     .post-image img{
       margin: 20px 0;
-      width: 100%;
+      max-width: 100%;
       height: auto;
       background-size: cover;
       background-repeat: no-repeat;

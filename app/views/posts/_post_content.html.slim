@@ -14,4 +14,5 @@
       br
       - if @post.image.present?
       	.post-image
+          = link_to @post.image_url, target: :_blank do
         		= image_tag @post.image_url

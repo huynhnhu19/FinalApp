@@ -126,6 +126,8 @@ body{
 .tb700{font-weight: 700;}
 .mb0{margin-bottom: 0px}
 .mb10{margin-bottom: 10px}
+.overflow-hidden{overflow: hidden;}
+.br5{border-radius: 5px}
 
 // popup
 
@@ -139,10 +141,11 @@ body{
     span{margin: 20px;}
   }
   .message-box{
-    height: 60px;
-    background-color: red;
-    border-radius: 10px;
-    border: 0.5px solid blue;
+    padding: 15px;
+    background-color: white;
+    border-radius: 5px;
+    border: 0.5px solid #17a2b8;
+    border-left: 10px solid #17a2b8;
   }
 }
 

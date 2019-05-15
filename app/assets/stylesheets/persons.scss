@@ -47,10 +47,11 @@
   }
 
   .post-image{
-    padding: 1.25% 0 ;
+    padding: 0.5% 0 ;
     width: 85px;
     height: 85px;
     float: left;
+    overflow: hidden;
 
     .post-icon{
       border-radius: 5px;
@@ -58,14 +59,9 @@
       background-color: #EDEFF1;
       padding: 27% 40%;
     }
-    .post-icon i {
-      width: 20px;
-    }
   }
   .post-image img{
-    width: 80px;
-    height: 60px;
-    margin-bottom: 100%;
+    max-width: 100%;
   }
   .post-things{
     margin-left: 10%;
