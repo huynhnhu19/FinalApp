@@ -1,0 +1,4 @@
+$("#alert").html("<%=j render :partial => 'home/alert', locals: {alert: 'Save Thanh Cong'} %>");
+setTimeout((function() {
+  $("#alert .popup").addClass("bounceOutDown");
+}), 5000)
