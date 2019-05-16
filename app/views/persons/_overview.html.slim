@@ -3,10 +3,10 @@
     .user-post-box id="#{post.id}"
       .post-box.user-box
         .post-voted
-          = link_to vote_post_path(post, vote: :upvote), method: :post do
+          = link_to vote_post_path(post, vote: :upvote), method: :post, remote: true do
             = fa_icon "arrow-up", class:"#{post.upvote.include?(current_person) ? 'upvoted' : ""}"
           span.tc.vote-number = post.votes
-          = link_to vote_post_path(post, vote: :downvote), method: :post do
+          = link_to vote_post_path(post, vote: :downvote), method: :post, remote: true do
             = fa_icon "arrow-down", class:"#{post.downvote.include?(current_person) ? 'downvoted' : ""}"
       .post-overview-content
         - if post.image.present?
