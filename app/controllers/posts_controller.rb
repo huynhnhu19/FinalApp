@@ -36,6 +36,7 @@ class PostsController < ApplicationController
 
   def vote
     return unless params[:vote]
+    @view = "index" if params[:view] == 'index'
     if @post.upvote.include?(current_person) || @post.downvote.include?(current_person)
       if @post.upvote.include?(current_person) && params[:vote] == "downvote"
           # post
@@ -43,6 +44,7 @@ class PostsController < ApplicationController
           @post.upvote.delete(current_person)
           @post.downvotes += 1
           @post.downvote << current_person
+          @color = 'purple'
           # person
           current_person.upvote.delete(@post)
           current_person.downvote<< @post
@@ -54,30 +56,38 @@ class PostsController < ApplicationController
           # person
           current_person.upvote << @post
           current_person.downvote.delete(@post)
+          @color = "red"
         elsif @post.upvote.include?(current_person) && params[:vote] == "upvote"
           @post.upvotes -= 1
           @post.upvote.delete(current_person)
           current_person.upvote.delete(@post)
+          @color = "none"
         else
           @post.downvotes -= 1
           @post.downvote.delete(current_person)
           current_person.downvote.delete(@post)
+          @color = "none"
       end
     else
       if params[:vote] == "upvote"
         @post.upvotes += 1
         @post.upvote << current_person
         current_person.upvote << @post
+        @color = "red"
       else
         @post.downvotes += 1
         @post.downvote << current_person
         @post.downvote << current_person
+        @color = 'purple'
       end
     end
+    @view = "index"
     @post.save!
     current_person.save!
-
-    redirect_to root_path
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
 	private

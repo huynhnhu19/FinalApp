@@ -111,24 +111,32 @@ body{
 }
 .s10{ font-size: 10px}
 .s12{ font-size: 12px}
+.s14{ font-size: 14px}
+.s18{ font-size: 18px}
 .s15{ font-size: 15px}
 .mtb10{margin: 10px 0}
 .mr5{margin-right: 5px}
+.ml5{margin-left: 5px}
 .display-flex { display: flex;}
 .unset-text{}
 .black{color: black}
 .c_gray{color: gray}
 .c_white{color: white}
 .m0{margin: 0}
+.mt0{margin-top: 0}
 .p0{padding: 0}
 .p6{padding: 6px;}
+.p5{padding: 5px;}
 .mb10{margin-bottom: 10px;}
+.mb15{margin-bottom: 15px !important;}
+.mb5{margin-bottom: 5px;}
+.mt5{margin-top: 5px;}
 .tb700{font-weight: 700;}
 .mb0{margin-bottom: 0px}
 .mb10{margin-bottom: 10px}
 .overflow-hidden{overflow: hidden;}
 .br5{border-radius: 5px}
-
+.btn:focus{box-shadow: none}
 // popup
 
 .popup {
@@ -153,4 +161,9 @@ body{
 .focus{
   color: rgb(0, 121, 211) !important;
   border-bottom: 5px solid rgb(0, 121, 211)
+}
+.btn-style{
+  width: 100%;
+  border: none;
+  text-transform: uppercase;
 }

@@ -78,8 +78,6 @@
 }
 
 .btn-create{
-  box-sizing: border-box;
-  text-align: center;
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.5px;
@@ -87,15 +85,12 @@
   text-transform: uppercase;
   background-color: rgb(0, 121, 211);
   color: rgb(255, 255, 255);
-  width: 100px;
   border-width: 1px;
   border-style: solid;
   border-image: initial;
   border-radius: 4px;
-  text-decoration: none;
   padding: 3px 16px;
   border-color: rgb(0, 121, 211);
-  float: right;
 }
 
 .post-author{
@@ -181,9 +176,6 @@
   }
   .btn-post:hover, .btn-video:hover, .btn-link:hover{
     background-color: #f5f8fd;
-  }
-  .btn{
-
   }
   .form-box{
       margin: 20px;
@@ -330,7 +322,6 @@
     display: block;
 }
 .post-container{
-  background-color: red;
   .post-box-content{
     background-color: #dae0e6;
   }

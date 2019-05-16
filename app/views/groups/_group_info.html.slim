@@ -1,26 +1,26 @@
 .group-box-info#group-box-info
-  .group-header.tmol id="#{@group.check_them}"
+  .group-header.tmol id="#{group.check_them}"
     .title COMMUNITY DETAILS
   .group-info
     #info.tmol
       .group-icon
-        - if @group.icon.present?
-          = image_tag  @group.icon_url
+        - if group.icon.present?
+          = image_tag group.icon_url
       .title.il.l10
-        = @group.group_name
+        = group.group_name
     .info
       .row
         .col-md-6.border-right
-          .tb = @group.members.count
+          .tb = group.members.count
           .s12 Members
         .col-md-6
-          .tb = @group.members.count
+          .tb = group.members.count
           .s12 Online
     .box-content.m10
-      span.s15 = @group.about
+      span.s15 = group.about
     .box-btn
-      - if @group.members.include?(current_person)
-        = link_to " ", leave_group_path(@group), method: :delete , remote: true, class: "btn btn-joined mb10"
+      - if group.members.include?(current_person)
+        = link_to " ", leave_group_path(group), method: :delete , remote: true, class: "btn btn-joined mb10"
       - else
-        = link_to "JOIN", join_group_path(@group), method: :post, remote:true, class: "btn btn-join-group bi#{@group.check_color} mb10"
-      = link_to "CREATE POST", new_group_post_path(@group), class: "btn btn-create-post bi#{@group.check_color}"
+        = link_to "JOIN", join_group_path(group), method: :post, remote:true, class: "btn btn-join-group bi#{group.check_color} mb10"
+      = link_to "CREATE POST", new_group_post_path(group), class: "btn btn-create-post bi#{group.check_color}"

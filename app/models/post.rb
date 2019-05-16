@@ -44,4 +44,14 @@ class Post
 	    end
 	end
 
+  def display_comments
+    if self.comments.count < 1
+      "0"
+    elsif self.comments.count == 1
+      "1 Comment"
+    else
+      "#{self.comments.count} Comments"
+    end
+  end
+
 end

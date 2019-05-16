@@ -15,7 +15,14 @@ class CommentsController < ApplicationController
 		@post.save!
 		current_person.comments << @comment
 		current_person.save!
-		redirect_to person_posts_path(current_person)
+    @reply = @comment.replies.new
+
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
+
 	end
 
 	private
