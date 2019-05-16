@@ -16,8 +16,8 @@ class Post
 	has_many :in, :comments, origin: :post
 	has_one :out, :author, type: :author, model_class: :Person
 	has_one :out, :belong_to, type: :belong_to, model_class: :Group
-  has_many :in, :upvote, type: :up_vote, model_class: :Person
-	has_many :in, :downvote, type: :down_vote, model_class: :Person
+  has_many :in, :upvote, type: :upvoted_by, model_class: :Person
+	has_many :in, :downvote, type: :downvoted_by, model_class: :Person
 
   def votes
     self.upvotes - self.downvotes
@@ -44,4 +44,13 @@ class Post
 	    end
 	end
 
+  def display_comments
+    if self.comments.count < 1
+      "0"
+    elsif self.comments.count == 1
+      "1 Comment"
+    else
+      "#{self.comments.count} Comments"
+    end
+  end
 end

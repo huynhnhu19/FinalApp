@@ -1,18 +1,20 @@
 .user-post-list
   - @posts.each do |post|
-    .user-post-box
+    .user-post-box id="#{post.id}"
       .post-box.user-box
         .post-voted
-          .up-vote.tc data-url="#{vote_post_path(post, vote: :upvote)}"
+          = link_to vote_post_path(post, vote: :upvote), method: :post, remote: true do
             = fa_icon "arrow-up", class:"#{post.upvote.include?(current_person) ? 'upvoted' : ""}"
           span.tc.vote-number = post.votes
-          .down-vote.tc data-url="#{vote_post_path(post, vote: :downvote)}"
+          = link_to vote_post_path(post, vote: :downvote), method: :post, remote: true do
             = fa_icon "arrow-down", class:"#{post.downvote.include?(current_person) ? 'downvoted' : ""}"
       .post-overview-content
-        .post-image
-          - if post.image.present?
-            = image_tag post.image_url
-          - else
+        - if post.image.present?
+          .post-image.display-flex
+            = link_to post.image_url, class:'tmol overflow-hidden br5', target: :_blank do
+              = image_tag post.image_url, class:'br5'
+        - else
+          .post-image.tmol
             .post-icon
               = fa_icon "align-left"
         .post-things
@@ -20,9 +22,9 @@
             = post.title
           .post-header-index.display-flex
             - if post.belong_to.present?
-              = link_to group_path(post.belong_to), class:'post-group display-flex unset-text tmol' do 
+              = link_to group_path(post.belong_to), class:'post-group display-flex unset-text tmol' do
                 .group-icon.mr5
-                  = image_tag post.belong_to.icon_url if post.belong_to.icon.present? 
+                  = image_tag post.belong_to.icon_url if post.belong_to.icon.present?
                 .title.il.s12.tb.mr5.black = post.belong_to.group_name
               - if !post.belong_to.members.include?(current_person)
                 = link_to join_group_path(post.belong_to), method: :post, remote: true, class:'btn btn-join-small p6 mr5 s10' do

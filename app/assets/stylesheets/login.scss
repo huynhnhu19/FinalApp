@@ -1,14 +1,14 @@
 .navigation{
 }
 .btn-login{
-	box-sizing: border-box;
+    box-sizing: border-box;
     text-align: center;
     font-size: 12px;
     font-weight: 700;
     letter-spacing: 0.5px;
     line-height: 24px;
     text-transform: uppercase;
-    background-color: rgb(0, 121, 211);
+    background-color: rgb(0, 134, 139);
     color: rgb(255, 255, 255);
     fill: rgb(255, 255, 255);
     display: block;
@@ -18,12 +18,11 @@
     border-radius: 4px;
     text-decoration: none;
     padding: 3px 16px;
-    border-color: rgb(0, 121, 211);
+    border-color: rgb(0, 134, 139);
     width: 120px;
 }
-
 .btn-signup{
-	box-sizing: border-box;
+    box-sizing: border-box;
     text-align: center;
     font-size: 12px;
     font-weight: 700;
@@ -31,15 +30,110 @@
     line-height: 24px;
     text-transform: uppercase;
     background-color: transparent;
-    color: rgb(0, 121, 211);
-    fill: rgb(0, 121, 211);
+    color: rgb(0, 134, 139);
+    fill: rgb(0, 134, 139);
     border-width: 1px;
     border-style: solid;
     border-image: initial;
     border-radius: 4px;
     text-decoration: none;
     padding: 3px 16px;
-    border-color: rgb(0, 121, 211);
+    border-color: rgb(0, 134, 139);
     width: 120px;
     margin-left: 16px;
+}
+.box-login{
+    margin-top: 30px;
+    border: 1px solid rgb(237, 239, 241);
+    background-color: white;
+    border-radius: 4px;
+    .heading-login{
+        font-weight: 600;
+        text-align: center;
+        margin-top: 5%;
+        border-bottom: 1px solid rgb(237, 239, 241);
+    }
+    .form-box-login{
+        background-color: white;
+        padding-left: 20px;
+        padding-right: 20px;
+        .form-group.form-input{
+            margin-top: 10px;
+            label{
+                font-weight: 600;
+                font-size: 14px;
+            }
+            input{
+                font-size: 14px;
+            }
+            p{
+                color: #707070;
+                font-size: 13px;
+                font-style: italic;
+            }
+        }
+        .form-group.form-checkbox{
+            input{
+                margin-right: 10px;
+            }
+            label{
+                font-size: 14px;
+            }
+            .forget-pwd{
+                font-size: 14px;
+                float: right;
+            }
+        }
+        .form-group.form-for-button{
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+        }
+    }
+}
+.intro{
+    margin-top: 30px;
+}
+.box-login-option{
+    margin-top: 10px;
+    border: 1px solid rgb(237, 239, 241);
+    background-color: white;
+    border-radius: 4px;
+    .heading-login-option{
+        font-weight: 600;
+        text-align: center;
+        margin-top: 5%;
+    }
+    .form-box-option{
+        padding-left: 20px;
+        padding-right: 20px;
+        .form-group.option-button{
+            display: flex;
+            justify-content: center;
+            img{
+                height: 18px;
+                width: 18px;
+                margin-right: 10px;
+            }
+            button{
+                border: 1px solid rgb(237, 239, 241);
+                width: 200px;
+                margin-left: 10px;
+                margin-right: 10px;
+                text-align: left;
+            }
+            button:hover{
+                background-color: rgb(237, 239, 241);
+                border: 1px solid #cccccc;
+            }
+        }
+        .form-group.option-login-checkbox{
+            input{
+                margin-right: 10px;
+            }
+            label{
+                font-size: 14px;
+            }
+        }
+    }
 }

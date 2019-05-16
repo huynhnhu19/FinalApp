@@ -12,10 +12,13 @@
         = link_to @person.email, profile_person_path(@person)
       .user-about
         span lalala lalal lala lala alla lala lala lala llal lal lla
-      .user-things
+      .user-things.mb10
         .user-birthday Cake day
         .user-birthday-time
           = fa_icon 'birthday-cake'
           p.il September 29, 2017
+      .box-btn
+        - if current_person
+          = link_to "New post", new_person_post_path(current_person), class: "btn btn-success btn-style s12"
 
 

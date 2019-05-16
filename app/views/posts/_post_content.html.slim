@@ -1,17 +1,34 @@
-.post-box
+.post-box id="#{@post.id}"
   .post-voted
-    = link_to vote_post_path(@post, vote: :upvote), method: :post do
+    = link_to vote_post_path(@post, vote: :upvote), method: :post, remote: true do
       = fa_icon "arrow-up", class:"#{@post.upvote.include?(current_person) ? 'upvoted' : ""}"
     span.tc.vote-number = @post.votes
-    = link_to vote_post_path(@post, vote: :downvote), method: :post do
+    = link_to vote_post_path(@post, vote: :downvote), method: :post, remote: true do
       = fa_icon "arrow-down", class:"#{@post.downvote.include?(current_person) ? 'downvoted' : ""}"
-  .post-author
-  	.user.user-avatar avatar
-  	.user.user-email = @post.author.email
+  .col-md-9.p0.tmol.mb10
+    .post-header-index.display-flex
+      - if @post.belong_to.present?
+        = link_to group_path(@post.belong_to), class:'post-group display-flex unset-text tmol' do
+          .group-icon.mr5
+            = image_tag  @post.belong_to.icon_url if @post.belong_to.icon.present?
+          .title.il.s12.tb.mr5.black = @post.belong_to.group_name
+      span.s12.tmol.mr5 Posted by
+      .post-author
+        .user.user-email = link_to @post.author.email, overview_person_path(@post.author), class: "c_gray"
+      span.tmol.s12.c_gray = @post.to_pretty
   .post-content
-  	.post-title
+  	.post-title.mb10
       = @post.title
-      br
       - if @post.image.present?
       	.post-image
+          = link_to @post.image_url, target: :_blank do
         		= image_tag @post.image_url
+  = render partial: "home/post_option", locals:{post: @post}
+  = render partial: "comments/new_comment", locals: {post: @post, comment: @comment }
+  = render partial: "posts/sort_comments"
+  .list-comment
+    - if @post.comments.count == 0
+      = render partial: "posts/empty_things"
+    - else
+        = render partial: "comments/list_comments", locals: {post: @post, reply: @reply}
+

@@ -1,10 +1,10 @@
 - @posts.each do |post|
-  .post-box.post-box-index
+  .post-box.post-box-index id="#{post.id}"
     .post-voted
-      .up-vote.tc data-url="#{vote_post_path(post, vote: :upvote)}"
+      = link_to vote_post_path(post, vote: :upvote, view: "index"), method: :post, remote: true do
         = fa_icon "arrow-up", class:"#{post.upvote.include?(current_person) ? 'upvoted' : ""}"
       span.tc.vote-number = post.votes
-      .down-vote.tc data-url="#{vote_post_path(post, vote: :downvote)}"
+      = link_to vote_post_path(post, vote: :downvote, view: "index"), method: :post, remote: true do
         = fa_icon "arrow-down", class:"#{post.downvote.include?(current_person) ? 'downvoted' : ""}"
     .row
       .col-md-9.p0.tmol
@@ -32,6 +32,6 @@
         = post.title
       .mb10 = post.content
       - if post.image.present?
-        .post-image.tmol
+        .post-image
           = image_tag post.image_url
     = render partial: 'home/post_option', locals: {post: post}

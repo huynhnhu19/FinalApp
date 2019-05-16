@@ -1,10 +1,10 @@
 .post-header
   .user-summary
     .post-voted.il
-      = link_to vote_post_path(@post, vote: :upvote), method: :post do
+      = link_to vote_post_path(@post, vote: :upvote), method: :post, remote: true do
         = fa_icon "arrow-up", class:"#{@post.upvote.include?(current_person) ? 'upvoted' : "" }"
       span.il.vote-number = @post.votes
-      = link_to vote_post_path(@post, vote: :downvote), method: :post do
+      = link_to vote_post_path(@post, vote: :downvote), method: :post, remote: true do
         = fa_icon "arrow-down", class:"#{@post.downvote.include?(current_person) ? 'downvoted' : "" }"
     .post-header-title.il
       - if @post.image.present?

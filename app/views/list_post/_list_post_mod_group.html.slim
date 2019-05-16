@@ -1,12 +1,12 @@
 - @posts.each do |post|
-  .post-box.post-box-index
+  .post-box.post-box-index id="#{post.id}"
     .post-voted
       .check-box.tc
         = check_box :check, nil, class:'bigger-checkbox tool-checkbox'
-      .up-vote.tc data-url="#{vote_post_path(post, vote: :upvote)}"
+      = link_to vote_post_path(post, vote: :upvote, view: "index"), method: :post, remote: true do
         = fa_icon "arrow-up", class:"#{post.upvote.include?(current_person) ? 'upvoted' : ""}"
       span.tc.vote-number = post.votes
-      .down-vote.tc data-url="#{vote_post_path(post, vote: :downvote)}"
+      = link_to vote_post_path(post, vote: :downvote, view: "index"), method: :post, remote: true do
         = fa_icon "arrow-down", class:"#{post.downvote.include?(current_person) ? 'downvoted' : ""}"
     .post-header-index.display-flex
       - if post.belong_to.present?

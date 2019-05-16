@@ -36,49 +36,58 @@ class PostsController < ApplicationController
 
   def vote
     return unless params[:vote]
-    classColor = ''
+    @view = "index" if params[:view] == 'index'
     if @post.upvote.include?(current_person) || @post.downvote.include?(current_person)
       if @post.upvote.include?(current_person) && params[:vote] == "downvote"
+          # post
           @post.upvotes -= 1
           @post.upvote.delete(current_person)
           @post.downvotes += 1
           @post.downvote << current_person
-          classColor = 'downvoted'
+          @color = 'purple'
+          # person
+          current_person.upvote.delete(@post)
+          current_person.downvote<< @post
         elsif @post.downvote.include?(current_person) && params[:vote] == "upvote"
           @post.downvotes -= 1
           @post.downvote.delete(current_person)
           @post.upvotes += 1
           @post.upvote << current_person
-          classColor = 'upvoted'
+          # person
+          current_person.upvote << @post
+          current_person.downvote.delete(@post)
+          @color = "red"
         elsif @post.upvote.include?(current_person) && params[:vote] == "upvote"
           @post.upvotes -= 1
           @post.upvote.delete(current_person)
+          current_person.upvote.delete(@post)
+          @color = "none"
         else
           @post.downvotes -= 1
           @post.downvote.delete(current_person)
+          current_person.downvote.delete(@post)
+          @color = "none"
       end
     else
       if params[:vote] == "upvote"
         @post.upvotes += 1
         @post.upvote << current_person
-        classColor = 'upvoted'
+        current_person.upvote << @post
+        @color = "red"
       else
         @post.downvotes += 1
         @post.downvote << current_person
-        classColor = 'downvoted'
-
+        @post.downvote << current_person
+        @color = 'purple'
       end
     end
+    @view = "index"
     @post.save!
-    render json: {vote:  @post.votes, classColor: classColor}
-    
-    # respond_to do |format|
-    #   format.html
-    #   format.js
-    #   format.json do 
-    #     render json: {vote:  @post.votes, classColor: classColor}
-    #   end
-    # end
+    current_person.save!
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
 	private

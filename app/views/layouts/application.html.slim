@@ -5,6 +5,7 @@ head
 
   = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
   = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 body
   nav.navbar.navbar-defaulf.navigation.navbar-main role="navigation"
@@ -18,8 +19,8 @@ body
             .input-search
               span.icon-search = fa_icon "search"
               input.form-control placeholder="Search" type="text"
-      - if current_person
-        .nav.nav-right.tmol
+      .nav.nav-right.tmol
+        - if person_signed_in?
           .menu-home
             .menu-icon
               = link_to root_path() do
@@ -74,3 +75,4 @@ body
     - flash.each do |name, msg|
       = content_tag :div, msg, class:"alert alert-#{name}"
     = yield
+  #alert

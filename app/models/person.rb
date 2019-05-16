@@ -43,6 +43,7 @@ class Person
   property :last_name, type: String
   property :display_name, type: String
   property :about, type: String
+  property :person_type, type: String
 
 
   property :avatar, type: String
@@ -58,8 +59,12 @@ class Person
 	has_many :in, :written_things, type: :wrote, model_class: [:Post, :Comment]
   has_many :in, :groups, origin: :author
   has_many :in, :join_groups, type: :joins, model_class: :Group
+  has_many :in, :posts_saved, type: :save, model_class: :Post
+  has_many :in, :posts_hidden, type: :hide, model_class: :Post
+  has_many :in, :upvote, type: :upvoted, model_class: :Post
+  has_many :in, :downvote, type: :downvoted, model_class: :Post
 
-  has_many :in, :followings, type: :following, model_class: :Person 
+  has_many :in, :followings, type: :following, model_class: :Person
   has_many :in, :followers, type: :followed_by, model_class: :Person
 
 

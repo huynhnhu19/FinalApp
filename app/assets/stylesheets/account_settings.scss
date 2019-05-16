@@ -78,8 +78,10 @@
 //user post info
 
 .user-box-info{
-  border: 0.5px solid #33a8ff;
+  border: 0.5px solid rgb(237, 239, 241);
+  border-radius: 4px;
   .user-banner{
+    border-radius: 4px;
     background-position: center center;
     background-repeat: no-repeat;
     overflow: hidden;
@@ -108,11 +110,89 @@
   }
   .user-info-setting{
     padding: 30px 10px 20px;
-    .user-email a{
-      color: black;
-      text-decoration: none;
-      font-size: 12px;
-      font-weight: bold;
+    background-color: white;
+    .user-email{
+      margin-bottom: 15px;
+      a{
+        color: black;
+        text-decoration: none;
+        font-size: 12px;
+        font-weight: bold;
+      }
+    }
+    .user-about{
+      font-size: 13px;
+      margin-bottom: 15px;
+    }
+    .user-follow{
+      display: flex;
+      justify-content: center;
+      .user-followers{
+        width: 200px;
+        margin-bottom: 15px;
+        span.title{
+          font-size: 14px;
+          font-weight: 500;
+        }
+        .count-follow{
+          font-size: 13px;
+          span{
+            font-size: 12px;
+            color: rgb(124, 124, 124);
+            margin-left: 5px;
+          }
+          .fa{
+            color: rgb(36, 160, 237);
+          }
+        }
+      }
+      .user-following{
+        span.title{
+          font-size: 14px;
+          font-weight: 500;
+        }
+        .count-follow{
+          font-size: 13px;
+          span{
+            font-size: 12px;
+            color: rgb(124, 124, 124);
+            margin-left: 5px;
+          }
+          .fa{
+            color: red;
+          }
+        }
+      }
+    }
+    .box-btn{
+      .btn-follow{
+        text-align: center;
+        font-size: 12px;
+        font-weight: 700;
+        text-transform: uppercase;
+        background-color: rgb(0, 121, 211);
+        color: rgb(255, 255, 255);
+        fill: rgb(255, 255, 255);
+        border: 1px solid rgb(0, 121, 211);
+        border-radius: 4px;
+        text-decoration: none;
+        padding: 3px 16px;
+        width: 100%;
+      }
+      .btn-unfollow{
+        text-align: center;
+        font-size: 12px;
+        font-weight: 700;
+        text-transform: uppercase;
+        background-color: transparent;
+        color: rgb(0, 121, 211);
+        fill: rgb(0, 121, 211);
+        border: 1px solid rgb(0, 121, 211);
+        border-radius: 4px;
+        text-decoration: none;
+        padding: 3px 16px;
+        width: 100%;
+      }
     }
     .user-things{
       font-weight: bold;
@@ -128,6 +208,31 @@
           margin-right: 4px;
         }
       }
+    }
+  }
+}
+//profile bar
+.profile-bar{
+  background-color: white;
+  align-items: center;
+  margin-bottom: 10px;
+  border-bottom: 1px solid rgb(237, 239, 241);
+  .profile-bar-option{
+    margin-left: 1%;
+    a{
+      height: 40px;
+      display: inline-block;
+      line-height:40px;
+    }
+    .option{
+      color: black;
+    }
+    .option:hover{
+      text-decoration: none;
+      color: rgb(0, 121, 211);
+    }
+    .option:active{
+      color: rgb(0, 121, 211);
     }
   }
 }

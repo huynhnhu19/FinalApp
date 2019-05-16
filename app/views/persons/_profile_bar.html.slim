@@ -1,5 +1,9 @@
 .profile-bar
   .profile-bar-option
-    = link_to "Overview", overview_person_path(@person), class:"option"
-    = link_to "Posts", person_posts_path(@person), class:"option"
-    = link_to "Comments", comments_person_path(@person), class:"option"
+    = link_to "Overview", overview_person_path(@person), remote: true, class:"option focus", id:"overview"
+    = link_to "Posts", person_posts_path(@person), remote: true, class:"option", id:"posts"
+    = link_to "Comments", comments_person_path(@person), remote: true, class:"option", id:"comments"
+    = link_to "Saved", overview_person_path(@person, view: "save"), remote: true, class:"option", id:"saved"
+    = link_to "Hidden", overview_person_path(@person, view: "hidden"), remote: true, class:"option", id:"hidden"
+    = link_to "Upvoted", overview_person_path(@person, view: "upvoted"), remote: true, class:"option", id:"upvoted"
+    = link_to "Downvoted", overview_person_path(@person, view: "downvoted"), remote: true, class:"option", id:"downvoted"
