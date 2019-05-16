@@ -5,6 +5,11 @@
 body{
 	background-color: #dae0e6;
 }
+input[type="button"]:focus{
+    display:block;
+    border: none;
+    outline:none;
+}
 .post-box{
   margin-bottom: 20px;
 }
@@ -16,7 +21,7 @@ body{
   display: inline-block;
 }
 .option-style {
-  margin-right: 10px;
+  padding: 7px;
   display: inline;
   font-size: 12px;
   font-weight: bold;
@@ -131,4 +136,5 @@ body{
 .mb10{margin-bottom: 10px}
 .h100{height: 100%}
 .m10{margin: 10px}
-.bigger-checkbox{transform: scale(1.2)}
+.bigger-checkbox{transform: scale(1.5) !important;}
+.display-none{display: none}

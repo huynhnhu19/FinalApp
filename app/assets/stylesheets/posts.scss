@@ -13,11 +13,11 @@
       padding-right: 5px;
     }
     .post-image{
-      padding-left: 15%;
+      display: flex;
     }
     .post-image img{
       margin: 20px 0;
-      width: 90%;
+      max-width: 100%;
       height: auto;
       background-size: cover;
       background-repeat: no-repeat;

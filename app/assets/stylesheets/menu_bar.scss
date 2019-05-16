@@ -37,6 +37,11 @@
         width: 200px;
     }
 }
+.drop-dowm-menu{
+  align-items: center;
+  display: flex;
+}
+.menu-dropdown{width: unset !important;}
 .user-info:hover{
     border-color: rgb(237, 239, 241);
 }
@@ -101,7 +106,7 @@
             }
         }
     }
- 
+
 }
 .menu-home{
     display: flex;

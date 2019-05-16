@@ -10,9 +10,9 @@
       .col-md-9.p0.tmol
         .post-header-index.display-flex
           - if post.belong_to.present?
-            = link_to group_path(post.belong_to), class:'post-group display-flex unset-text tmol' do 
+            = link_to group_path(post.belong_to), class:'post-group display-flex unset-text tmol' do
               .group-icon.mr5
-                = image_tag  post.belong_to.icon_url if post.belong_to.icon.present? 
+                = image_tag  post.belong_to.icon_url if post.belong_to.icon.present?
               .title.il.s12.tb.mr5.black = post.belong_to.group_name
           span.s12.tmol.mr5 Posted by
           .post-author
@@ -32,6 +32,6 @@
         = post.title
       .mb10 = post.content
       - if post.image.present?
-        .post-image
+        .post-image.tmol
           = image_tag post.image_url
     = render partial: 'home/post_option', locals: {post: post}

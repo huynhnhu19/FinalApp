@@ -93,7 +93,7 @@
   #info{display: flex; margin-bottom: 5px;}
   .group-info{padding: 10px;}
   .group-icon{width: 35px; height: 35px;}
-  .group-icon img{width: 100%; height: 100%}
+  .group-icon img{width: 100%; height: 100%; border-radius: 50%}
   .btn-join-group, .btn-create-post, .btn-joined{
     width: 100%;
   }
@@ -198,4 +198,21 @@
     padding-left: 20px;
   }
   .tool-title{margin-top: 20px}
+}
+
+.sort-bar-header-tool{
+  span{
+    font-weight: bold;
+    font-size: 10px;
+    margin: 10px 0;
+    margin-right: 10px;
+  }
+}
+.btn:focus{
+  box-shadow: none;
+  outline: none}
+.tool-option{}
+
+.post-option{
+  .dropdown-toggle:after{content: unset}
 }

@@ -3,6 +3,7 @@
     .col-md-2._f6f7f8.h100.p0
     	= render partial: 'tools', locals: {group: @group}
     .col-md-10#view-group
-    	= render partial: 'mod_queue', local: {group: @group, posts: @posts}
+    	= render partial: 'mod_queue', local: {group: @group, posts: @posts, view: "large"}
 javascript:
  Group.run()
+ GroupTools.run()
