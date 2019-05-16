@@ -1,8 +1,9 @@
 .group-box-info#group-box-info
   .group-header.tmol id="#{group.check_them}"
     .title COMMUNITY DETAILS
-    = link_to edit_group_path(@group), class:"c_white float-right" do 
-      .float-right Mod Tools
+    = link_to edit_group_path(@group), class:"c_white tmol" do
+      = fa_icon "shield", class:"c_white mr5"
+      .s12.tb700 Mod Tools
   .group-info
     #info.tmol
       .group-icon
