@@ -66,8 +66,10 @@
 		            	= f.text_field :title, class: "form-control", placeholder: 'Title'
 		        	.form-group.upload-box
 		          		.upload
-							span.post-icon-option = fa_icon "plus"
-			          		.upload-image
+                    		img id="image-background"
+                    		img id="preview"
+			          		.upload-image.tmol
+								span.post-icon-option.tmol = fa_icon "plus"
 					        	= f.file_field :image, class: "form-control", placeholder: 'Text'
 				    .form-group.action-for-post
 							.more-option-post
