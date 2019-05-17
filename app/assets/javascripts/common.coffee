@@ -16,16 +16,3 @@ $ ->
         reply_box.css("display", "none")
       else
         reply_box.css("display", "inline")
-
-    $('#post_image').change (event) ->
-      background = $('#image-background')
-      preview = $('#preview')
-      input = $(event.currentTarget)
-      file = input[0].files[0]
-      reader = new FileReader
-      reader.onload = (e) ->
-        image_base64 = e.target.result
-        background.attr 'src', image_base64
-        preview.attr 'src', image_base64
-
-      reader.readAsDataURL file
