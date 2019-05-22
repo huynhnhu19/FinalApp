@@ -11,14 +11,16 @@
       span = fa_icon "pencil"
       span Edit Post
   .save.option-style
-    = link_to post_options_person_path(current_person, post_id: post.id, option: "save"), method: :post, remote: true do
-      - if current_person.posts_saved.include?(post)
-        span = fa_icon "bookmark", class:'c_cornflowerblue'
-        span#save-post.c_cornflowerblue Unsave
-      - else
-        span = fa_icon "bookmark"
-        span#save-post Save
+    - if current_person.present?
+      = link_to post_options_person_path(current_person, post_id: post.id, option: "save"), method: :post, remote: true do
+        - if current_person.posts_saved.include?(post)
+          span = fa_icon "bookmark", class:'c_cornflowerblue'
+          span#save-post.c_cornflowerblue Unsave
+        - else
+          span = fa_icon "bookmark"
+          span#save-post Save
   .hide.option-style
-    = link_to post_options_person_path(current_person, post_id: post.id, option: "hide"), method: :post, remote: true do
-      span#hidden-post = fa_icon "ban"
-      span = current_person.posts_hidden.include?(post) ?  'Unhide' : 'Hide'
+    - if current_person
+      = link_to post_options_person_path(current_person, post_id: post.id, option: "hide"), method: :post, remote: true do
+        span#hidden-post = fa_icon "ban"
+        span = current_person.posts_hidden.include?(post) ?  'Unhide' : 'Hide'
