@@ -130,6 +130,7 @@ input[type="button"]:focus{
 .c_gray{color: gray}
 .c_white{color: white}
 .m0{margin: 0}
+.mtb20{margin: 20px 0}
 .mt0{margin-top: 0}
 .p0{padding: 0}
 .p6{padding: 6px;}
@@ -149,6 +150,10 @@ input[type="button"]:focus{
 .overflow-hidden{overflow: hidden;}
 .br5{border-radius: 5px}
 .btn:focus{box-shadow: none}
+.border{
+  border-radius: 5px;
+  border: 0.5px solid gray;
+}
 
 // popup
 .popup {

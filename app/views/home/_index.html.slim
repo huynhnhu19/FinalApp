@@ -19,13 +19,18 @@
             .user.user-email = link_to post.author.email, overview_person_path(post.author), class: "c_gray"
           span.tmol.s12.c_gray = post.to_pretty
       .col-md-3
-        - if post.belong_to.present?
-          - if !post.belong_to.members.include?(current_person)
-            = link_to join_group_path(post.belong_to), method: :post, remote: true, class:'btn float-right btn-join-small s10' do
-              = fa_icon 'plus', class:'c_white mr5'
-              span JOIN
-            = link_to leave_group_path(post.belong_to), method: :delete, remote: true, class:'btn float-right btn-leave-small de-active' do
-              = fa_icon 'check'
+        - if person_signed_in?
+          - if post.belong_to.present?
+            - if !post.belong_to.members.include?(current_person)
+              = link_to join_group_path(post.belong_to), method: :post, remote: true, class:'btn float-right btn-join-small s10' do
+                = fa_icon 'plus', class:'c_white mr5'
+                span JOIN
+              = link_to leave_group_path(post.belong_to), method: :delete, remote: true, class:'btn float-right btn-leave-small de-active' do
+                = fa_icon 'check'
+        - else
+          = link_to person_session_path, {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class:'btn float-right btn-join-small-login s10'} do
+            = fa_icon 'plus', class:'c_white mr5'
+            span JOIN
 
     .post-content
       .post-title.mb10

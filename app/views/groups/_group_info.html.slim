@@ -1,7 +1,7 @@
 .group-box-info#group-box-info
   .group-header.tmol id="#{group.check_them}"
     .title COMMUNITY DETAILS
-    = link_to edit_group_path(@group), class:"c_white tmol" do
+    = link_to edit_group_path(group), class:"c_white tmol" do
       = fa_icon "shield", class:"c_white mr5"
       .s12.tb700 Mod Tools
   .group-info
@@ -22,8 +22,17 @@
     .box-content.m10
       span.s15 = group.about
     .box-btn
-      - if group.members.include?(current_person)
-        = link_to " ", leave_group_path(group), method: :delete , remote: true, class: "btn btn-joined mb10"
+      - if person_signed_in?
+        - if group.members.include?(current_person)
+          = link_to " ", leave_group_path(group), method: :delete , remote: true, class: "btn btn-joined mb10"
+        - else
+          = link_to "JOIN", join_group_path(group), method: :post, remote:true, class: "btn btn-join-group bi#{group.check_color} mb10"
+        = link_to "CREATE POST", new_group_post_path(group), class: "btn btn-create-post bi#{group.check_color}"
       - else
-        = link_to "JOIN", join_group_path(group), method: :post, remote:true, class: "btn btn-join-group bi#{group.check_color} mb10"
-      = link_to "CREATE POST", new_group_post_path(group), class: "btn btn-create-post bi#{group.check_color}"
+        = link_to "JOIN", person_session_path, {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: "btn btn-join-group bi#{group.check_color} mb10"}
+        = link_to "CREATE POST", person_session_path(), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: "btn btn-create-post bi#{group.check_color}"}
+
+
+
+
+
