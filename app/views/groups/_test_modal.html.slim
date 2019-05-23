@@ -15,26 +15,26 @@
       .note-thing.tmol
         .s12.c_gray.mr5 This is how new members come to understand your community.
         = fa_icon 'info-circle', 'data-toggle':"tooltip", title:"Hooray!"
-      span.c_gray.tb700 Community Type
-      .group-type.ml5.mt5
-        .type-comunity.mb10.tmol
-          = f.radio_button :type, 'public', checked: true, class:"bigger-checkbox"
-          = fa_icon "user", class:"ml10 mr10 c_17a2b8"
-          .type-description
-            .s14.tb700 Public
-            .s12 Anyone can view, post, and comment to this community
-        .type-comunity.mb10.tmol
-          = f.radio_button :type, 'restricted', class:"bigger-checkbox"
-          = fa_icon "eye", class:"ml10 mr10 c_104939"
-          .type-description
-            .s14.tb700 Restricted
-            .s12 Anyone can view this community, but only approved users can post
-        .type-comunity.mb10.tmol
-          = f.radio_button :type, 'private', class:"bigger-checkbox"
-          = fa_icon "lock", class:"ml10 mr10 c_fd7e14"
-          .type-description
-            .s14.tb700 Private
-            .s12 Only approved users can view and submit to this community
+    span.c_gray.tb700 Community Type
+    .group-type.ml5.mt5
+      .type-comunity.mb10.tmol
+        = f.radio_button :type, 'public', checked: true, class:"bigger-checkbox"
+        = fa_icon "user", class:"ml10 mr10 c_17a2b8"
+        .type-description
+          .s14.tb700 Public
+          .s12 Anyone can view, post, and comment to this community
+      .type-comunity.mb10.tmol
+        = f.radio_button :type, 'restricted', class:"bigger-checkbox"
+        = fa_icon "eye", class:"ml10 mr10 c_104939"
+        .type-description
+          .s14.tb700 Restricted
+          .s12 Anyone can view this community, but only approved users can post
+      .type-comunity.mb10.tmol
+        = f.radio_button :type, 'private', class:"bigger-checkbox"
+        = fa_icon "lock", class:"ml10 mr10 c_fd7e14"
+        .type-description
+          .s14.tb700 Private
+          .s12 Only approved users can view and submit to this community
     = f.submit "Start", class: "btn-create float-right"
 
 javascript:
