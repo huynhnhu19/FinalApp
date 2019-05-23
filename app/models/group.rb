@@ -7,6 +7,7 @@ class Group
   property :about, type: String
   property :them, type: String
   property :text_color, type: String
+  property :type, type: String
 
   property :icon, type: String
   mount_uploader :icon, GroupBannerUploader
@@ -23,17 +24,17 @@ class Group
 	def check_color
 		self.text_color.present? ? self.text_color : '_0079d3'
 	end
-	
+
 	def check_them
 		self.them.present? ? self.them : '_0079d3'
 	end
 
 	def check_view mode_view, params
-		if mode_view == params 
+		if mode_view == params
 			self.text_color.present? ? self.text_color : '_0079d3'
 		else
 			"gray"
 		end
 	end
-			
+
 end
