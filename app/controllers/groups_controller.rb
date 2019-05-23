@@ -27,6 +27,10 @@ class GroupsController < ApplicationController
   def new
   	@group = current_person.groups.new
     render layout: 'persons'
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def create

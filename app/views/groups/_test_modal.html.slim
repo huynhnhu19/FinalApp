@@ -1,0 +1,188 @@
+.account-setting
+  .account-setting-header
+    .account-header
+      .header Community Information
+  .option-settings
+    .option-title.tmol
+      .account-preferences Community Information
+  = form_for @group, url: person_groups_path(current_person) do |f|
+    .customize-profile
+      p Community Name
+      .note Set a community name. This name cannot change.
+      = f.text_field :group_name, class: "form-control", placeholder: 'Community Name'
+      .note 30 Characters
+    .customize-profile
+      p About (optional)
+      .note A brief description of your community shown on your community.
+      = f.text_area :about, class: 'form-control', placeholder: "About (optional)"
+      .note 200 Characters
+    .option-settings
+      .option-title.tmol
+        .account-preferences IMAGES
+    .customize-profile
+      p Icon and banner image
+      .note Images must be .png or .jpg format
+      .row
+        .col-md-6
+          .image-upload
+            = f.file_field :icon, class: "image-input"
+        .col-md-6
+          .image-upload
+              = f.file_field :banner, class: "image-input"
+    .option-settings
+      .option-title.tmol
+        .account-preferences ADVANCED
+    .customize-profile
+      p Active in communities visibility
+      .note Show which communities I am active in on my profile.
+    .option-settings
+      .option-title.tmol
+        .account-preferences THEM
+    .customize-profile
+      p Community Them
+      .note Pick a color to custome your community color. This can change later.
+    .customize-profile
+      .color-them
+        .row.row-color
+          .col-md-1
+          .col-md-1
+            .them#_007bff
+              = fa_icon "check"
+          .col-md-1
+            .them#_b7381b
+              = fa_icon "check"
+          .col-md-1
+            .them#_b7591b
+              = fa_icon "check"
+          .col-md-1
+            .them#_ad8a18
+              = fa_icon "check"
+          .col-md-1
+            .them#_beef0b
+              = fa_icon "check"
+          .col-md-1
+            .them#_598911
+              = fa_icon "check"
+          .col-md-1
+            .them#_507a32
+              = fa_icon "check"
+          .col-md-1
+            .them#_156021
+              = fa_icon "check"
+          .col-md-1
+            .them#_104939
+              = fa_icon "check"
+          .col-md-1
+        .row.row-color
+          .col-md-1
+          .col-md-1
+            .them#_6610f2
+              = fa_icon "check"
+          .col-md-1
+            .them#_40dbed
+              = fa_icon "check"
+          .col-md-1
+            .them#_1e5975
+              = fa_icon "check"
+          .col-md-1
+            .them#_e83e8c
+              = fa_icon "check"
+          .col-md-1
+            .them#_0c296d
+              = fa_icon "check"
+          .col-md-1
+            .them#_5e41a8
+              = fa_icon "check"
+          .col-md-1
+            .them#_fd7e14
+              = fa_icon "check"
+          .col-md-1
+            .them#_940bdd
+              = fa_icon "check"
+          .col-md-1
+            .them#_c40bdd
+              = fa_icon "check"
+          .col-md-1
+        .row.row-color
+          .col-md-1
+          .col-md-1
+            .them#_ffc107
+              = fa_icon "check"
+          .col-md-1
+            .them#_28a745
+              = fa_icon "check"
+          .col-md-1
+            .them#_17a2b8
+              = fa_icon "check"
+          .col-md-1
+            .them#_543b4e
+              = fa_icon "check"
+          .col-md-1
+            .them#_6610f2
+              = fa_icon "check"
+          .col-md-1
+            .them#_a50832
+              = fa_icon "check"
+          .col-md-1
+            .them#_e00817
+              = fa_icon "check"
+          .col-md-1
+            .them#_3a0307
+              = fa_icon "check"
+          .col-md-1
+            .them#_20c997
+              = fa_icon "check"
+    .option-settings
+      .option-title.tmol
+        .account-preferences COLOR
+    .customize-profile
+      p Color
+      .note Pick a color to custome your community colortext, link, button and more. This can change later.
+    .customize-profile
+      .color-them
+        .row.row-color
+          .col-md-1
+          .col-md-1
+            .color#_007bff
+              = fa_icon "check"
+          .col-md-1
+            .color#_a50832
+              = fa_icon "check"
+          .col-md-1
+            .color#_e00817
+              = fa_icon "check"
+          .col-md-1
+            .color#_fd7e14
+              = fa_icon "check"
+          .col-md-1
+            .color#_20c997
+              = fa_icon "check"
+          .col-md-1
+            .color#_6610f2
+              = fa_icon "check"
+        .row.row-color
+          .col-md-1
+          .col-md-1
+            .color#_ffc107
+              = fa_icon "check"
+          .col-md-1
+            .color#_40dbed
+              = fa_icon "check"
+          .col-md-1
+            .color#_e83e8c
+              = fa_icon "check"
+          .col-md-1
+            .color#_3a0307
+              = fa_icon "check"
+          .col-md-1
+            .color#_104939
+              = fa_icon "check"
+          .col-md-1
+            .color#_940bdd
+              = fa_icon "check"
+      = f.hidden_field :them
+      = f.hidden_field :text_color
+    = f.submit "Create", class: "btn-create"
+
+javascript:
+  Group.run()
