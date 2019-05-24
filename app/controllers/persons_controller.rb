@@ -9,16 +9,23 @@ class PersonsController < ApplicationController
   def overview
     # tam thoi de day, chú ý khi xong thì chuyển xống index
     case params[:view]
+    when 'posts'
+      @array = @person.posts.all.to_a.sort { |x, y | y.created_at <=> x.created_at }
     when 'save'
-      @posts = @person.posts_saved
+      @array = @person.posts_saved
+    when 'comments'
+      @comments = current_person.comments
     when 'hidden'
-      @posts = @person.posts_hidden
+      @array = @person.posts_hidden
     when 'upvoted'
-      @posts = @person.upvote
+      @array = @person.upvote
     when 'downvoted'
-      @posts = @person.downvote
+      @array = @person.downvote
     else
-      @posts = @person.posts.all.order(updated_at: :asc)
+      comments = @person.comments.to_a
+      posts = @person.posts.to_a
+      @array = comments + posts
+      @array = @array.sort { |x, y | y.created_at <=> x.created_at }
     end
     respond_to do |format|
       format.html

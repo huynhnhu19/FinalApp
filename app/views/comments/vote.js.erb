@@ -1,0 +1,13 @@
+<% if @view = "index" %>
+  <% case @color %>
+  <% when "red" %>
+    $("#<%= @comment.id %>").find(".downvoted").removeClass("downvoted");
+    $("#<%= @comment.id %>").find(".fa-arrow-up").addClass("upvoted");
+  <% when "purple" %>
+    $("#<%= @comment.id %>").find(".upvoted").removeClass("upvoted")
+    $("#<%= @comment.id %>").find(".fa-arrow-down").addClass("downvoted");
+  <% when "none" %>
+    $("#<%= @comment.id %>").find(".upvoted").removeClass("upvoted")
+    $("#<%= @comment.id %>").find(".downvoted").removeClass("downvoted");
+  <% end %>
+<% end %>

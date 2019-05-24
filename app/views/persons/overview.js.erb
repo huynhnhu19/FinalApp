@@ -1,34 +1,48 @@
 $(".profile-bar-option").find(".focus").removeClass("focus");
 <%case params[:view] %>
-<% when "save" %>
-  $("#saved").addClass("focus");
-  <% if @posts.blank? %>
+<% when "posts" %>
+  $("#posts").addClass("focus");
+  <% if @array.blank? %>
     $("#user-profile").html("<%=j render :partial => 'persons/empty', locals: {type: params[:view]} %>");
   <% else %>
-    $("#user-profile").html("<%=j render :partial => 'persons/overview', locals: {posts: @posts} %>");
+    $("#user-profile").html("<%=j render :partial => 'persons/overview', locals: {posts: @array} %>");
+  <% end %>
+<% when "comments" %>
+  $("#comments").addClass("focus");
+  <% if @comments.blank? %>
+    $("#user-profile").html("<%=j render :partial => 'persons/empty', locals: {type: params[:view]} %>");
+  <% else %>
+    $("#user-profile").html("<%=j render :partial => 'persons/comments', locals: {posts: @comments} %>");
+  <% end %>
+<% when "save" %>
+  $("#saved").addClass("focus");
+  <% if @array.blank? %>
+    $("#user-profile").html("<%=j render :partial => 'persons/empty', locals: {type: params[:view]} %>");
+  <% else %>
+    $("#user-profile").html("<%=j render :partial => 'persons/overview', locals: {posts: @array} %>");
   <% end %>
 <% when "hidden" %>
   $("#hidden").addClass("focus");
-  <% if @posts.blank? %>
+  <% if @array.blank? %>
     $("#user-profile").html("<%=j render :partial => 'persons/empty', locals: {type: params[:view]} %>");
   <% else %>
-    $("#user-profile").html("<%=j render :partial => 'persons/overview', locals: {posts: @posts} %>");
+    $("#user-profile").html("<%=j render :partial => 'persons/overview', locals: {posts: @array} %>");
   <% end %>
 <% when "upvoted" %>
   $("#upvoted").addClass("focus");
-  <% if @posts.blank? %>
+  <% if @array.blank? %>
     $("#user-profile").html("<%=j render :partial => 'persons/empty', locals: {type: params[:view]} %>");
   <% else %>
-    $("#user-profile").html("<%=j render :partial => 'persons/overview', locals: {posts: @posts} %>");
+    $("#user-profile").html("<%=j render :partial => 'persons/overview', locals: {posts: @array} %>");
   <% end %>
 <% when "downvoted" %>
   $("#downvoted").addClass("focus");
-  <% if @posts.blank? %>
+  <% if @array.blank? %>
     $("#user-profile").html("<%=j render :partial => 'persons/empty', locals: {type: params[:view]} %>");
   <% else %>
-    $("#user-profile").html("<%=j render :partial => 'persons/overview', locals: {posts: @posts} %>");
+    $("#user-profile").html("<%=j render :partial => 'persons/overview', locals: {posts: @array} %>");
   <% end %>
 <%else%>
   $("#overview").addClass("focus");
-  $("#user-profile").html("<%=j render :partial => 'persons/overview', locals: {posts: @posts} %>");
+  $("#user-profile").html("<%=j render :partial => 'persons/overview', locals: {posts: @array} %>");
 <% end %>

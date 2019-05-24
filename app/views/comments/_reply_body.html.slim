@@ -1,0 +1,14 @@
+.reply
+  .comment-voted
+    .mb5 = fa_icon "arrow-up", class:""
+    . = fa_icon "arrow-down", class:""
+  .body-comment.display-flex.mb5
+    .user.user-email.mr5.s12 = link_to person.email, overview_person_path(person), class: "c_gray"
+    .tc
+      span.dot
+    span.tmol.s12.c_gray = data.to_pretty
+  .comment-text class="'mb15"
+    = content
+  = render partial: 'comments/comment_option', locals: {type: "reply"}
+  = render partial: "replies/reply_comment", locals: {reply: reply, comment: data}
+

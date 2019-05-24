@@ -189,3 +189,11 @@ input[type="button"]:focus{
   border: none;
   text-transform: uppercase;
 }
+.dot {
+  height: 4px;
+  width: 4px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 5px;
+}

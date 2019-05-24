@@ -1,6 +1,6 @@
 $("#post-header").html("<%=j render :partial => 'posts/post_header', locals: {post: @post} %>");
 <% if @view = "index" %>
-  $("#<%= @post.id %>").find(".vote-number").text("<%= @post.votes%>")
+  $("#<%= @post.id %>").find(".vote-number").text("<%= @post.votes%>");
   <% case @color %>
   <% when "red" %>
     $("#<%= @post.id %>").find(".downvoted").removeClass("downvoted");

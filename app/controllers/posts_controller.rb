@@ -31,7 +31,7 @@ class PostsController < ApplicationController
   		@group.save!
 		end
 
-		redirect_to person_posts_path(current_person)
+		redirect_to overview_person_path(current_person)
 	end
 
   def vote
@@ -77,7 +77,7 @@ class PostsController < ApplicationController
       else
         @post.downvotes += 1
         @post.downvote << current_person
-        @post.downvote << current_person
+        current_person.downvote << @post
         @color = 'purple'
       end
     end

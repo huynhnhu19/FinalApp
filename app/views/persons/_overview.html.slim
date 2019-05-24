@@ -1,46 +1,79 @@
 .user-post-list
-  - @posts.each do |post|
-    .user-post-box id="#{post.id}"
-      .post-box.user-box
-        .post-voted
-          = link_to vote_post_path(post, vote: :upvote), method: :post, remote: true do
-            = fa_icon "arrow-up", class:"#{post.upvote.include?(current_person) ? 'upvoted' : ""}"
-          span.tc.vote-number = post.votes
-          = link_to vote_post_path(post, vote: :downvote), method: :post, remote: true do
-            = fa_icon "arrow-down", class:"#{post.downvote.include?(current_person) ? 'downvoted' : ""}"
-      .post-overview-content
-        - if post.image.present?
-          .post-image.display-flex
-            = link_to post.image_url, class:'tmol overflow-hidden br5', target: :_blank do
-              = image_tag post.image_url, class:'br5'
-        - else
-          .post-image.tmol
-            .post-icon
-              = fa_icon "align-left"
-        .post-things
-          .post-title
-            = post.title
-          .post-header-index.display-flex
-            - if post.belong_to.present?
-              = link_to group_path(post.belong_to), class:'post-group display-flex unset-text tmol' do
-                .group-icon.mr5
-                  = image_tag post.belong_to.icon_url if post.belong_to.icon.present?
-                .title.il.s12.tb.mr5.black = post.belong_to.group_name
-              - if person_signed_in?
-                - if !post.belong_to.members.include?(current_person)
-                  = link_to join_group_path(post.belong_to), method: :post, remote: true, class:'btn btn-join-small p6 mr5 s10' do
+  - posts.each do |value|
+    - if value.is_a?(Post)
+      .user-post-box id="#{value.id}"
+        .post-box.user-box
+          .post-voted
+            = link_to vote_post_path(value, vote: :upvote), method: :post, remote: true do
+              = fa_icon "arrow-up", class:"#{value.upvote.include?(current_person) ? 'upvoted' : ""}"
+            span.tc.vote-number = value.votes
+            = link_to vote_post_path(value, vote: :downvote), method: :post, remote: true do
+              = fa_icon "arrow-down", class:"#{value.downvote.include?(current_person) ? 'downvoted' : ""}"
+        .post-overview-content
+          - if value.image.present?
+            .post-image.display-flex
+              = link_to value.image_url, class:'tmol overflow-hidden br5', target: :_blank do
+                = image_tag value.image_url, class:'br5'
+          - else
+            .post-image.tmol
+              .post-icon
+                = fa_icon "align-left"
+          .post-things
+            .post-title
+              = value.title
+            .post-header-index.display-flex
+              - if value.belong_to.present?
+                = link_to group_path(value.belong_to), class:'post-group display-flex unset-text tmol' do
+                  .group-icon.mr5
+                    = image_tag value.belong_to.icon_url if value.belong_to.icon.present?
+                  .title.il.s12.tb.mr5.black = value.belong_to.group_name
+                - if person_signed_in?
+                  - if !value.belong_to.members.include?(current_person)
+                    = link_to join_group_path(value.belong_to), method: :post, remote: true, class:'btn btn-join-small p6 mr5 s10' do
+                      = fa_icon 'plus', class:'c_white'
+                    = link_to leave_group_path(value.belong_to), method: :delete, remote: true, class:'btn btn-leave-small p6 mr5 de-active' do
+                      = fa_icon 'check'
+                - else
+                  = link_to person_session_path, {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class:'btn btn-join-small-login p6 mr5 s10'} do
                     = fa_icon 'plus', class:'c_white'
-                  = link_to leave_group_path(post.belong_to), method: :delete, remote: true, class:'btn btn-leave-small p6 mr5 de-active' do
-                    = fa_icon 'check'
-              - else
-                = link_to person_session_path, {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class:'btn btn-join-small-login p6 mr5 s10'} do
-                  = fa_icon 'plus', class:'c_white'
 
-            span.s12.tmol.mr5 Posted by
-            .post-author.tmol
-              .user.user-email = link_to post.author.email, overview_person_path(post.author), class: "c_gray"
-            span.tmol.s12.c_gray = post.to_pretty
-          .post-user-info
-          = render partial: 'home/post_option', locals: {post: post}
+              span.s12.tmol.mr5 Posted by
+              .post-author.tmol
+                .user.user-email = link_to value.author.email, overview_person_path(value.author), class: "c_gray"
+              span.tmol.s12.c_gray = value.to_pretty
+            .post-user-info
+            = render partial: 'home/post_option', locals: {post: value}
+    - else
+      .user-comment-list.mb5
+        .user-comments-box
+          .post-summary-box
+            .icon-color.inline
+              span = fa_icon "comment"
+            .summary.inline
+              .post-title.inline
+                = link_to "#{current_person.email}", overview_person_path(current_person)
+                span = t("person.comments.comment_on")
+                span = value.post.title
+              .post-owner-info.inline
+                span = t("posts.post_by")
+                = link_to "#{value.author.email}", overview_person_path(value.author)
+          .post-summary-comment
+            .person
+              = link_to "#{current_person.email}", overview_person_path(current_person)
+            .comment-content
+              = value.content
+            .post-option
+              .comment.option-style
+                span = fa_icon "bolt"
+                span Reply
+              .share.option-style
+                span = fa_icon "share"
+                span Share
+              .report.option-style
+                span = fa_icon "flag"
+                span Report
+              .save.option-style
+                span = fa_icon "bookmark"
+                span Save
 javascript:
  Group.run()

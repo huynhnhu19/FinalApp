@@ -3,7 +3,7 @@
   .row
     .col-md-1
     .col-md-8.center-block#user-profile
-      = render partial: "overview", locals: {posts: @posts, person: @person}
+      = render partial: "overview", locals: {posts: @array, person: @person}
     .col-md-2#user-box
     	- if @person == current_person
       		= render "persons/user_box_info"

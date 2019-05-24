@@ -11,7 +11,7 @@ $ ->
     )
 
     $("body").on 'click', '#reply', ->
-      reply_box = $(this).parents(".comment-user").find(".box_form_comment")
+      reply_box = $(this).parents(".comment").find(".box_form_comment")
       if reply_box.is(":visible")
         reply_box.css("display", "none")
       else

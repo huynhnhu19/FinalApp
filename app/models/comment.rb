@@ -2,11 +2,20 @@ class Comment
 	include Neo4j::ActiveNode
 	property :content, type: String
 	property :created_at, type: DateTime
-  	property :updated_at, type: DateTime
+	property :updated_at, type: DateTime
+  property :upvotes, type: Integer,  default: 0
+  property :downvotes, type: Integer,  default: 0
 
 	has_one :out, :post, type: :comment_on
 	has_one :out, :author, type: :author, model_class: :Person
 	has_many :in, :replies, origin: :comment
+  has_many :in, :upvote, type: :upvoted_by, model_class: :Person
+  has_many :in, :downvote, type: :downvoted_by, model_class: :Person
+
+
+  def votes
+    self.upvotes - self.downvotes
+  end
 
 	def to_pretty
     	a = (Time.now-self.created_at).to_i

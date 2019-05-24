@@ -17,7 +17,6 @@
 		}
 	}
 	.reply-comment{
-		margin-left: 50px;
 		.btn-submit-reply{
 			margin-top: 10px;
 		}
@@ -47,14 +46,13 @@
 
 	}
 	.list-comment-reply{
-		margin-left: 50px;
+		margin-left: 30px;
 	}
 	.comment-user{
 		.box_form_comment{
 			display: none;
 		}
 		.reply-comment{
-			margin-left: 52px;
 			cursor: pointer;
 		}
 		.comment-text{
@@ -78,4 +76,22 @@
  }
 .navbar-form{
 	margin-bottom: 0px;
+}
+
+.comment{
+  padding-left: 30px;
+  .comment-voted{
+    margin-top: 4px;
+    position: absolute;;
+    left: 65px;
+  }
+}
+
+.reply{
+  padding-left: 20px;
+  .comment-voted{
+    margin-top: 4px;
+    position: absolute;;
+    left: 85px;
+  }
 }

@@ -55,6 +55,15 @@ Rails.application.routes.draw do
 
   resources :comments do
     resources :replies
+    member do
+      post 'vote'
+    end
+  end
+
+  resources :replies do
+    member do
+      post 'vote'
+    end
   end
 
 end
