@@ -10,6 +10,7 @@ class Post
   property :updated_at, type: DateTime
   property :upvotes, type: Integer,  default: 0
   property :downvotes, type: Integer,  default: 0
+  property :post_creation, type: Boolean,  default: false
 
 	id_property :id, auto: :uuid
 

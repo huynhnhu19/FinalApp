@@ -7,7 +7,6 @@ class Group
   property :about, type: String
   property :them, type: String
   property :text_color, type: String
-  property :type, type: String
 
   property :icon, type: String
   mount_uploader :icon, GroupBannerUploader
@@ -20,6 +19,10 @@ class Group
 	has_one :out, :author, type: :create_by, model_class: :Person
 	has_many :in, :members, type: :joins, model_class: :Person
 	has_many :in, :posts, origin: :belong_to
+
+  enum type: [:public, :restricted, :private], _default: :public
+
+  after_save :add_first_post
 
 	def check_color
 		self.text_color.present? ? self.text_color : '_0079d3'
@@ -37,4 +40,14 @@ class Group
 		end
 	end
 
+  def add_first_post
+    title = "#{self.group_name} has been created"
+    content = self.about
+    person = self.author
+    post = Post.create!(title: title, content: content, post_creation: true)
+    post.upvotes += 1
+    post.upvote << person
+    person.posts << post
+    self.posts << post
+  end
 end

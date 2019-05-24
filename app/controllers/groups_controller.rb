@@ -34,12 +34,12 @@ class GroupsController < ApplicationController
   end
 
   def create
-  	@group = Group.create!(group_params)
+  	@group = Group.new(group_params)
     @group.icon = group_params[:icon] if group_params[:icon].present?
     @group.banner = group_params[:banner] if group_params[:banner].present?
   	@group.author = current_person
     @group.save!
-  	redirect_to root_path()
+  	redirect_to group_path(@group)
   end
 
   def join
@@ -75,7 +75,7 @@ class GroupsController < ApplicationController
     @group = Group.find(params[:id])
   end
   def group_params
-  	params.require(:group).permit(:group_name, :about, :icon, :banner, :them, :text_color)
+  	params.require(:group).permit(:group_name, :about, :icon, :banner, :them, :text_color, :type)
   end
   def post_params
     params.require(:post).permit(:title, :content, :image)

@@ -21,7 +21,8 @@
 - CONSTRAINT ON ( post:Post ) ASSERT post.id IS UNIQUE
 - CONSTRAINT ON ( post:Post ) ASSERT post.uuid IS UNIQUE
 - CONSTRAINT ON ( reply:Reply ) ASSERT reply.uuid IS UNIQUE
-:indexes: []
+:indexes:
+- INDEX ON :Group(type)
 :versions:
 - '20190330061616'
 - '20190330061721'
@@ -36,3 +37,4 @@
 - '20190409124427'
 - '20190409124920'
 - '20190424145541'
+- '20190524020057'

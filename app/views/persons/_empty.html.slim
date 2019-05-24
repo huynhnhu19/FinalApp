@@ -1,0 +1,8 @@
+- 10.times do |time|
+    .user-post-box-empty
+      .post-box.user-box.tc
+        .post-voted
+          = fa_icon "arrow-up", class:""
+          = fa_icon "arrow-down", class:""
+        - if time == 3
+          span.s18.tb700 = "hmm... looks like you haven't #{type} anything yet"

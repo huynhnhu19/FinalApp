@@ -2,7 +2,7 @@ class HomeController < ApplicationController
 	def index
 		@person = Person.all
 		@groups = Group.all
-		@posts = Post.all
+		@posts = Post.all.where(post_creation: false)
     if current_person
       @hidden_post = current_person.posts_hidden
       @posts = @posts.to_a - @hidden_post.to_a
