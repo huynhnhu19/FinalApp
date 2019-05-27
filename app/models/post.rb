@@ -7,22 +7,22 @@ class Post
 	property :image, type: String
 	mount_uploader :image, ImageUploader
 	property :created_at, type: DateTime
-  property :updated_at, type: DateTime
-  property :upvotes, type: Integer,  default: 0
-  property :downvotes, type: Integer,  default: 0
-  property :post_creation, type: Boolean,  default: false
+  	property :updated_at, type: DateTime
+  	property :upvotes, type: Integer,  default: 0
+  	property :downvotes, type: Integer,  default: 0
+  	property :post_creation, type: Boolean,  default: false
 
 	id_property :id, auto: :uuid
 
-	has_many :in, :comments, origin: :post
+	has_many :in, :comments, origin: :post, dependent: :destroy
 	has_one :out, :author, type: :author, model_class: :Person
 	has_one :out, :belong_to, type: :belong_to, model_class: :Group
-  has_many :in, :upvote, type: :upvoted_by, model_class: :Person
+  	has_many :in, :upvote, type: :upvoted_by, model_class: :Person
 	has_many :in, :downvote, type: :downvoted_by, model_class: :Person
 
-  def votes
-    self.upvotes - self.downvotes
-  end
+  	def votes
+    	self.upvotes - self.downvotes
+  	end
 
 	def controversial
 		self.upvotes - self.downvotes

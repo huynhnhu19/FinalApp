@@ -9,7 +9,8 @@ class PostsController < ApplicationController
 	def show
 		@post = Post.find(params[:id])
 		@comment = @post.comments.new
-		@reply = @comment.replies.new
+    @list_post_comments = @post.comments.where(type: :comment)
+		@new_reply = Comment.new
 	end
 
 	def new
@@ -19,11 +20,11 @@ class PostsController < ApplicationController
 	def create
 		@post = Post.create!(post_params)
 		@post.image = post_params[:image] unless post_params[:image].nil?
-    @post.upvotes += 1
-    @post.upvote << current_person
-  	@post.save!
-  	current_person.posts << @post
-  	current_person.save!
+	    @post.upvotes += 1
+	    @post.upvote << current_person
+	  	@post.save!
+	  	current_person.posts << @post
+	  	current_person.save!
 
 		if @group
 			@group = Group.find(params[:group_id ])

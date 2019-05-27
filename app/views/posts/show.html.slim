@@ -5,7 +5,7 @@
     .row
       .col-md-9.center-block
         .post-form
-        	= render "post_content", locals: {post: @post, comment: @comment}
+        	= render "post_content", locals: {post: @post, comment: @comment, new_reply: @new_reply}
       .col-md-3
         - if @post.belong_to
           = render partial: "groups/group_info", locals: {group: @post.belong_to}

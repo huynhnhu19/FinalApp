@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :get_comment
+  before_action :get_comment, :get_post
 	def index
 		@post = Post.find(params[:post_id])
 		@comment = @post.comments.all
@@ -13,11 +13,10 @@ class CommentsController < ApplicationController
 		@post = Post.find(params[:post_id])
 		@comment = Comment.create!(params_comment)
 		@post.comments << @comment
-		@post.save!
 		current_person.comments << @comment
-		current_person.save!
-    @reply = @comment.replies.new
-
+    @comment.add_upvote(current_person)
+    @new_reply = Comment.new
+    @list_post_comments = @post.comments.where(type: :comment)
 
     respond_to do |format|
       format.html
@@ -79,10 +78,31 @@ class CommentsController < ApplicationController
     end
   end
 
+  def reply
+    @comment = Comment.create!(params_comment.merge(type: :reply))
+    @parent_comment = Comment.find(params[:comment_id])
+    @parent_comment.replies << @comment
+    current_person.comments << @comment
+    @comment.add_upvote(current_person)
+    @comment.post = @post
+    @new_reply = Comment.new
+    respond_to do |format|
+      format.html
+      format.js {render :replies}
+    end
+  end
+
 	private
+
+  def get_post
+    return unless params[:post_id]
+    @post = Post.find(params[:post_id])
+  end
+
   def get_comment
     @comment = Comment.find_by(id: params[:id])
   end
+
 	def params_comment
 		params.require(:comment).permit(:content)
 	end

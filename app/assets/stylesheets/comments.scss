@@ -45,9 +45,6 @@
 		}
 
 	}
-	.list-comment-reply{
-		margin-left: 30px;
-	}
 	.comment-user{
 		.box_form_comment{
 			display: none;
@@ -78,20 +75,16 @@
 	margin-bottom: 0px;
 }
 
-.comment{
-  padding-left: 30px;
+.comment-post{
+  border-left: 0.5px solid;
   .comment-voted{
-    margin-top: 4px;
-    position: absolute;;
-    left: 65px;
+    margin: 5px 10px;
   }
 }
 
 .reply{
-  padding-left: 20px;
+  border-left: 0.5px solid;
   .comment-voted{
-    margin-top: 4px;
-    position: absolute;;
-    left: 85px;
+    margin: 5px 10px;
   }
 }

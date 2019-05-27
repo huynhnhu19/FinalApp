@@ -1,13 +1,14 @@
 <% if @view = "index" %>
+  $("#<%= @comment.id %>").find(".comment-votes").first().text("<%=@comment.votes%> points");
   <% case @color %>
   <% when "red" %>
-    $("#<%= @comment.id %>").find(".downvoted").removeClass("downvoted");
-    $("#<%= @comment.id %>").find(".fa-arrow-up").addClass("upvoted");
+    $("#<%= @comment.id %>").closest(".comment-post-box").find(".downvoted").removeClass("downvoted");
+    $("#<%= @comment.id %>").closest(".comment-post-box").find(".fa-arrow-up").first().addClass("upvoted");
   <% when "purple" %>
-    $("#<%= @comment.id %>").find(".upvoted").removeClass("upvoted")
-    $("#<%= @comment.id %>").find(".fa-arrow-down").addClass("downvoted");
+    $("#<%= @comment.id %>").closest(".comment-post-box").find(".upvoted").removeClass("upvoted")
+    $("#<%= @comment.id %>").closest(".comment-post-box").find(".fa-arrow-down").first().addClass("downvoted");
   <% when "none" %>
-    $("#<%= @comment.id %>").find(".upvoted").removeClass("upvoted")
-    $("#<%= @comment.id %>").find(".downvoted").removeClass("downvoted");
+    $("#<%= @comment.id %>").closest(".comment-post-box").find(".upvoted").removeClass("upvoted")
+    $("#<%= @comment.id %>").closest(".comment-post-box").find(".downvoted").removeClass("downvoted");
   <% end %>
 <% end %>

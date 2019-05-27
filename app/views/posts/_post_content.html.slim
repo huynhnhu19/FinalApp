@@ -30,5 +30,5 @@
     - if @post.comments.count == 0
       = render partial: "posts/empty_things"
     - else
-        = render partial: "comments/list_comments", locals: {post: @post, reply: @reply}
+        = render partial: "comments/list_comments", locals: {comments: @list_post_comments, new_reply: @new_reply}
 

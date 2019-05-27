@@ -1,21 +1,28 @@
-.comment id="#{comment}"
-  .comment-voted
-    = link_to vote_comment_path(comment, vote: :upvote, view: "index"), method: :post, remote: true do
-      .mb5 = fa_icon "arrow-up", class:"#{comment.upvote.include?(current_person) ? 'upvoted' : ""}"
-    = link_to vote_comment_path(comment, vote: :downvote, view: "index"), method: :post, remote: true do
-      = fa_icon "arrow-down", class:"#{comment.downvote.include?(current_person) ? 'downvoted' : ""}"
-  .body-comment.display-flex.mb5
-  	.user.user-email.mr5.s12 = link_to person.email, overview_person_path(person), class: "c_gray"
-    .tc
-      span.dot
-   	span.tmol.s12.c_gray = data.to_pretty
-  .comment-text class="#{type == 'comment' ? 'mb5' : 'mb15'}"
-  	= content
-  = render partial: 'comments/comment_option', locals: {type: "comment"}
-  = render partial: "replies/reply_comment", locals: {reply: reply, comment: data}
-- if type == "comment"
-	.list-comment-reply
-		- data.replies.each do |reply|
-			= render partial: "comments/reply_body", locals: {person: reply.author, content: reply&.content, data: reply, reply: reply}
+.comment-post
+  .comment-parent.display-flex.comment-post-box
+    .comment-voted
+      = link_to vote_comment_path(comment, vote: :upvote, view: "index"), method: :post, remote: true do
+        .mb5 = fa_icon "arrow-up", class:"#{comment.upvote.include?(current_person) ? 'upvoted' : ""}"
+      = link_to vote_comment_path(comment, vote: :downvote, view: "index"), method: :post, remote: true do
+        = fa_icon "arrow-down", class:"#{comment.downvote.include?(current_person) ? 'downvoted' : ""}"
+    .body-comment-parent
+      . id="#{comment.id}"
+        .body-comment.display-flex.mb5
+          .user.user-email.mr5.s12 = link_to person.email, overview_person_path(person), class: "c_gray"
+          - if comment.author == current_person
+            .mr5
+              = fa_icon "microphone", class:"c_0079d3"
+          .tc
+            span.dot
+          .comment-votes.s12.mr5 ="#{comment.votes} point"
+          .tc
+            span.dot
+         	span.tmol.s12.c_gray = comment.to_pretty
+        .comment-text class="#{type == 'comment' ? 'mb5' : 'mb15'}"
+        	= content
+        = render partial: 'comments/comment_option', locals: {type: "comment"}
+        = render partial: "replies/reply_comment", locals: {new_reply: new_reply, comment: comment, post: comment.post}
+  	  .list-comment-reply
+				= render partial: "comments/reply_body", locals: {comment: comment, new_reply: new_reply}
 
 

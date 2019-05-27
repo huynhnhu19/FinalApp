@@ -3,19 +3,22 @@ class Comment
 	property :content, type: String
 	property :created_at, type: DateTime
 	property :updated_at, type: DateTime
-  property :upvotes, type: Integer,  default: 0
-  property :downvotes, type: Integer,  default: 0
+  	property :upvotes, type: Integer,  default: 0
+  	property :downvotes, type: Integer,  default: 0
+
+  	id_property :id, auto: :uuid
 
 	has_one :out, :post, type: :comment_on
 	has_one :out, :author, type: :author, model_class: :Person
-	has_many :in, :replies, origin: :comment
-  has_many :in, :upvote, type: :upvoted_by, model_class: :Person
-  has_many :in, :downvote, type: :downvoted_by, model_class: :Person
+	has_many :in, :replies, type: :reply_on, model_class: :Comment, dependent: :destroy
+  	has_many :in, :upvote, type: :upvoted_by, model_class: :Person
+  	has_many :in, :downvote, type: :downvoted_by, model_class: :Person
 
+	enum type: [:comment, :reply], _default: :comment
 
-  def votes
-    self.upvotes - self.downvotes
-  end
+  	def votes
+    	self.upvotes - self.downvotes
+  	end
 
 	def to_pretty
     	a = (Time.now-self.created_at).to_i
@@ -33,4 +36,10 @@ class Comment
 	      else ((a+180000)/(60*60*24*7)).to_i.to_s+' weeks ago'
 	    end
 	end
+
+  def add_upvote person
+    person.upvote_comment << self
+    self.upvote << person
+    self.update_column :upvotes, 1
+  end
 end
