@@ -1,16 +1,19 @@
 .container-fluid.post-container.content-app
   .container.post-box-content
-    = render "post_header", locals: {post: @post}
+    #post-header
+      = render "post_header", locals: {post: @post}
     .row
       .col-md-9.center-block
         .post-form
-        	= render "post_content", locals: {post: @post}
-        .post-user-comment
-        	= render "post_infor", locals: {post: @post}
-        	= render "comments/new_comment", locals: {post: @post, comment: @comment }
-        	= render "comments/list_comments", locals: {post: @post, reply: @reply}
+        	= render "post_content", locals: {post: @post, comment: @comment, new_reply: @new_reply}
       .col-md-3
-        = render "home/create_post"
-        / # = render "home/trending_communities", locals: {groups: @groups}
+        - if @post.belong_to
+          = render partial: "groups/group_info", locals: {group: @post.belong_to}
+        - else
+          - if @post.author == current_person
+            = render "persons/user_box_info"
+          - else
+            = render partial: "persons/follow_box", locals: {person: @post.author}
+
 javascript:
-	ReplyComment.run()
+  ReplyComment.run()

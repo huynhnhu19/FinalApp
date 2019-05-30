@@ -86,9 +86,9 @@
     background-repeat: no-repeat;
     overflow: hidden;
     background-color: blue;
+    height: 100px;
     img {
-      width: 322px;
-      height: 100px;
+      max-width: 100%;
     }
   }
   .user-avatar{
@@ -103,9 +103,7 @@
     width: 80px;
     height: 80px;
     img{
-      border-radius: 10px;
-      height: 75px;
-      width: 75px;
+      max-width: 100%;
       }
   }
   .user-info-setting{
@@ -218,7 +216,12 @@
   margin-bottom: 10px;
   border-bottom: 1px solid rgb(237, 239, 241);
   .profile-bar-option{
-    margin-left: 5%;
+    margin-left: 1%;
+    a{
+      height: 40px;
+      display: inline-block;
+      line-height:40px;
+    }
     .option{
       color: black;
     }

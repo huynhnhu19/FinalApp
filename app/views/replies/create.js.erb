@@ -1,0 +1,1 @@
+$("#<%= @comment.id %>").parent().html("<%=j render :partial => 'comments/comment_body', locals: {person: @comment.author, content: @comment.content, comment: @comment, type: 'comment', reply: @new_reply } %>");

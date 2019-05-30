@@ -1,0 +1,18 @@
+.comment-option.mt5.mb10
+  - if type == 'comment'
+    #reply.option-style
+      span = fa_icon "comment"
+      span Reply
+  - else
+    #reply-comment.option-style
+      span = fa_icon "comment"
+      span Reply
+  .share.option-style
+    span Share
+  - if current_person
+    .edit-post.option-style
+      span Edit
+  .save.option-style
+    span#save-post Save
+  .report.option-style
+    span Report

@@ -1,5 +1,5 @@
 .box_form_comment.form-group
-	= form_for @reply, url: comment_replies_path(comment)  do |reply|
-		.reply-comment.comment
-			= reply.text_area :content, placeholder: "Tra loi binh luan cua ban tai day!", class: "form-control reply"
-			# = reply.submit "Reply", class: "btn btn-success btn-submit-reply"
+	= form_for @new_reply, url: reply_comments_path(post_id: @post.id, comment_id: comment.id), remote: true do |reply|
+		.reply-comment
+			= reply.text_area :content, placeholder: "Tra loi binh luan cua ban tai day!", class: "form-control reply", required: true
+			= reply.submit "Reply", class: "btn btn-success btn-submit-reply"

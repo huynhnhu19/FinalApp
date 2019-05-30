@@ -3,7 +3,8 @@ en:
     post_time: 'Posted by %{email} %{created_at}'
     post_by: 'Posted by '
     post_create: 'At %{created_at}'
+    comments: "%{number} Comments"
   person:
     comments:
       comment_on: ' commented on '
-  
+

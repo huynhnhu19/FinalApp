@@ -4,18 +4,69 @@
     .col-md-10
     	.mod-queue
     		h5 Mod queue
+        .row
+          .col-md-9
+            .sorb-tool
+              .btn-group
+                button.btn.dropdown-toggle.drop-dowm-menu data-toggle="dropdown"
+                 .user-name.tb700 = Post
+                ul.dropdown-menu.menu-user.menu-dropdown
+                  = link_to overview_person_path(current_person) do
+                    li.dropdown-item.box-option-user
+                      span Posts
+                  = link_to overview_person_path(current_person) do
+                    li.dropdown-item.box-option-user
+                      span Comments
+          .col-md-3
+            .sort-bar-header-tool.float-right
+              .sort-bar-tool.tmol
+                span VIEW
+                = link_to root_path(view: "large"), remote: true do
+                  - if params[:view].present?
+                    - active = "#{params[:view] == 'large' ? '_0079d3' : '_90a5b5'}"
+                  - else
+                    - active = '_0079d3'
+                  .view-large
+                    table
+                      tr.line-split class="#{active}"
+                        td
+                      tr class="#{active}"
+                        td
+                = link_to root_path(view: "medium"), remote: true do
+                  - active = "#{params[:view] == 'medium' ? '_0079d3' : '_90a5b5'}"
+                  .view-medium
+                    table
+                      tr.line-split class="#{active}"
+                        td
+                      tr.line-split class="#{active}"
+                        td
+                      tr class="#{active}"
+                        td
+                = link_to root_path(view: "small"), remote:true do
+                  - active = "#{params[:view] == 'small' ? '_0079d3' : '_90a5b5'}"
+                  .view-small
+                    table
+                      tr.line-split class="#{active}"
+                        td
+                      tr.line-split class="#{active}"
+                        td
+                      tr.line-split class="#{active}"
+                        td
+                      tr class="#{active}"
+                        td
     	.chec-box-list.white.mb10.display-flex
 	    	= check_box :all, nil, class:'bigger-checkbox m10'
 	    	.tmol.mr10 = fa_icon 'sort-desc'
-	    	.approve.tmol.mr10
-	    		.mr5 = fa_icon 'check'
-	    		span Approve 
-	    	.remove.tmol.mr10
-	    		.mr5 = fa_icon 'trash'
-	    		span Remove 
-	    	.remove.tmol.mr10
-	    		.mr5 = fa_icon 'window-close'
-	    		span Spam 
+            #tool-option.display-flex.display-none
+    	    	.approve.tmol.mr10
+    	    		.mr5 = fa_icon 'check'
+    	    		span.s12.tb700 Approve
+    	    	.remove.tmol.mr10
+    	    		.mr5 = fa_icon 'trash'
+    	    		span.s12.tb700 Remove
+    	    	.remove.tmol.mr10
+    	    		.mr5 = fa_icon 'window-close'
+    	    		span.s12.tb700 Spam
 	    = render partial: 'list_post/list_post_mod_group', locals: {posts: @posts}
 
     .col-md-1

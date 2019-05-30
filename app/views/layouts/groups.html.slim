@@ -40,7 +40,10 @@ body
             = link_to root_path() do
               span.menu-icon-option = fa_icon "envelope"
           .menu-icon
-            = link_to new_person_post_path(current_person) do
+            - if person_signed_in?
+              = link_to new_person_post_path(current_person) do
+                span.menu-icon-option = fa_icon "pencil"
+            - else
               span.menu-icon-option = fa_icon "pencil"
       - if person_signed_in?
         .btn-group
@@ -67,9 +70,13 @@ body
                 span Log out
       - else
         ul.nav.navbar-right.nav-right-custom
-          li = link_to "Log in", new_person_session_path(), class: "btn btn-login"
+          li = link_to "login", person_session_path(), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'btn btn-login'}
           li = link_to "Sign up", new_person_registration_path(), class: "btn btn-signup"
   #main
     - flash.each do |name, msg|
-      = content_tag :div, msg, class:"alert alert-#{name}"  
+      = content_tag :div, msg, class:"alert alert-#{name}"
     = yield
+  #alert
+#modal-window class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+  .modal-dialog role="document"
+    .modal-content

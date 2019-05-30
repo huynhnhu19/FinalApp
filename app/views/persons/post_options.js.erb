@@ -1,4 +1,16 @@
-$("#alert").html("<%=j render :partial => 'home/alert', locals: {alert: 'Save Thanh Cong'} %>");
+$("#alert").html("<%=j render :partial => 'home/alert', locals: {alert: @message} %>");
+<% if @save_option %>
+  $("#<%= @post.id %>").find(".post-option .save #save-post").text("<%= @save_option %>");
+  <% if @save_option == 'Save' %>
+    $("#<%= @post.id %>").find(".post-option .save #save-post").removeClass('c_cornflowerblue');
+    $("#<%= @post.id %>").find(".post-option .save .fa-bookmark").removeClass('c_cornflowerblue');
+  <%else%>
+    $("#<%= @post.id %>").find(".post-option .save #save-post").addClass('c_cornflowerblue');
+    $("#<%= @post.id %>").find(".post-option .save .fa-bookmark").addClass('c_cornflowerblue');
+  <% end %>
+<% elsif @hide_option %>
+  $("#<%= @post.id %>").hide();
+<% end %>
 setTimeout((function() {
   $("#alert .popup").addClass("bounceOutDown");
 }), 5000)

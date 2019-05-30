@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get 'groups/new'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: "home#index"
-  devise_for :persons
+  devise_for :persons, :controllers => {sessions: "sessions"}
 
   resources :persons do
     resources :groups
@@ -54,7 +54,18 @@ Rails.application.routes.draw do
   end
 
   resources :comments do
-    resources :replies
+    member do
+      post 'vote'
+    end
+    collection do
+      post "reply"
+    end
+  end
+
+  resources :replies do
+    member do
+      post 'vote'
+    end
   end
 
 end

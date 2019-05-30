@@ -9,7 +9,8 @@ class PostsController < ApplicationController
 	def show
 		@post = Post.find(params[:id])
 		@comment = @post.comments.new
-		@reply = @comment.replies.new
+    @list_post_comments = @post.comments.where(type: :comment)
+		@new_reply = Comment.new
 	end
 
 	def new
@@ -19,11 +20,11 @@ class PostsController < ApplicationController
 	def create
 		@post = Post.create!(post_params)
 		@post.image = post_params[:image] unless post_params[:image].nil?
-    @post.upvotes += 1
-    @post.upvote << current_person
-  	@post.save!
-  	current_person.posts << @post
-  	current_person.save!
+	    @post.upvotes += 1
+	    @post.upvote << current_person
+	  	@post.save!
+	  	current_person.posts << @post
+	  	current_person.save!
 
 		if @group
 			@group = Group.find(params[:group_id ])
@@ -31,41 +32,63 @@ class PostsController < ApplicationController
   		@group.save!
 		end
 
-		redirect_to person_posts_path(current_person)
+		redirect_to overview_person_path(current_person)
 	end
 
   def vote
     return unless params[:vote]
+    @view = "index" if params[:view] == 'index'
     if @post.upvote.include?(current_person) || @post.downvote.include?(current_person)
       if @post.upvote.include?(current_person) && params[:vote] == "downvote"
+          # post
           @post.upvotes -= 1
           @post.upvote.delete(current_person)
           @post.downvotes += 1
           @post.downvote << current_person
+          @color = 'purple'
+          # person
+          current_person.upvote.delete(@post)
+          current_person.downvote<< @post
         elsif @post.downvote.include?(current_person) && params[:vote] == "upvote"
           @post.downvotes -= 1
           @post.downvote.delete(current_person)
           @post.upvotes += 1
           @post.upvote << current_person
+          # person
+          current_person.upvote << @post
+          current_person.downvote.delete(@post)
+          @color = "red"
         elsif @post.upvote.include?(current_person) && params[:vote] == "upvote"
           @post.upvotes -= 1
           @post.upvote.delete(current_person)
+          current_person.upvote.delete(@post)
+          @color = "none"
         else
           @post.downvotes -= 1
           @post.downvote.delete(current_person)
+          current_person.downvote.delete(@post)
+          @color = "none"
       end
     else
       if params[:vote] == "upvote"
         @post.upvotes += 1
         @post.upvote << current_person
+        current_person.upvote << @post
+        @color = "red"
       else
         @post.downvotes += 1
         @post.downvote << current_person
+        current_person.downvote << @post
+        @color = 'purple'
       end
     end
+    @view = "index"
     @post.save!
-
-    redirect_to root_path
+    current_person.save!
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
 	private

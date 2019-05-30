@@ -4,7 +4,11 @@ class RepliesController < ApplicationController
 		@reply = Reply.create!(params_reply)
 		@comment.replies << @reply
 		current_person.replies << @reply
-		redirect_to person_posts_path(current_person)
+		@new_reply = @comment.replies.new
+	    respond_to do |format|
+    	  format.html
+      	  format.js
+    	end
 	end
 
 	private

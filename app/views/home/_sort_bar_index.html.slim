@@ -1,7 +1,7 @@
 .sort-bar-header
 	.sort-bar.tmol
 		span VIEW
-		= link_to root_path(view: "large", order_sort: order_sort), remote:true do
+		= link_to root_path(view: "large", order_sort: order_sort), remote: true do
 			- if params[:view].present?
 				- active = "#{params[:view] == 'large' ? '_0079d3' : 'gray'}"
 			- else
@@ -17,7 +17,7 @@
 			.view-medium
 				table
 					tr.line-split class="#{active}"
-						td 
+						td
 					tr.line-split class="#{active}"
 						td
 					tr class="#{active}"

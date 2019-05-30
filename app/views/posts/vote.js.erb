@@ -1,0 +1,17 @@
+$("#post-header").html("<%=j render :partial => 'posts/post_header', locals: {post: @post} %>");
+<% if @view = "index" %>
+  $("#<%= @post.id %>").find(".vote-number").text("<%= @post.votes%>");
+  <% case @color %>
+  <% when "red" %>
+    $("#<%= @post.id %>").find(".downvoted").removeClass("downvoted");
+    $("#<%= @post.id %>").find(".fa-arrow-up").addClass("upvoted");
+    $("#<%= @post.id %>").find(".vote-number").addClass("upvoted");
+  <% when "purple" %>
+    $("#<%= @post.id %>").find(".upvoted").removeClass("upvoted")
+    $("#<%= @post.id %>").find(".fa-arrow-down").addClass("downvoted");
+    $("#<%= @post.id %>").find(".vote-number").addClass("downvoted");
+  <% when "none" %>
+    $("#<%= @post.id %>").find(".upvoted").removeClass("upvoted")
+    $("#<%= @post.id %>").find(".downvoted").removeClass("downvoted");
+  <% end %>
+<% end %>

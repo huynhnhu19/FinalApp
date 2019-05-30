@@ -8,7 +8,29 @@ class PersonsController < ApplicationController
 
   def overview
     # tam thoi de day, chú ý khi xong thì chuyển xống index
-    @posts = @person.posts.all.order(updated_at: :asc)
+    case params[:view]
+    when 'posts'
+      @array = @person.posts.all.to_a.sort { |x, y | y.created_at <=> x.created_at }
+    when 'save'
+      @array = @person.posts_saved
+    when 'comments'
+      @comments = current_person.comments
+    when 'hidden'
+      @array = @person.posts_hidden
+    when 'upvoted'
+      @array = @person.upvote
+    when 'downvoted'
+      @array = @person.downvote
+    else
+      comments = @person.comments.to_a
+      posts = @person.posts.to_a
+      @array = comments + posts
+      @array = @array.sort { |x, y | y.created_at <=> x.created_at }
+    end
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def index
@@ -23,6 +45,7 @@ class PersonsController < ApplicationController
   end
 
   def hidden
+    @posts = @person.posts_hidden
   end
 
   def upvoted
@@ -45,9 +68,28 @@ class PersonsController < ApplicationController
 
   def post_options
     if params[:option] == "save"
-      current_person.posts_saved.include?(@post) ? current_person.posts_saved.delete(@post) : current_person.posts_saved << @post
+      if current_person.posts_saved.include?(@post)
+        current_person.posts_saved.delete(@post)
+        @save_option = "Save"
+        @message = "Post unsaved successfully."
+      else
+        current_person.posts_saved << @post
+        @save_option = "Unsave"
+        @message = "Post saved successfully."
+      end
     end
 
+    if params[:option] == "hide"
+      if current_person.posts_hidden.include?(@post)
+        current_person.posts_hidden.delete(@post)
+        @hide_option = "Hide"
+        @message = "Post unhidden successfully."
+      else
+        current_person.posts_hidden << @post
+        @hide_option = "Unhide"
+        @message = "Post hidden successfully."
+      end
+    end
     respond_to do |format|
       format.html
       format.js

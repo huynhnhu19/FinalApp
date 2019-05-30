@@ -1,9 +1,20 @@
 .box_form_comment.form-group
-	= form_for @comment, url: post_comments_path(@post)  do |cm|
-		.comment
-			span.comment-as
-				| Comment as 
-				= current_person.email
-			= cm.text_area :content, placeholder: "Please comment here", class: "form-control"
-			= cm.submit "Comment", class: "btn btn-create btn-submit-comment"
-			hr
+  - if person_signed_in?
+  	= form_for @comment, url: post_comments_path(@post), remote: true  do |cm|
+  	  	.comment.mb10
+  	  		span.comment-as
+  	  			| Comment as
+  	  			= link_to current_person.email, overview_person_path(current_person), class:'ml5'
+    	 	.mb10 = cm.text_area :content, placeholder: "Please comment here", class: "form-control", required: true
+        .row
+            .col-md-9
+            .col-md-3.col-md-offset-3
+      	 	  	= cm.submit "Comment", class: "btn btn-create btn-submit-comment float-right"
+  - else
+   .row.mtb20.border
+      .col-md-7.tmol.p10
+        span.tmol.c_gray.s18 What are your thoughts? Log in or Sign up
+      .col-md-5.p10
+        = link_to "Sign up", new_person_registration_path(), class: "btn btn-signup float-right"
+        = link_to "login", person_session_path(), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'btn btn-login'}
+

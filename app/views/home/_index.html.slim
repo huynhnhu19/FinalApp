@@ -1,37 +1,43 @@
 - @posts.each do |post|
-  .post-box.post-box-index
-    .post-voted
-      = link_to vote_post_path(post, vote: :upvote), method: :post do
-        = fa_icon "arrow-up", class:"#{post.upvote.include?(current_person) ? 'upvoted' : ""}"
-      span.tc.vote-number = post.votes
-      = link_to vote_post_path(post, vote: :downvote), method: :post do
-        = fa_icon "arrow-down", class:"#{post.downvote.include?(current_person) ? 'downvoted' : ""}"
-    .row
-      .col-md-9.p0.tmol
-        .post-header-index.display-flex
-          - if post.belong_to.present?
-            = link_to group_path(post.belong_to), class:'post-group display-flex unset-text tmol' do 
-              .group-icon.mr5
-                = image_tag  post.belong_to.icon_url if post.belong_to.icon.present? 
-              .title.il.s12.tb.mr5.black = post.belong_to.group_name
-          span.s12.tmol.mr5 Posted by
-          .post-author
-            .user.user-email = link_to post.author.email, overview_person_path(post.author), class: "c_gray"
-          span.tmol.s12.c_gray = post.to_pretty
-      .col-md-3
-        - if post.belong_to.present?
-          - if !post.belong_to.members.include?(current_person)
-            = link_to join_group_path(post.belong_to), method: :post, remote: true, class:'btn float-right btn-join-small s10' do
+  span.display-block.box-click id="#{person_post_path(post.author, post)}"
+    .post-box.post-box-index id="#{post.id}"
+      .post-voted
+        = link_to vote_post_path(post, vote: :upvote, view: "index"), method: :post, remote: true do
+          = fa_icon "arrow-up", class:"#{post.upvote.include?(current_person) ? 'upvoted' : ""}"
+        span.tc.vote-number = post.votes
+        = link_to vote_post_path(post, vote: :downvote, view: "index"), method: :post, remote: true do
+          = fa_icon "arrow-down", class:"#{post.downvote.include?(current_person) ? 'downvoted' : ""}"
+      .row
+        .col-md-9.p0.tmol
+          .post-header-index.display-flex
+            - if post.belong_to.present?
+              = link_to group_path(post.belong_to), class:'post-group display-flex unset-text tmol' do
+                .group-icon.mr5
+                  = image_tag  post.belong_to.icon_url if post.belong_to.icon.present?
+                .title.il.s12.tb.mr5.black = post.belong_to.group_name
+            span.s12.tmol.mr5 Posted by
+            .post-author
+              .user.user-email = link_to post.author.email, overview_person_path(post.author), class: "c_gray"
+            span.tmol.s12.c_gray = post.to_pretty
+        .col-md-3
+          - if person_signed_in?
+            - if post.belong_to.present?
+              - if !post.belong_to.members.include?(current_person)
+                = link_to join_group_path(post.belong_to), method: :post, remote: true, class:'btn float-right btn-join-small s10' do
+                  = fa_icon 'plus', class:'c_white mr5'
+                  span JOIN
+                = link_to leave_group_path(post.belong_to), method: :delete, remote: true, class:'btn float-right btn-leave-small de-active' do
+                  = fa_icon 'check'
+          - else
+            = link_to person_session_path, {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class:'btn float-right btn-join-small-login s10'} do
               = fa_icon 'plus', class:'c_white mr5'
               span JOIN
-            = link_to leave_group_path(post.belong_to), method: :delete, remote: true, class:'btn float-right btn-leave-small de-active' do
-              = fa_icon 'check'
 
-    .post-content
-      .post-title.mb10
-        = post.title
-      .mb10 = post.content
-      - if post.image.present?
-        .post-image
-          = image_tag post.image_url
-    = render partial: 'home/post_option', locals: {post: post}
+      .post-content
+        .post-title.mb10
+          = post.title
+        .mb10 = post.content
+        - if post.image.present?
+          .post-image
+            = image_tag post.image_url
+      = render partial: 'home/post_option', locals: {post: post}

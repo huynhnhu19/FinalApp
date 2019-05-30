@@ -1,0 +1,32 @@
+- comment.replies.each do |reply|
+  .reply.display-flex.comment-post-box
+    .comment-voted
+      = link_to vote_comment_path(reply, vote: :upvote, view: "index"), method: :post, remote: true do
+        .mb5 = fa_icon "arrow-up", class:"#{reply.upvote.include?(current_person) ? 'upvoted' : ""}"
+      = link_to vote_comment_path(reply, vote: :downvote, view: "index"), method: :post, remote: true do
+        = fa_icon "arrow-down", class:"#{reply.downvote.include?(current_person) ? 'downvoted' : ""}"
+    .body-reply-comment
+      . id="#{reply.id}"
+        .body-comment.tmol.mb5
+
+          .user.user-email.mr5.s12 = link_to reply.author.email, overview_person_path(reply.author), class: "c_gray"
+          - if reply.author == current_person
+            .mr5
+              = fa_icon "microphone", class:"c_0079d3"
+          .tc
+            span.dot
+          .comment-votes.s12.mr5 ="#{reply.votes} point"
+          .tc
+            span.dot
+          span.tmol.s12.c_gray = reply.to_pretty
+        .comment-text class="'mb15"
+          = reply.content
+        = render partial: 'comments/comment_option', locals: {type: "reply"}
+        = render partial: "replies/reply_comment", locals: {new_reply: new_reply, comment: reply, post: comment.post}
+        .list-comment-reply
+            = render partial: "comments/reply_body", locals: {comment: reply, new_reply: new_reply}
+
+
+
+
+

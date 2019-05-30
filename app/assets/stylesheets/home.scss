@@ -60,7 +60,7 @@
 .post-header-index{
 	.post-group{
 		.group-icon{width: 20px;height: 20px}
-		.group-icon img{width: 100%; height: 100%}
+		.group-icon img{width: 100%; height: 100%; border-radius: 50%;}
 	}
 }
 .box-footer{
@@ -87,7 +87,7 @@
 	.box-license{
 		margin-top: 20px;
 		font-size: 12px;
-		text-align: center;	
+		text-align: center;
 		.copyright{
 			font-style: italic;
 			padding-bottom: 5px;

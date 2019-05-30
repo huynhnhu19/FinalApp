@@ -1,6 +1,5 @@
 .profile-bar{
   width: 100%;
-  height: 40px;
   text-transform: uppercase;
   display: flex;
   border-bottom: 1px solid rgb(237, 239, 241);
@@ -47,10 +46,11 @@
   }
 
   .post-image{
-    padding: 1.25% 0 ;
+    padding: 0.5% 0 ;
     width: 85px;
     height: 85px;
     float: left;
+    overflow: hidden;
 
     .post-icon{
       border-radius: 5px;
@@ -58,14 +58,10 @@
       background-color: #EDEFF1;
       padding: 27% 40%;
     }
-    .post-icon i {
-      width: 20px;
-    }
   }
   .post-image img{
-    width: 80px;
-    height: 60px;
-    margin-bottom: 100%;
+    max-width: 100%;
+    max-height: 550px;
   }
   .post-things{
     margin-left: 10%;
@@ -97,7 +93,7 @@
 }
 
 .user-comment-list{
-  background-color: white;
+  .user-comments-box{background-color: white;}
   .post-summary-box{
     padding: 5px;
     .summary, .post-title{
@@ -160,3 +156,14 @@
     color: gray
     }
   }
+
+.user-post-box-empty{
+  border-radius: unset;
+  border : 0.5px solid gray;
+  .post-box{
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: unset;
+    height: 75px;
+    margin-bottom: 0;
+  }
+}

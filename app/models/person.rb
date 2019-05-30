@@ -60,6 +60,11 @@ class Person
   has_many :in, :groups, origin: :author
   has_many :in, :join_groups, type: :joins, model_class: :Group
   has_many :in, :posts_saved, type: :save, model_class: :Post
+  has_many :in, :posts_hidden, type: :hide, model_class: :Post
+  has_many :in, :upvote, type: :upvoted, model_class: :Post
+  has_many :in, :downvote, type: :downvoted, model_class: :Post
+  has_many :in, :upvote_comment, type: :comment_upvoted, model_class: :Comment
+  has_many :in, :downvote_comment, type: :comment_downvoted, model_class: :Comment
 
   has_many :in, :followings, type: :following, model_class: :Person
   has_many :in, :followers, type: :followed_by, model_class: :Person

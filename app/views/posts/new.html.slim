@@ -25,7 +25,7 @@
 				.form-box
 					= form_for @post, url: @url do |f|
 						.form-group.form-title
-							= f.text_field :title, class: "form-control", placeholder: 'Title'
+							= f.text_field :title, class: "form-control", placeholder: 'Title', required: true
 						.form-group.form-for-textarea
 							.option-text-area.tmol
 								span.post-icon-option title = "Bold" = fa_icon "bold"
@@ -43,7 +43,7 @@
 								span.post-icon-option title = "Image" = fa_icon "image"
 								span.post-icon-option title = "Video" = fa_icon "video-camera"
 							.text-area-content
-								= f.text_area :content, class: "form-control", placeholder: 'Text'
+								= f.text_area :content, class: "form-control", placeholder: 'Text', required: true
 						.form-group.action-for-post
 							.more-option-post
 								button.btn.btn-oc type="button"
@@ -66,9 +66,11 @@
 		            	= f.text_field :title, class: "form-control", placeholder: 'Title'
 		        	.form-group.upload-box
 		          		.upload
-							span.post-icon-option = fa_icon "plus"
-			          		.upload-image
-					        	= f.file_field :image, class: "form-control", placeholder: 'Text' 
+                    		img id="image-background"
+                    		img id="preview"
+			          		.upload-image.tmol
+								span.post-icon-option.tmol = fa_icon "plus"
+					        	= f.file_field :image, class: "form-control", placeholder: 'Text'
 				    .form-group.action-for-post
 							.more-option-post
 								button.btn.btn-oc type="button"

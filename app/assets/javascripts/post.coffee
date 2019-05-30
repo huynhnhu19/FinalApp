@@ -4,6 +4,7 @@ window.Post =
  			switchTag1()
  			switchTag2()
  			switchTag3()
+ 			previewPicture()
 
 switchTag1 = ->
 	$(".new-post .btn-post").on "click", (e) -> 
@@ -23,5 +24,18 @@ switchTag3 = ->
 		$('#post-box').css("display", "none")
 		$('#video-box').css("display", "none")
 		$('#link-box').css("display", "block")
-		
+
+previewPicture = ->
+	$("body").on 'change', '#post_image', (event) ->
+	    background = $('#image-background')
+	    preview = $('#preview')
+	    input = $(event.currentTarget)
+	    file = input[0].files[0]
+	    reader = new FileReader
+	    reader.onload = (e) ->
+	        image_base64 = e.target.result
+	        background.attr 'src', image_base64
+	        preview.attr 'src', image_base64
+
+	    reader.readAsDataURL file
 		
