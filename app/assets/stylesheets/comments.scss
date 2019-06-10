@@ -1,5 +1,4 @@
 .box_form_comment{
-  margin: 10px 0;
 	.comment {
 		#comment_content, .reply {
 			background-color: #F2F2F2;
@@ -17,6 +16,10 @@
 		}
 	}
 	.reply-comment{
+		margin-left: 50px;
+		.reply{
+			width: 750px;
+		}
 		.btn-submit-reply{
 			margin-top: 10px;
 		}
@@ -31,13 +34,16 @@
 	}
 
 	.body-comment{
-		.comment-text{
+		margin-left: 15px;
+
+			.comment-text{
 			color: #9B9B9B;
 		}
 		.user-comment{
 			font-weight: bold;
 		}
 		.timestamp-comment{
+			margin-left: 10px;
 		    color: rgb(120, 124, 126);
 		    font-style: italic;
 		    font-weight: normal;
@@ -45,11 +51,15 @@
 		}
 
 	}
+	.list-comment-reply{
+		margin-left: 50px;
+	}
 	.comment-user{
 		.box_form_comment{
 			display: none;
 		}
 		.reply-comment{
+			margin-left: 52px;
 			cursor: pointer;
 		}
 		.comment-text{
@@ -73,18 +83,4 @@
  }
 .navbar-form{
 	margin-bottom: 0px;
-}
-
-.comment-post{
-  border-left: 0.5px solid;
-  .comment-voted{
-    margin: 5px 10px;
-  }
-}
-
-.reply{
-  border-left: 0.5px solid;
-  .comment-voted{
-    margin: 5px 10px;
-  }
 }
