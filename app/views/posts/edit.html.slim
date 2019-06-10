@@ -1,9 +1,8 @@
 .container
   .row
     .col-md-9.center-block
-		= render "posts/new"
+		= render partial: "posts/new"
     .col-md-3
       = render "home/create_post"
-
 javascript:
 	Post.run()

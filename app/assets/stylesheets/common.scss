@@ -158,6 +158,7 @@ input[type="button"]:focus{
   border-radius: 5px;
   border: 0.5px solid gray;
 }
+.text-decoration-none{text-decoration: none;}
 
 // popup
 .popup {
@@ -196,4 +197,25 @@ input[type="button"]:focus{
   border-radius: 50%;
   display: inline-block;
   margin-right: 5px;
+}
+
+.list-subject{
+  .subject-style{
+    color: blue;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 0.5px solid;
+    margin-right: 10px;
+    span{
+      text-transform: uppercase;
+      margin: 0px;  
+      font-weight: 500;
+      font-size: 14px;
+    }
+  }
+}
+.is_question{
+  background-color: #f0ad4e;
+  span, .fa{color: white;}
+  
 }

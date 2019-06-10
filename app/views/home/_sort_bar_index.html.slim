@@ -34,7 +34,6 @@
 						td
 					tr class="#{active}"
 						td
-
 		span style="margin-left: 30px;" SORT
 		.btn-group#group-sort-btn
           button.btn.dropdown-toggle.user-info data-toggle="dropdown"
@@ -67,4 +66,5 @@
 	            li.dropdown-item.box-option-user
 		          		span.icon-profile = fa_icon "chevron-circle-up"
 		           		span Raising
-
+    	span style="margin-left: 30px;"
+    	= render partial: "home/subject"

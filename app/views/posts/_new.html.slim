@@ -1,0 +1,151 @@
+- if @group.nil?
+	- url = @post.id ? person_posts_path(current_person, @post.id) : person_posts_path(current_person)
+- else
+	- @url = group_posts_path(@group)
+h5 Create a Post
+hr
+.sort-group
+	= render partial: 'posts/sort_group_for_post', locals: {view: 'large', order_sort: 'best'}
+.new-post
+	.btn-group role="group" aria-label="..."
+		button.btn.btn-post.btn-post-type type="button"
+      		span.post-icon-option = fa_icon "book"
+      		span.post-type Post
+		button.btn.btn-video.btn-post-type type="button"
+			span.post-icon-option = fa_icon "image"
+      		span.post-type  Image & Video
+		button.btn.btn-link.btn-post-type type="button"
+			span.post-icon-option = fa_icon "link"
+      		span.post-type Link
+	#post-box
+		.form-box
+			= form_for @post, url: @url do |f|
+				.post-option.tmol
+        			.form-category.mr5
+          				= f.select :category, category_options, selected: @post.category && @post.category.id , include_blank: "Choose a Category"
+					.form-group.action-for-post 
+						.more-option-post
+							- if @post.is_question
+								button.btn.btn-oc#question-btn.is_question type="button" title="Unmark Question"
+									span.post-icon-option.mr5 = fa_icon "check"
+									span Question
+									= hidden_field_tag 'post[is_question]', true, id: "is_question"
+							- else
+								button.btn.btn-oc#question-btn type="button" title="Mark as a question"
+									span.post-icon-option.mr5 = fa_icon "plus"
+									span Question
+									= hidden_field_tag 'post[is_question]', false, id: "is_question"
+				.form-group.form-title
+					= f.text_field :title, class: "form-control", placeholder: 'Title', required: true
+				.form-group.form-for-textarea
+					.option-text-area.tmol
+						span.post-icon-option title = "Bold" = fa_icon "bold"
+						span.post-icon-option title = "Italic" = fa_icon "italic"
+						span.post-icon-option title = "Link" = fa_icon "link"
+						span.post-icon-option title = "Strikethrough" = fa_icon "strikethrough"
+						span.post-icon-option title = "Code" = fa_icon "code"
+						span.post-icon-option title = "Superscript" = fa_icon "superscript"
+						span.post-icon-option title = "Spoiler" = fa_icon "exclamation-circle"
+						span.post-icon-option title = "Header" = fa_icon "header"
+						span.post-icon-option title = "Bullet list" = fa_icon "list-ul"
+						span.post-icon-option title = "Number list" = fa_icon "list-ol"
+						span.post-icon-option title = "Quote" = fa_icon "quote-left"
+						span.post-icon-option title = "Table" = fa_icon "table"
+						span.post-icon-option title = "Image" = fa_icon "image"
+						span.post-icon-option title = "Video" = fa_icon "video-camera"
+					.text-area-content
+						= f.text_area :content, class: "form-control", placeholder: 'Text', required: true
+				.form-group.action-for-post
+					.more-option-post
+						button.btn.btn-oc type="button"
+							span.post-icon-option = fa_icon "plus"
+							span OC
+						button.btn.btn-oc type="button"
+							span.post-icon-option = fa_icon "plus"
+							span Spoiler
+						button.btn.btn-oc type="button"
+							span.post-icon-option = fa_icon "plus"
+							span NSFW
+						= f.submit "#{@post.id ? 'Update' : 'Create'}", class: "btn-create float-right"
+						button.btn.btn-cancel type="button" Cancel
+				= render "posts/sort_category_post"
+				= render "posts/footer_create_post"
+	#video-box
+      .form-box
+        = form_for @post, url: @url do |f|
+			.post-option.tmol
+    			.form-category.mr5
+      				= f.select :category, category_options, selected: @post.category && @post.category.id , include_blank: "Choose a Category"
+				.form-group.action-for-post 
+					.more-option-post
+						- if @post.is_question
+							button.btn.btn-oc#question-btn.is_question type="button" title="Unmark Question"
+								span.post-icon-option.mr5 = fa_icon "check"
+								span Question
+								= hidden_field_tag 'post[is_question]', true, id: "is_question"
+						- else
+							button.btn.btn-oc#question-btn type="button" title="Mark as a question"
+								span.post-icon-option.mr5 = fa_icon "plus"
+								span Question
+								= hidden_field_tag 'post[is_question]', false, id: "is_question"
+
+        	.form-group.form-title
+            	= f.text_field :title, class: "form-control", placeholder: 'Title'
+        	.form-group.upload-box
+          		.upload
+            		img id="image-background"
+            		img id="preview"
+	          		.upload-image.tmol
+						span.post-icon-option.tmol = fa_icon "plus"
+			        	= f.file_field :image, class: "form-control", placeholder: 'Text'
+		    .form-group.action-for-post
+					.more-option-post
+						button.btn.btn-oc type="button"
+							span.post-icon-option = fa_icon "plus"
+							span OC
+						button.btn.btn-oc type="button"
+							span.post-icon-option = fa_icon "plus"
+							span Spoiler
+						button.btn.btn-oc type="button"
+							span.post-icon-option = fa_icon "plus"
+							span NSFW
+						= f.submit "#{@post.id ? 'Update' : 'Create'}", class: "btn-create float-right"
+						button.btn.btn-cancel type="button" Cancel
+			= render "posts/footer_create_post"
+	#link-box
+		.form-box
+			= form_for @post, url: @url do |f|
+				.post-option.tmol
+        			.form-category.mr5
+          				= f.select :category, category_options, selected: @post.category && @post.category.id , include_blank: "Choose a Category"
+					.form-group.action-for-post 
+						.more-option-post
+							- if @post.is_question
+								button.btn.btn-oc#question-btn.is_question type="button" title="Unmark Question"
+									span.post-icon-option.mr5 = fa_icon "check"
+									span Question
+									= hidden_field_tag 'post[is_question]', true, id: "is_question"
+							- else
+								button.btn.btn-oc#question-btn type="button" title="Mark as a question"
+									span.post-icon-option.mr5 = fa_icon "plus"
+									span Question
+									= hidden_field_tag 'post[is_question]', false, id: "is_question"
+
+				.form-group.form-title
+					= f.text_field :title, class: "form-control", placeholder: 'Title'
+				.form-group.form-for-textlink
+					= f.text_area :content, class: "form-control", placeholder: 'Url'
+				.form-group.action-for-post
+					.more-option-post
+						button.btn.btn-oc type="button"
+							span.post-icon-option = fa_icon "plus"
+							span OC
+						button.btn.btn-oc type="button"
+							span.post-icon-option = fa_icon "plus"
+							span Spoiler
+						button.btn.btn-oc type="button"
+							span.post-icon-option = fa_icon "plus"
+							span NSFW
+						= f.submit "#{@post.id ? 'Update' : 'Create'}", class: "btn-create float-right"
+						button.btn.btn-cancel type="button" Cancel
+			= render "posts/footer_create_post"

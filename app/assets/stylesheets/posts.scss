@@ -391,3 +391,27 @@
   max-width: 75px;
   min-height: 340px;
 }
+
+.form-category{
+  margin-bottom: 15px;
+  select{
+    font-size: 14px;
+    border-radius: 5px;
+    background-color: white;
+    padding: 5px;
+    width: 200px;
+    option{
+      padding: 5px;
+    }
+  }
+  select:focus {
+    box-shadow: none;
+    outline:none;
+  }
+}
+.category-post{
+  font-size: 14px;
+  padding: 2px 5px;
+  border-radius: 3px;
+  margin-right: 5px
+}

@@ -5,6 +5,7 @@ window.Post =
  			switchTag2()
  			switchTag3()
  			previewPicture()
+ 			markQuestion()
 
 switchTag1 = ->
 	$(".new-post .btn-post").on "click", (e) -> 
@@ -39,3 +40,17 @@ previewPicture = ->
 
 	    reader.readAsDataURL file
 		
+markQuestion = ->
+	$("body").on 'click', '#question-btn', (event) ->
+		if $(this).parents().find("#is_question").val() == "false" 
+			$(this).parents().find("#is_question").prop("value", true)
+			$(this).addClass("is_question")
+			$(this).find(".fa").removeClass("fa-plus")
+			$(this).find(".fa").addClass("fa-check")
+			$(this).prop("title", "Unmark Question")
+		else
+			$(this).parents().find("#is_question").prop("value", false)
+			$(this).removeClass("is_question")
+			$(this).find(".fa").addClass("fa-plus")
+			$(this).find(".fa").removeClass("fa-check")
+			$(this).prop("title", "Mark as a Question")

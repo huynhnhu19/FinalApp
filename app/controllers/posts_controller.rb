@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-	before_action :get_group, :get_post, :get_user
+	before_action :get_group, :get_post, :get_user, :get_category
 	def index
 		@posts = @person.posts.all.order(updated_at: :asc).page(1).per 10
 		# @post = Post.find(params[:id])
@@ -20,20 +20,41 @@ class PostsController < ApplicationController
 	def create
 		@post = Post.create!(post_params)
 		@post.image = post_params[:image] unless post_params[:image].nil?
-	    @post.upvotes += 1
-	    @post.upvote << current_person
-	  	@post.save!
-	  	current_person.posts << @post
-	  	current_person.save!
+    @post.upvotes += 1
+    @post.upvote << current_person
+  	@post.save!
+  	current_person.posts << @post
+  	current_person.save!
 
 		if @group
 			@group = Group.find(params[:group_id ])
     	@group.posts << @post
   		@group.save!
 		end
+    if @category
+      @post.category = @category
+      @category.posts << @post
+      @post.save 
+    end
 
 		redirect_to overview_person_path(current_person)
 	end
+
+  def edit
+    @post = Post.find(params[:id])
+  end
+
+  def update
+    @post = Post.find(params[:id])
+    @post.update!(post_params.to_h)
+    @post.category.posts.delete(@post) if @post.category
+    if @category
+      @post.category = @category
+      @category.posts << @post
+      @post.save 
+    end
+    redirect_to overview_person_path(current_person)
+  end
 
   def vote
     return unless params[:vote]
@@ -92,7 +113,10 @@ class PostsController < ApplicationController
   end
 
 	private
-
+  def get_category
+    return unless params[:post]
+    @category = Category.find_by(id: params[:post][:category])
+  end
 	def get_group
 		return if params[:group_id ].nil?
 		@group = Group.find(params[:group_id ])
@@ -103,7 +127,7 @@ class PostsController < ApplicationController
   end
 
 	def post_params
-		params.require(:post).permit(:title, :content, :image)
+		params.require(:post).permit(:title, :content, :image, :is_question)
 	end
 
   def get_user

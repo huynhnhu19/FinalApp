@@ -10,6 +10,8 @@ $("#alert").html("<%=j render :partial => 'home/alert', locals: {alert: @message
   <% end %>
 <% elsif @hide_option %>
   $("#<%= @post.id %>").hide();
+<% elsif @delete_option %>
+  $("#<%= @post.id %>").hide();
 <% end %>
 setTimeout((function() {
   $("#alert .popup").addClass("bounceOutDown");

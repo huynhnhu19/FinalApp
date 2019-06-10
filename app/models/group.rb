@@ -23,6 +23,7 @@ class Group
   	enum type: [:public, :restricted, :private], _default: :public
 
   after_save :add_first_post
+  after_create :add_category
 
 	def check_color
 		self.text_color.present? ? self.text_color : '_0079d3'
@@ -50,4 +51,5 @@ class Group
     person.posts << post
     self.posts << post
   end
+  
 end

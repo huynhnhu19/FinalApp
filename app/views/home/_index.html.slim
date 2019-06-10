@@ -34,6 +34,12 @@
               span JOIN
 
       .post-content
+        - if post.is_question
+          .category-post.il class="b_f0ad4e"
+            span.c_white Question
+        - if post.category
+          .category-post.il class="b_#{post.category.color}"
+            = post.category.title.capitalize
         .post-title.mb10
           = post.title
         .mb10 = post.content

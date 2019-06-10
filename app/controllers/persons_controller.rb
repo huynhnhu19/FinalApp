@@ -67,7 +67,8 @@ class PersonsController < ApplicationController
   end
 
   def post_options
-    if params[:option] == "save"
+  	case params[:option] 
+    when "save"
       if current_person.posts_saved.include?(@post)
         current_person.posts_saved.delete(@post)
         @save_option = "Save"
@@ -77,9 +78,8 @@ class PersonsController < ApplicationController
         @save_option = "Unsave"
         @message = "Post saved successfully."
       end
-    end
 
-    if params[:option] == "hide"
+    when "hide"
       if current_person.posts_hidden.include?(@post)
         current_person.posts_hidden.delete(@post)
         @hide_option = "Hide"
@@ -89,6 +89,11 @@ class PersonsController < ApplicationController
         @hide_option = "Unhide"
         @message = "Post hidden successfully."
       end
+
+    when "delete"
+    	@post.destroy
+        @delete_option = "delete"
+        @message = "Post delete successfully."
     end
     respond_to do |format|
       format.html

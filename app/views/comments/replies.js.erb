@@ -1,5 +1,3 @@
 $("#<%= @parent_comment.id%>").find(".box_form_comment").first().css("display", "none");
 $("#<%= @parent_comment.id%>").find(".box_form_comment").first().find("#comment_content").val("");
-// $("#<%= @parent_comment.id%>").find(".list-comment-reply").first().html("<%=j render :partial => 'comments/reply_body', locals: { comment: @comment, new_reply: @new_reply } %>");
-// $(".list-comment-reply").html("<%=j render :partial => 'comments/reply_body', locals: { comment: @comment, new_reply: @new_reply } %>");
-$("#<%= @parent_comment.id%>").find(".list-comment-reply").first().html("<%=j render :partial => 'comments/reply_body', locals: { comment: @comment, new_reply: @new_reply, type: 'comment' } %>");
+$("#<%= @parent_comment.id%>").find(".list-comment-reply").first().html("<%=j render :partial => 'comments/reply_body', locals: { comment: @parent_comment, new_reply: @new_reply, type: 'comment' } %>");
