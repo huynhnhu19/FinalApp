@@ -22,8 +22,8 @@ class Group
 
   	enum type: [:public, :restricted, :private], _default: :public
 
-  after_save :add_first_post
-  after_create :add_category
+  after_create :add_first_post
+  after_create :add_default_icon
 
 	def check_color
 		self.text_color.present? ? self.text_color : '_0079d3'
@@ -41,15 +41,22 @@ class Group
 		end
 	end
 
-  def add_first_post
-    title = "#{self.group_name} has been created"
-    content = self.about
-    person = self.author
-    post = Post.create!(title: title, content: content, post_creation: true)
-    post.upvotes += 1
-    post.upvote << person
-    person.posts << post
-    self.posts << post
-  end
-  
+  	def add_first_post
+    	title = "#{self.group_name} has been created"
+    	content = self.about
+    	person = self.author
+    	post = Post.create!(title: title, content: content, post_creation: true)
+    	post.upvotes += 1
+    	post.upvote << person
+    	person.posts << post
+    	self.posts << post
+  	end
+
+	def add_default_icon
+		File.open('public/group-icon.jpeg') do |f|
+	  		self.icon = f
+		end
+		self.save!
+	end
+
 end

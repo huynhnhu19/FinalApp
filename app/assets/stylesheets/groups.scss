@@ -230,3 +230,18 @@
 .community-creation{
   margin: 15px;
 }
+
+.search-result{
+  border-radius: 5px;
+  background-color: white;
+  padding: 10px;
+}
+.user-post-list-search{
+  margin-top: 20px;
+  margin-bottom: 20px;
+  .user-post-box{
+    border: 0.5px solid gray;
+    border-radius: 0;
+    margin-bottom: 0px;
+  }
+}

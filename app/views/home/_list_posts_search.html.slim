@@ -1,4 +1,4 @@
-.user-post-list
+.user-post-list-search
   - posts.each do |value|
     - if value.is_a?(Post)
       .user-post-box id="#{value.id}"
@@ -49,37 +49,3 @@
               span.tmol.s12.c_gray = value.to_pretty
             .post-user-info
             = render partial: 'home/post_option', locals: {post: value}
-    - else
-      .user-comment-list.mb5
-        .user-comments-box
-          .post-summary-box
-            .icon-color.inline
-              span = fa_icon "comment"
-            .summary.inline
-              .post-title.inline
-                = link_to "#{current_person.email}", overview_person_path(current_person)
-                span = t("person.comments.comment_on")
-                span = value.post.title
-              .post-owner-info.inline
-                span = t("posts.post_by")
-                = link_to "#{value.author.email}", overview_person_path(value.author)
-          .post-summary-comment
-            .person
-              = link_to "#{current_person.email}", overview_person_path(current_person)
-            .comment-content
-              = value.content
-            .post-option
-              .comment.option-style
-                span = fa_icon "bolt"
-                span Reply
-              .share.option-style
-                span = fa_icon "share"
-                span Share
-              .report.option-style
-                span = fa_icon "flag"
-                span Report
-              .save.option-style
-                span = fa_icon "bookmark"
-                span Save
-javascript:
- Group.run()

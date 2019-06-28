@@ -1,0 +1,8 @@
+<%if params[:view] == 'posts'%>
+	$("#search-index").html("<%=j render :partial => 'home/list_posts_search', :locals => { posts: @posts } %>");
+<%elsif params[:view] == 'communities'%>	
+	$("#search-index").html("<%=j render :partial => 'home/search_best_result', :locals => {groups: @groups } %>");
+<%else %>	
+	$("#search-index .search-group").html("<%=j render :partial => 'home/search_best_result', :locals => { groups: @groups} %>");
+	$("#search-index .search-post").html("<%=j render :partial => 'home/list_posts_search', :locals => { posts: @posts } %>");
+<%end%>

@@ -1,9 +1,9 @@
 - if person_signed_in?
   .btn-group
     button.btn.dropdown-toggle.user-action data-toggle="dropdown"
-     .user-name 
-      span u/
-      span = current_person.email
+      .box-user-action
+          span.icon-profile = fa_icon "home"
+          span Home
     ul.dropdown-menu.menu-user
       p.heading feeds
       = link_to root_path() do

@@ -1,0 +1,22 @@
+.search-header
+	.param-search-header
+		= params[:search]
+	span.s12 Search results
+.search-option.tmol
+	= link_to search_path(view: 'best_result', search: params[:search]), remote: true do
+		.search-option-style.best-result.focus
+			span Best Result
+	= link_to search_path(view: 'posts', search: params[:search]), remote: true do
+		.search-option-style.posts-result
+			span Posts
+	= link_to search_path(view: 'communities', search: params[:search]), remote: true do
+		.search-option-style.group-users-result
+			span Communities and Users
+.container-fluid
+  .row
+    .col-md-9#search-index
+     	= render partial: "search_best_result", locals: {groups: @groups, posts: @posts}
+    .col-md-3
+javascript:
+ Group.run()
+ Index.run()

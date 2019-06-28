@@ -29,6 +29,7 @@
       	.post-image
           = link_to @post.image_url, target: :_blank do
         		= image_tag @post.image_url
+      .s14.mb10.mt5 = @post.content
   = render partial: "home/post_option", locals:{post: @post}
   = render partial: "comments/new_comment", locals: {post: @post, comment: @comment }
   = render partial: "posts/sort_comments"

@@ -159,6 +159,7 @@ input[type="button"]:focus{
   border: 0.5px solid gray;
 }
 .text-decoration-none{text-decoration: none;}
+.ptb0{padding-top: 0; padding-bottom: 0}
 
 // popup
 .popup {
@@ -217,5 +218,20 @@ input[type="button"]:focus{
 .is_question{
   background-color: #f0ad4e;
   span, .fa{color: white;}
-  
+}
+.search-form{
+  margin: 0;
+  line-height: 2.5;
+  #search{
+    width: 100%;
+    border-radius: 4px;
+  }
+  #search:focus{outline: none}
+}
+.alert-error{
+  z-index: 1000;
+  position: fixed;
+  width: 100%;
+  background-color: pink;
+  font-weight: bold;
 }

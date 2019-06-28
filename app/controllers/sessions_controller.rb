@@ -2,8 +2,14 @@ class SessionsController < Devise::SessionsController
   respond_to :html, :js, :json
 
   def create
-    resource = warden.authenticate!(:scope => resource_name, :recall => '#{controller_path}#failure')
-    sign_in_and_redirect(resource_name, resource)
+    person = Person.find_by(email: params[:person][:email])
+    if person.nil?
+      flash[:error] = "Email or password was wrong. Please check it again!"
+      redirect_to :root
+    else  
+      resource = warden.authenticate!(:scope => resource_name, :recall => '#{controller_path}#failure')
+      sign_in_and_redirect(resource_name, resource)
+    end
   end
 
   def sign_in_and_redirect(resource_or_scope, resource=nil)

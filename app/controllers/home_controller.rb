@@ -19,4 +19,14 @@ class HomeController < ApplicationController
   			format.js
     	end
 	end
+
+	def search
+		return unless params[:search]
+		@groups = Group.where(['group_name LIKE ?', "%#{params[:search]}%"])
+		@posts = Post.all
+		respond_to do |format|
+  			format.html
+  			format.js
+    	end
+	end
 end

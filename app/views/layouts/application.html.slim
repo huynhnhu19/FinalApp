@@ -12,13 +12,13 @@ body
     .container-fluid
       .nav.nav-left
         #logo.navbar-brand.app-name.tmol
-          = link_to "Ten App", root_path()
+          = link_to "Health Social", root_path()
           = render partial: 'home/user_action_sort', locals: {view: 'large', order_sort: 'best'}
-        form.navbar-form
-          .input-group
+        = form_tag(search_path, method: :get, class:"search-form") do 
+          form.navbar-form
             .input-search
               span.icon-search = fa_icon "search"
-              input.form-control placeholder="Search" type="text"
+              = text_field_tag :search, params[:search]
       .nav.nav-right.tmol
         - if person_signed_in?
           .menu-home
