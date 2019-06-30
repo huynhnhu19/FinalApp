@@ -14,14 +14,15 @@
 :constraints:
 - CONSTRAINT ON ( `neo4j::migrations::schemamigration`:`Neo4j::Migrations::SchemaMigration`
   ) ASSERT `neo4j::migrations::schemamigration`.migration_id IS UNIQUE
+- CONSTRAINT ON ( admin:Admin ) ASSERT admin.uuid IS UNIQUE
 - CONSTRAINT ON ( category:Category ) ASSERT category.id IS UNIQUE
 - CONSTRAINT ON ( category:Category ) ASSERT category.uuid IS UNIQUE
 - CONSTRAINT ON ( comment:Comment ) ASSERT comment.id IS UNIQUE
 - CONSTRAINT ON ( comment:Comment ) ASSERT comment.uuid IS UNIQUE
 - CONSTRAINT ON ( group:Group ) ASSERT group.id IS UNIQUE
 - CONSTRAINT ON ( group:Group ) ASSERT group.uuid IS UNIQUE
-- CONSTRAINT ON ( notification:Notification ) ASSERT notification.uuid IS UNIQUE
 - CONSTRAINT ON ( person:Person ) ASSERT person.personal_id IS UNIQUE
+- CONSTRAINT ON ( person:Person ) ASSERT person.uuid IS UNIQUE
 - CONSTRAINT ON ( post:Post ) ASSERT post.id IS UNIQUE
 - CONSTRAINT ON ( post:Post ) ASSERT post.uuid IS UNIQUE
 - CONSTRAINT ON ( reply:Reply ) ASSERT reply.uuid IS UNIQUE
@@ -32,10 +33,24 @@
 - '20190330061616'
 - '20190330061721'
 - '20190330074409'
-- '20190514075338'
+- '20190331075925'
+- '20190403022752'
+- '20190403023111'
+- '20190403023153'
+- '20190403075234'
+- '20190403075255'
+- '20190403075314'
+- '20190403075338'
+- '20190409015010'
+- '20190409124344'
+- '20190409124427'
+- '20190409124920'
+- '20190424145541'
 - '20190524020057'
 - '20190526035315'
 - '20190526170247'
 - '20190527071533'
 - '20190602110113'
 - '20190602110651'
+- '20190630030250'
+- '20190630050218'

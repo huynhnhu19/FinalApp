@@ -6,6 +6,11 @@ window.Group =
       joinGroup()
       leaveGroup()
       upvoteTick()
+      tickColorWhenLoad()
+tickColorWhenLoad = ->
+  color = $("#category_color").val()
+  $("##{color}").find("i").addClass("color-checked")
+
 tickColor = ->
   $(".color").on "click", (e) ->
     $(".color-checked").removeClass("color-checked")
@@ -14,9 +19,9 @@ tickColor = ->
 
 tickThem = ->
   $(".them").on "click", (e) ->
-    $(".color-checked").removeClass("them-checked")
+    $(".them-checked").removeClass("them-checked")
     $(this).find("i").addClass("them-checked")
-    $("#group_them").val($(this).attr('id'))
+    $("#category_color").val($(this).attr('id'))
 
 joinGroup = ->
   $(".btn-join-small").on 'click', (e) ->

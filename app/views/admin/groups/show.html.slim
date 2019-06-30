@@ -1,0 +1,49 @@
+.container
+  .mt20.account-setting
+    .customize-profile
+      .header ="#{@group.group_name} Community"
+  .admin-post-info
+    .title
+      span.mr5.tb Community Name:
+      = link_to admin_group_path(@group) do
+        = @group.group_name
+    .title
+      span.mr5.tb Community Leader:
+      = link_to admin_person_path(@group.author) do
+        = @group.author.email
+    .title
+      span.mr5.tb About:
+      = @group.about
+    .title
+      span.mr5.tb Community Type:
+      = @group.type
+    .content
+      span.mr5.tb Posts:
+      = @group.posts.count
+    .content
+      span.mr5.tb Members:
+      = @group.members.count
+    .content
+      span.mr5.tb Created At:
+      = @group.created_at.strftime("%F %T")
+  .admin-action
+    .action-admin.il class="_red"
+      = link_to admin_group_path(@group), method: :delete, data: {confirm: "Are you sure?"} do
+        span Delete
+    .action-admin.il class="_28a745"
+      = link_to 'View This', group_path(@group)
+  .mt20.account-setting
+    .customize-profile
+      .member-header Members
+  - if @group.members.any?
+    = render partial: "admin/persons/index", locals: {persons: @group.members}
+  - else
+    .note This community have no members!
+  .mt20.account-setting
+    .customize-profile
+      .member-header Posts
+  - if @group.posts.any?
+    = render partial: "admin/posts/index", locals: {posts: @group.posts}
+  - else
+    .note This community have no posts!
+

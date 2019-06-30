@@ -1,0 +1,33 @@
+.container
+  .mt20.account-setting
+    .customize-profile
+      .header Comments & Replies
+  .admin-post-info
+    .title
+      span.mr5.tb Content:
+      = @comment.content
+    .title
+      span.mr5.tb Person:
+      = link_to admin_person_path(@comment.author) do
+        = @comment.author.email
+    .title
+      span.mr5.tb Type:
+      = @comment.type
+    .content
+      span.mr5.tb Posts:
+      = link_to "View this post", admin_post_path(@comment.post)
+    .content
+      span.mr5.tb Upvotes:
+      = @comment.upvotes
+    .content
+      span.mr5.tb Downvotes:
+      = @comment.downvotes
+    .content
+      span.mr5.tb Created At:
+      = @comment.created_at.strftime("%F %T")
+  .admin-action
+    .action-admin.il class="_red"
+      = link_to admin_comment_path(@comment), method: :delete, data: {confirm: "Are you sure?"} do
+        span Delete
+    .action-admin.il class="_28a745"
+      = link_to 'View This', person_post_path(@comment.author, @comment.post)

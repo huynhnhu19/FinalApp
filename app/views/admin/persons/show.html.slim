@@ -1,0 +1,50 @@
+.container
+  .admin-user-info
+    .header._0079d3 User Information
+    .user-box
+      .user-info-setting
+        .user-email.tmol
+          span.mr5 Email:
+          = link_to @person.email, admin_person_path(@person)
+        .user-about.tmol
+          span.mr5 About:
+          span = @person.about
+        .user-follow
+          .user-followers.tmol
+            span.title.mr5 Followers:
+            .count-follow
+              span.mr5 =  @person.followers.count
+              span.menu-icon-option = fa_icon "heart-o"
+        .user-following.tmol
+          span.title.mr5 Followings:
+          .count-follow
+            span.mr5 =  @person.followings.count
+            span.menu-icon-option = fa_icon "heart"
+      .admin-action
+        .action-admin.il class="_red"
+          = link_to admin_person_path(@person), method: :delete, data: {confirm: "Are you sure?"} do
+            span Delete
+        .action-admin.il class="_28a745"
+          = link_to 'View This', overview_person_path(@person)
+
+  .admin-person-box
+    .group-leader
+      .account-setting
+        .customize-profile
+          p Community Leader
+          - if @groups.any?
+            = render partial: "admin/groups/index", locals: {groups: @groups}
+          - else
+            .note This account have no group!
+        .customize-profile
+          p Member of Community
+          - if @join_groups.any?
+            = render partial: "admin/groups/index", locals: {groups: @join_groups}
+          - else
+            .note This account haven't joined any community!
+        .customize-profile
+          p Post
+          - if @person.posts.any?
+            = render partial: "admin/groups/index", locals: {groups: @join_groups}
+          - else
+            .note This account haven't posted anything yet!

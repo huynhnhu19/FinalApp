@@ -44,6 +44,7 @@ class GroupsController < ApplicationController
 
   def join
   	@group.members << current_person
+    current_person.join_groups << @group
     respond_to do |format|
       format.html
       format.js

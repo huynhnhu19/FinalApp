@@ -1,0 +1,30 @@
+.container
+  .mt20.account-setting
+    .customize-profile
+      .header Category
+  .admin-post-info
+    .title
+      span.mr5.tb Name:
+      = link_to admin_category_path(@category) do
+        .category-post.il class="#{@category.color}"
+          span.c_white = @category.title.upcase
+    .title
+      span.mr5.tb Description:
+      = @category.about
+    .content
+      span.mr5.tb Created At:
+      = @category.created_at.strftime("%F %T")
+  .admin-action
+    .action-admin.il class="_red"
+      = link_to admin_category_path(@category), method: :delete, data: {confirm: "Are you sure?"} do
+        span Delete
+    .action-admin.il class="_28a745"
+      = link_to 'Edit', edit_admin_category_path(@category)
+
+  .mt20.account-setting
+    .customize-profile
+      .member-header Posts With This Category
+      - if @category.posts.any?
+        = render partial: "admin/posts/index", locals: {posts: @category.posts}
+      - else
+        .note This category have no post!

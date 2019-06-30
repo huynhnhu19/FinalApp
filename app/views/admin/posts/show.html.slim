@@ -1,0 +1,60 @@
+.container
+  .mt20.account-setting
+    .customize-profile
+      .header Post
+  .admin-post-info
+    .title
+      span.mr5.tb Account:
+      = link_to admin_person_path(@post.author) do
+        = @post.author.email
+    .title
+      span.mr5.tb Community:
+      - if @post.belong_to
+        = link_to admin_group_path(@post.belong_to) do
+          = @post.belong_to.group_name
+      - else
+        span None
+    .title
+      span.mr5.tb Title:
+      = @post.title
+    .content
+      span.mr5.tb Content:
+      = @post.content
+    .content
+      span.mr5.tb Upvotes:
+      = @post.upvotes
+    .content
+      span.mr5.tb Downvotes:
+      = @post.downvotes
+    .content
+      span.mr5.tb Is Creation:
+      = @post.post_creation
+    .content
+      span.mr5.tb Tags
+      - if @post.is_question
+        .category-post.il class="b_f0ad4e"
+          span.c_white Question
+      - if @post.category
+        .category-post.il class="b_#{@post.category.color}"
+          = @post.category.title.capitalize
+    .content
+      span.mr5.tb Created At:
+      = @post.created_at.strftime("%F %T")
+  .admin-action
+    .action-admin.il class="_red"
+      = link_to admin_post_path(@post), method: :delete, data: {confirm: "Are you sure?"} do
+        span Delete
+    .action-admin.il class="_28a745"
+      = link_to 'View This', person_post_path(@post.author, @post)
+
+  .mt20.account-setting
+    .customize-profile
+      .member-header Comment & Reply
+  - if @post.comments.any?
+    = render partial: "admin/comments/index", locals: {comments: @post.comments}
+  - else
+    .note This post have no comment & reply!
+
+
+
+

@@ -14,6 +14,8 @@ class Person
   ## Database authenticatable
   property :email, type: String, default: ''
   validates :email, presence: true
+  validates :first_name, presence: true
+  validates :last_name, presence: true
 
   property :encrypted_password
 
@@ -81,6 +83,8 @@ class Person
     end
     self.save!
   end
-
+  def full_name
+    "#{first_name} #{last_name}"
+  end
 end
 

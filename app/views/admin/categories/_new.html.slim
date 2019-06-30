@@ -1,0 +1,112 @@
+- if category.id
+  - url = admin_category_path(category)
+- else
+  - url = admin_categories_path()
+.form-box
+  = form_for category, url: url do |c|
+    .form-group.form-title
+      = c.text_field :title, class: "form-control", placeholder: 'Title', required: true, maxLength: 20
+      .note 30 Characters
+    .form-group.form-for-textarea
+      .text-area-content
+        = c.text_area :about, class: "form-control", placeholder: 'Describe the category', required: true, maxLength: 500
+      .note Use up to 500 Characters to basically describe the category
+    .customize-profile
+      p Color
+      .note Pick a color to custome your category color. This can change later.
+    .customize-profile
+      .color-them
+        .row.row-color
+          .col-md-1
+          .col-md-1
+            .them#_007bff
+              = fa_icon "check"
+          .col-md-1
+            .them#_b7381b
+              = fa_icon "check"
+          .col-md-1
+            .them#_b7591b
+              = fa_icon "check"
+          .col-md-1
+            .them#_ad8a18
+              = fa_icon "check"
+          .col-md-1
+            .them#_beef0b
+              = fa_icon "check"
+          .col-md-1
+            .them#_598911
+              = fa_icon "check"
+          .col-md-1
+            .them#_507a32
+              = fa_icon "check"
+          .col-md-1
+            .them#_156021
+              = fa_icon "check"
+          .col-md-1
+            .them#_104939
+              = fa_icon "check"
+          .col-md-1
+        .row.row-color
+          .col-md-1
+          .col-md-1
+            .them#_6610f2
+              = fa_icon "check"
+          .col-md-1
+            .them#_40dbed
+              = fa_icon "check"
+          .col-md-1
+            .them#_1e5975
+              = fa_icon "check"
+          .col-md-1
+            .them#_e83e8c
+              = fa_icon "check"
+          .col-md-1
+            .them#_0c296d
+              = fa_icon "check"
+          .col-md-1
+            .them#_5e41a8
+              = fa_icon "check"
+          .col-md-1
+            .them#_fd7e14
+              = fa_icon "check"
+          .col-md-1
+            .them#_940bdd
+              = fa_icon "check"
+          .col-md-1
+            .them#_c40bdd
+              = fa_icon "check"
+          .col-md-1
+        .row.row-color
+          .col-md-1
+          .col-md-1
+            .them#_ffc107
+              = fa_icon "check"
+          .col-md-1
+            .them#_28a745
+              = fa_icon "check"
+          .col-md-1
+            .them#_17a2b8
+              = fa_icon "check"
+          .col-md-1
+            .them#_543b4e
+              = fa_icon "check"
+          .col-md-1
+            .them#_6610f2
+              = fa_icon "check"
+          .col-md-1
+            .them#_a50832
+              = fa_icon "check"
+          .col-md-1
+            .them#_e00817
+              = fa_icon "check"
+          .col-md-1
+            .them#_3a0307
+              = fa_icon "check"
+          .col-md-1
+            .them#_20c997
+              = fa_icon "check"
+      = c.hidden_field :color
+    = c.submit "#{category.id ? 'Update' : 'Create'}", class: "btn-create float-right"
+    = link_to "Cancel", admin_categories_path(), class: "btn-create float-right mr5 _3a0307"
+javascript:
+  Group.run()

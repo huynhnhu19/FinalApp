@@ -1,0 +1,11 @@
+.container
+  .mt20.account-setting
+    .row
+      .col-md-8
+        .customize-profile
+          .header Listing Categories
+      .col-md-4
+        .create-category
+          .category-post.il.float-right class="_0079d3"
+            = link_to "New Category", new_admin_category_path(), class:"c_white s15 tb"
+  = render partial: "index", locals: {categories: @categories}

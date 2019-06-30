@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :admins
   get 'groups/index'
   get 'groups/show'
   get 'groups/new'
@@ -70,4 +71,14 @@ Rails.application.routes.draw do
 
   get "/search", to: "home#search"
 
+  namespace :admin do
+    devise_for :admins, skip: :registrations
+    root to: "admins#index"
+    resources :persons, only: [:index, :show, :destroy]
+    resources :groups, only: [:index, :show, :destroy]
+    resources :posts, only: [:index, :show, :destroy]
+    resources :comments, only: [:index, :show, :destroy]
+    resources :replies, only: [:index, :show, :destroy]
+    resources :categories
+  end
 end

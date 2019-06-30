@@ -1,0 +1,72 @@
+// Place all the styles related to the admin/admins controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+#admin{background-color: white;}
+.admin-action{
+  .admin-menu-icon{
+    margin: 0 5px;
+  }
+}
+.table-admin {
+  border: 0.5px;
+}
+
+.admin-user-info{
+  .header{
+    font-size: 15px;
+    color: white;
+    font-weight: bold;
+    padding: 2px 10px;
+  }
+  .user-box{padding: 10px;}
+  background-color: white;
+  border: 0.5px solid;
+  margin-top: 20px;
+  width: 30%;
+}
+.admin-person-box{
+  margin-top: 20px;
+}
+
+.table {
+  table-layout:fixed;
+  td a{ text-decoration: none;}
+  td.text {
+    a span {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: inline-block;
+      max-width: 100%;
+    }
+  }
+}
+.account-setting{
+  margin-bottom: 10px !important;
+  .customize-profile{
+    .header{
+      border-bottom: 1px solid;
+    }
+    .member-header, .header{
+      font-size: 20px;
+      font-weight: bold;
+    }
+  }
+}
+.note{
+  font-size: 12px;
+  color: rgb(124, 124, 124);
+  margin-bottom: 10px;
+}
+
+.admin-action{margin-top: 10px;}
+.action-admin{
+  font-size: 15px;
+  padding: 5px 7px;
+  border-radius: 3px;
+  margin-right: 5px;
+  a{
+    color: white;
+    text-decoration: none;
+  }
+}
