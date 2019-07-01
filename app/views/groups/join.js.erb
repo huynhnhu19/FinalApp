@@ -1,1 +1,21 @@
-$("#group-box-info").html("<%=j render :partial => 'groups/group_info', :locals => { group: @group} %>");
+<%if @group.type == :private %>
+		  <%if @group.unapprove_members.include?(current_person)%>
+			    $("#alert").html("<%=j render :partial => 'home/alert', locals: {alert: 'Your request sended. Please wait for the leader accept this request'} %>");
+			    $(".btn-join-group").text("REQUEST SENDED");
+			    $("#<%= @group.id %>").find(".btn-join-small").text("SENDED");
+		  <%else%>
+			    $("#alert").html("<%=j render :partial => 'home/alert', locals: {alert: 'Your request canceled!'} %>");
+			    $(".btn-join-small").text("JOIN");
+			    $("#<%= @group.id %>").find(".btn-join-small").text("JOIN");
+		  <%end%>
+	<%else%>
+	  <%if @group.members.include?(current_person)%>
+			$("#<%= @group.id %>").find(".btn-join-small").removeClass("btn-join-small").addClass("btn-leave-small");
+	  <%else%>
+	   	 	$("#<%= @group.id %>").find(".btn-joined").removeClass("btn-joined btn-leave-small").addClass("btn-join-small s12").text("JOIN");
+	  <%end%>
+	  $("#group-box-info").html("<%=j render :partial => 'groups/group_info', :locals => { group: @group} %>");
+<%end%>
+setTimeout((function() {
+  $("#alert .popup").addClass("bounceOutDown");
+}), 5000)

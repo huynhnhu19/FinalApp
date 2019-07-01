@@ -13,8 +13,12 @@ table class="table-bordered table table-striped" data-sort-name="name" data-sort
             = link_to admin_group_path(group)
               = group.group_name
           td = group.created_at.strftime("%F %T")
-          td = group.members.count
-          td = group.posts.count
+          td
+            = link_to person_index_admin_persons_path(group_id: group.id)
+              = "#{group.members.count} members"
+          td
+            = link_to post_index_admin_posts_path(group_id: group.id)
+              = "#{group.posts.count} posts"
           td
             .admin-action
               .action-admin.il class="_red"

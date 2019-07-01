@@ -203,7 +203,8 @@ input[type="button"]:focus{
 
 .list-subject{
   .subject-style{
-    color: blue;
+    color: white;
+    font-weight: bold;
     padding: 5px 10px;
     border-radius: 5px;
     border: 0.5px solid;
@@ -211,7 +212,6 @@ input[type="button"]:focus{
     span{
       text-transform: uppercase;
       margin: 0px;
-      font-weight: 500;
       font-size: 14px;
     }
   }

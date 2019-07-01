@@ -38,13 +38,23 @@ class GroupsController < ApplicationController
     @group.icon = group_params[:icon] if group_params[:icon].present?
     @group.banner = group_params[:banner] if group_params[:banner].present?
   	@group.author = current_person
+    @group.members << current_person
     @group.save!
   	redirect_to group_path(@group)
   end
 
   def join
-  	@group.members << current_person
-    current_person.join_groups << @group
+    if @group.type == :private
+      if @group.unapprove_members.include?(current_person)
+        btn_label =
+        @group.unapprove_members.delete(current_person)
+      else
+        @group.unapprove_members << current_person
+      end
+    else
+    	@group.members << current_person
+      current_person.join_groups << @group
+    end
     respond_to do |format|
       format.html
       format.js
@@ -52,10 +62,15 @@ class GroupsController < ApplicationController
   end
 
   def leave
-    @group.members.delete current_person
-    respond_to do |format|
-      format.html
-      format.js {render :join}
+    if @group.author == current_person
+      flash[:error] = "You are the Leader of this Community. Cannot leave!"
+      redirect_to :root
+    else
+      @group.members.delete current_person
+      respond_to do |format|
+        format.html
+        format.js {render :join}
+      end
     end
   end
 

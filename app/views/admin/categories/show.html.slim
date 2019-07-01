@@ -25,6 +25,8 @@
     .customize-profile
       .member-header Posts With This Category
       - if @category.posts.any?
-        = render partial: "admin/posts/index", locals: {posts: @category.posts}
+        = link_to category_index_admin_categories_path(category_id: @category.id) do
+          p.il.float-right See more
+        = render partial: "admin/posts/index", locals: {posts: @category.posts.limit(3)}
       - else
         .note This category have no post!

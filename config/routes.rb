@@ -74,11 +74,30 @@ Rails.application.routes.draw do
   namespace :admin do
     devise_for :admins, skip: :registrations
     root to: "admins#index"
-    resources :persons, only: [:index, :show, :destroy]
-    resources :groups, only: [:index, :show, :destroy]
-    resources :posts, only: [:index, :show, :destroy]
-    resources :comments, only: [:index, :show, :destroy]
-    resources :replies, only: [:index, :show, :destroy]
-    resources :categories
+    resources :persons, only: [:index, :show, :destroy] do
+      collection do
+        get 'person_index'
+      end
+    end
+    resources :groups, only: [:index, :show, :destroy] do
+      collection do
+        get 'group_index'
+      end
+    end
+    resources :posts, only: [:index, :show, :destroy] do
+      collection do
+        get 'post_index'
+      end
+    end
+    resources :comments, only: [:index, :show, :destroy] do
+      collection do
+        get 'comment_index'
+      end
+    end
+    resources :categories do
+      collection do
+        get 'category_index'
+      end
+    end
   end
 end

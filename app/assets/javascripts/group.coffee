@@ -3,13 +3,13 @@ window.Group =
     $(document).ready ->
       tickColor()
       tickThem()
-      joinGroup()
-      leaveGroup()
       upvoteTick()
       tickColorWhenLoad()
+      searchAdmin()
+      closeAlertError()
 tickColorWhenLoad = ->
   color = $("#category_color").val()
-  $("##{color}").find("i").addClass("color-checked")
+  $("##{color}").find("i").addClass("them-checked")
 
 tickColor = ->
   $(".color").on "click", (e) ->
@@ -22,17 +22,7 @@ tickThem = ->
     $(".them-checked").removeClass("them-checked")
     $(this).find("i").addClass("them-checked")
     $("#category_color").val($(this).attr('id'))
-
-joinGroup = ->
-  $(".btn-join-small").on 'click', (e) ->
-    $(this).removeClass("active").addClass("de-active")
-    $(this).parent().find(".btn-leave-small").removeClass("de-active").addClass("active")
-
-leaveGroup = ->
-  $(".btn-leave-small").on 'click', (e) ->
-    $(this).removeClass("active").addClass("de-active")
-    $(this).parent().find(".btn-join-small").removeClass("de-active").addClass("active")
-
+    
 upvoteTick = ->
   $(".up-vote, .down-vote").click (e) ->
     e.preventDefault()
@@ -54,3 +44,15 @@ upvoteTick = ->
           a.find(".fa-arrow-down").addClass(data.classColor)
 
 
+searchAdmin = ->
+  $("#search").on "keyup", (e) ->
+    value = $(this).val().toLowerCase();
+    $(".table tbody tr").filter ->
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+      if $("#search").val() == ""
+        $(".load-more-footer").show()
+      else
+        $(".load-more-footer").hide()
+
+closeAlertError = ->
+  $("body .alert-error").delay(3000).slideUp(200)

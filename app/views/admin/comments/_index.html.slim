@@ -23,6 +23,8 @@ table class="table-bordered table table-striped" data-sort-name="name" data-sort
           td = c.type
           td
             .admin-action
-              .delete-person
+              .action-admin.mb5 class="_red"
                 = link_to admin_comment_path(c), method: :delete, data: {confirm: "Are you sure?"} do
                   span Delete
+              .action-admin class="_28a745"
+                = link_to 'View This', person_post_path(c.author, c.post)

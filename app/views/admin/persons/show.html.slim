@@ -37,14 +37,18 @@
           - else
             .note This account have no group!
         .customize-profile
-          p Member of Community
+          p.il Belong to Community
           - if @join_groups.any?
+            = link_to group_index_admin_groups_path(person_id: @person.id) do
+              p.il.float-right See more
             = render partial: "admin/groups/index", locals: {groups: @join_groups}
           - else
             .note This account haven't joined any community!
         .customize-profile
-          p Post
+          p.il Post
           - if @person.posts.any?
-            = render partial: "admin/groups/index", locals: {groups: @join_groups}
+            = link_to post_index_admin_posts_path(person_id: @person.id) do
+              p.il.float-right See more
+            = render partial: "admin/posts/index", locals: {posts: @person.posts.limit(3)}
           - else
             .note This account haven't posted anything yet!

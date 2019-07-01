@@ -4,7 +4,7 @@ class Category
   property :about, type: String
   property :created_at, type: DateTime
   property :updated_at, type: DateTime
-  property :color, type: String
+  property :color, type: String, default: "_007bff"
 
   id_property :id, auto: :uuid
   has_many :in, :posts, type: :belong_to

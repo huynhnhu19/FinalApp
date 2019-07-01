@@ -1,5 +1,18 @@
 .container
   .mt20.account-setting
     .customize-profile
-      .header Listing Communities
+      .header Listing Comments & Replies
+  .input-group.input-group-lg.hide-print title="Searches Only the current page"
+    .tmol.search-admin
+      .mr5 = fa_icon "search"
+      input id="search" type="text" class="form-control" placeholder="Search"
   =render partial: "index", locals: {comments: @comments}
+  - page = params[:page] ? params[:page].to_i + 1 : 2
+  .load-more-footer
+    .load-more.il
+      - if @load_more
+        = link_to "See more", admin_comments_path(page: page)
+    .page-info.float-right
+      span = "#{@comments.count} of #{Comment.all.length}"
+javascript:
+  Group.run()

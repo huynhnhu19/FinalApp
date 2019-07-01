@@ -8,4 +8,19 @@
         .create-category
           .category-post.il.float-right class="_0079d3"
             = link_to "New Category", new_admin_category_path(), class:"c_white s15 tb"
+  .input-group.input-group-lg.hide-print title="Searches Only the current page"
+    .tmol.search-admin
+      .mr5 = fa_icon "search"
+      input id="search" type="text" class="form-control" placeholder="Search"
+
   = render partial: "index", locals: {categories: @categories}
+  - page = params[:page] ? params[:page].to_i + 1 : 2
+  .load-more-footer
+    .load-more.il
+      - if @load_more
+        = link_to "See more", admin_categories_path(page: page)
+    .page-info.float-right
+      span = "#{@categories.count} of #{Category.all.length}"
+
+javascript:
+  Group.run()

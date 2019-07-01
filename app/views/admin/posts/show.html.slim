@@ -46,14 +46,15 @@
         span Delete
     .action-admin.il class="_28a745"
       = link_to 'View This', person_post_path(@post.author, @post)
-
   .mt20.account-setting
     .customize-profile
-      .member-header Comment & Reply
-  - if @post.comments.any?
-    = render partial: "admin/comments/index", locals: {comments: @post.comments}
-  - else
-    .note This post have no comment & reply!
+      .member-header.il Comment & Reply
+      - if @post.comments.any?
+        = link_to comment_index_admin_comments_path(post_id: @post.id) do
+          p.il.float-right See more
+        = render partial: "admin/comments/index", locals: {comments: @post.comments.limit(3)}
+      - else
+        .note This post have no comment & reply!
 
 
 

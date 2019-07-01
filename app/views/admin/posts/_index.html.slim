@@ -1,32 +1,32 @@
 table class="table-bordered table table-striped" data-sort-name="name" data-sort-order="desc"
-    thead
+  thead
+    tr
+      th data-field="name" data-sortable="true" Title
+      th data-field="age" data-sortable="true" Time Create
+      th data-field="age" data-sortable="true" Upvotes
+      th data-field="age" data-sortable="true" Downvotes
+      th data-field="age" data-sortable="true" Tags
+      th data-field="age" Action
+  tbody
+    - posts.each do |post|
       tr
-        th data-field="name" data-sortable="true" Title
-        th data-field="age" data-sortable="true" Time Create
-        th data-field="age" data-sortable="true" Upvotes
-        th data-field="age" data-sortable="true" Downvotes
-        th data-field="age" data-sortable="true" Tags
-        th data-field="age" Action
-    tbody
-      - posts.each do |post|
-        tr
-          td.text style="width: 33%"
-            = link_to admin_post_path(post) do
-              span = post.title
-          td = post.created_at.strftime("%F %T")
-          td = post.upvotes
-          td = post.downvotes
-          td
-            - if post.is_question
-              .category-post.il class="b_f0ad4e"
-                span.c_white Question
-            - if post.category
-              .category-post.il class="#{post.category.color}"
-                = post.category.title.capitalize
-          td
-            .admin-action
-              .action-admin.il class="_red"
-                = link_to admin_post_path(post), method: :delete, data: {confirm: "Are you sure?"} do
-                  span Delete
-              .action-admin.il class="_28a745"
-                = link_to 'View This', person_post_path(post.author, post)
+        td.text style="width: 33%"
+          = link_to admin_post_path(post) do
+            span = post.title
+        td = post.created_at.strftime("%F %T")
+        td = post.upvotes
+        td = post.downvotes
+        td
+          - if post.is_question
+            .category-post.il class="b_f0ad4e"
+              span.c_white Question
+          - if post.category
+            .category-post.il class="#{post.category.color}"
+              = post.category.title.capitalize
+        td
+          .admin-action
+            .action-admin.il class="_red"
+              = link_to admin_post_path(post), method: :delete, data: {confirm: "Are you sure?"} do
+                span Delete
+            .action-admin.il class="_28a745"
+              = link_to 'View This', person_post_path(post.author, post)

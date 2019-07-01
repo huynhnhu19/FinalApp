@@ -19,12 +19,24 @@
         .col-md-6
           .tb = group.members.count
           .s12 Online
-    .box-content.m10
+    .type-group.mt5
+      - if group.type == :private
+        = fa_icon "lock", class:"mr10 c_fd7e14"
+        span Private
+      - elsif group.type == :public
+        = fa_icon "user", class:" mr10 c_17a2b8"
+        span Public
+      - else
+        = fa_icon "eye", class:"ml10 mr10 c_104939"
+        span Restricted
+    .box-content.mb5
       span.s15 = group.about
     .box-btn
       - if person_signed_in?
         - if group.members.include?(current_person)
           = link_to " ", leave_group_path(group), method: :delete , remote: true, class: "btn btn-joined mb10"
+        - elsif group.unapprove_members.include?(current_person)
+          = link_to "REQUEST SENDED", join_group_path(group), method: :post, remote:true, class: "btn btn-join-group bi#{group.check_color} mb10"
         - else
           = link_to "JOIN", join_group_path(group), method: :post, remote:true, class: "btn btn-join-group bi#{group.check_color} mb10"
         = link_to "CREATE POST", new_group_post_path(group), class: "btn btn-create-post bi#{group.check_color}"

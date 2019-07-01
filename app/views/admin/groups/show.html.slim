@@ -43,7 +43,8 @@
     .customize-profile
       .member-header Posts
   - if @group.posts.any?
-    = render partial: "admin/posts/index", locals: {posts: @group.posts}
+    = link_to post_index_admin_posts_path(group_id: @group.id) do
+      p.il.float-right See more
+    = render partial: "admin/posts/index", locals: {posts: @group.posts.limit(3)}
   - else
     .note This community have no posts!
-

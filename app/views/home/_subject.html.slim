@@ -1,5 +1,5 @@
 .list-subject.tmol
 	- list_category.each do |c|
 	    = link_to root_path(subject: c.title), class: "text-decoration-none", remote: true do
-			.subject.subject-style class="b_#{c.color}"
+			.subject.subject-style class="#{c.color}"
 					span = c.title

@@ -2,4 +2,18 @@
   .mt20.account-setting
     .customize-profile
       .header Listing Users
-  =render partial: "index", locals: {persons: @persons}
+  .input-group.input-group-lg.hide-print title="Searches Only the current page"
+    .tmol.search-admin
+      .mr5 = fa_icon "search"
+      input id="search" type="text" class="form-control" placeholder="Search"
+
+  = render partial: "index", locals: {persons: @persons}
+  - page = params[:page] ? params[:page].to_i + 1 : 2
+  .load-more-footer
+    .load-more.il
+      - if @load_more
+        = link_to "See more", admin_persons_path(page: page)
+    .page-info.float-right
+      span = "#{@persons.count} of #{Person.all.length}"
+javascript:
+  Group.run()
