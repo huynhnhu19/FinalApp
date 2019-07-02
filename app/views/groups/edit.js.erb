@@ -1,0 +1,6 @@
+<%case params[:option]%>
+<%when 'approved'%>
+	$("#view-group").html("<%=j render :partial => 'groups/user_approve', :locals => { unapprove_members: @unapprove_members, group: @group } %>");
+<%when 'members'%>
+	$("#view-group").html("<%=j render :partial => 'groups/members', :locals => { members: @members, group: @group } %>");
+<%end%>

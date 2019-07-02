@@ -34,7 +34,7 @@
     .box-btn
       - if person_signed_in?
         - if group.members.include?(current_person)
-          = link_to " ", leave_group_path(group), method: :delete , remote: true, class: "btn btn-joined mb10"
+          = link_to "JOINED", leave_group_path(group), method: :delete , remote: true, class: "btn btn-joined mb10"
         - elsif group.unapprove_members.include?(current_person)
           = link_to "REQUEST SENDED", join_group_path(group), method: :post, remote:true, class: "btn btn-join-group bi#{group.check_color} mb10"
         - else

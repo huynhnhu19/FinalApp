@@ -16,6 +16,10 @@ Rails.application.routes.draw do
     member do
       post :join
       delete :leave
+      post :user_approved
+      post :user_banned
+      post :user_muted
+      post :manage_user
     end
   end
 

@@ -1,0 +1,60 @@
+.container-fluid
+  .row
+    .col-md-1
+    .col-md-10
+    	.mod-header
+    		span Members
+        .row
+          .col-md-9
+          .col-md-3
+            .sort-bar-header-tool.float-right
+              .sort-bar-tool.tmol
+                span VIEW
+                = link_to root_path(view: "large"), remote: true do
+                  - if params[:view].present?
+                    - active = "#{params[:view] == 'large' ? '_0079d3' : '_90a5b5'}"
+                  - else
+                    - active = '_0079d3'
+                  .view-large
+                    table
+                      tr.line-split class="#{active}"
+                        td
+                      tr class="#{active}"
+                        td
+                = link_to root_path(view: "medium"), remote: true do
+                  - active = "#{params[:view] == 'medium' ? '_0079d3' : '_90a5b5'}"
+                  .view-medium
+                    table
+                      tr.line-split class="#{active}"
+                        td
+                      tr.line-split class="#{active}"
+                        td
+                      tr class="#{active}"
+                        td
+                = link_to root_path(view: "small"), remote:true do
+                  - active = "#{params[:view] == 'small' ? '_0079d3' : '_90a5b5'}"
+                  .view-small
+                    table
+                      tr.line-split class="#{active}"
+                        td
+                      tr.line-split class="#{active}"
+                        td
+                      tr.line-split class="#{active}"
+                        td
+                      tr class="#{active}"
+                        td
+    	.chec-box-list.white.mb10.display-flex
+	    	= check_box :all, nil, class:'bigger-checkbox m10'
+	    	.tmol.mr10 = fa_icon 'sort-desc'
+            #tool-option.display-flex.display-none
+    	    	.approve.tmol.mr10
+    	    		.mr5 = fa_icon 'check'
+    	    		span.s12.tb700 Approve
+    	    	.remove.tmol.mr10
+    	    		.mr5 = fa_icon 'trash'
+    	    		span.s12.tb700 Remove
+    	    	.remove.tmol.mr10
+    	    		.mr5 = fa_icon 'window-close'
+    	    		span.s12.tb700 Spam
+	    = render partial: 'manage_user', locals: {persons: @members}
+    .col-md-1

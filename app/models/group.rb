@@ -18,7 +18,9 @@ class Group
 
 	has_one :out, :author, type: :create_by, model_class: :Person
 	has_many :in, :members, type: :joins, model_class: :Person
-  has_many :in, :unapprove_members, type: :unapprove, model_class: :Person
+	has_many :in, :unapprove_members, type: :unapprove, model_class: :Person
+	has_many :in, :banned_members, type: :banned, model_class: :Person
+	has_many :in, :muted_members, type: :muted, model_class: :Person
 	has_many :in, :posts, origin: :belong_to
 
   enum type: [:public, :restricted, :private], _default: :public

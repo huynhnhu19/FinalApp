@@ -17,7 +17,7 @@
 		      .il.pull-right
                 - if person_signed_in?
         		      - if group.members.include?(current_person)
-        		        = link_to " ", leave_group_path(group), method: :delete , remote: true, class: "btn btn-joined  btn-leave-small tmol mb0"
+        		        = link_to "JOINED", leave_group_path(group), method: :delete , remote: true, class: "btn btn-joined  btn-leave-small tmol mb0"
 	                  - elsif group.unapprove_members.include?(current_person)
 	                    = link_to "SENDED", join_group_path(group), method: :post, remote:true, class: "btn btn-join-small s12"
         		      - else

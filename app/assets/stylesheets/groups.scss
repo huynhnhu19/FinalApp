@@ -128,8 +128,6 @@
   border: 0.5px solid black;
 }
 
-.btn-joined:after{content: 'JOINED'}
-.btn-joined:hover:after{content: 'LEAVE'}
 .btn:hover{opacity: 0.75}
 
 .sort-bar-header{
@@ -244,4 +242,10 @@
     border-radius: 0;
     margin-bottom: 0px;
   }
+}
+.mod-header{
+  font-size: 20px;
+  margin-top: 20px;
+  font-weight: bold;
+  border-bottom: 1px solid;
 }

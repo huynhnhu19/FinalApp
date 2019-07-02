@@ -11,10 +11,12 @@
 	.tool-title
 		= fa_icon 'user', class:"mr5"
 		span.s12 USER MANAGEMENT
+	= link_to edit_group_path(@group, option: :members), remote: true, class: 'c_gray' do
+		.tool-option.p6 Members
+	= link_to edit_group_path(@group, option: :approved), remote: true, class: 'c_gray' do
+		.tool-option.p6 Approved
 	= link_to edit_group_path(@group, option: :banned), class: 'c_gray' do
 		.tool-option.p6 Banned
 	= link_to edit_group_path(@group, option: :muted), class: 'c_gray' do
 		.tool-option.p6 Muted
-	= link_to edit_group_path(@group, option: :approved), class: 'c_gray' do
-		.tool-option.p6 Approved
 

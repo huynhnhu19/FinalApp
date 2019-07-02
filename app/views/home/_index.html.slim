@@ -22,12 +22,15 @@
         .col-md-3
           - if person_signed_in?
             - if post.belong_to.present?
-              - if !post.belong_to.members.include?(current_person)
-                = link_to join_group_path(post.belong_to), method: :post, remote: true, class:'btn float-right btn-join-small s10' do
-                  = fa_icon 'plus', class:'c_white mr5'
-                  span JOIN
+              - if post.belong_to.members.include?(current_person)
                 = link_to leave_group_path(post.belong_to), method: :delete, remote: true, class:'btn float-right btn-leave-small de-active' do
                   = fa_icon 'check'
+              - elsif post.belong_to.unapprove_members.include?(current_person)
+                = link_to "SENDED", join_group_path(post.belong_to), method: :post, remote:true, class: "btn float-right btn-join-small #{post.belong_to.id} s10"
+              - else
+                = link_to join_group_path(post.belong_to), method: :post, remote: true, class:"btn float-right btn-join-small #{post.belong_to.id} s10" do
+                  = fa_icon 'plus', class:'c_white mr5'
+                  span JOIN
           - else
             = link_to person_session_path, {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class:'btn float-right btn-join-small-login s10'} do
               = fa_icon 'plus', class:'c_white mr5'

@@ -16,12 +16,11 @@
 		      .il.pull-right style="width: 85%"
                 - if person_signed_in?
         		      - if group.members.include?(current_person)
-        		        = link_to " ", leave_group_path(group), method: :delete , remote: true, class: "btn btn-joined  btn-leave-small tmol mb0"
+        		        = link_to "JOINED", leave_group_path(group), method: :delete , remote: true, class: "btn btn-joined  btn-leave-small tmol mb0"
         	  	    	= link_to "JOIN", join_group_path(group), method: :post, remote: true, class: "btn btn-join-small s12 de-active"
-
         		      - else
         	  	    	= link_to "JOIN", join_group_path(group), method: :post, remote: true, class: "btn btn-join-small s12"
-        		        = link_to " ", leave_group_path(group), method: :delete , remote: true, class: "btn btn-joined  btn-leave-small tmol de-active mb0"
+        		        = link_to "JOINED", leave_group_path(group), method: :delete , remote: true, class: "btn btn-joined  btn-leave-small tmol de-active mb0"
                 - else
                   = link_to "JOIN", person_session_path, {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class:'btn btn-join-small-login s12'}
 .search-post

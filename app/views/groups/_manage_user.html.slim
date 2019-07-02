@@ -1,0 +1,28 @@
+- if persons.any?
+  table class="table-bordered table table-striped" data-sort-name="name" data-sort-order="desc"
+    thead
+      tr
+        th data-field="name" data-sortable="true" Email
+        th data-field="age" data-sortable="true" Full Name
+        th data-field="age" data-sortable="true" Posts
+        th data-field="age" Action
+    tbody
+      - persons.each do |person|
+        tr
+          td style="width: 33%"
+            = link_to person.email, overview_person_path(person)
+          td = person.full_name
+          td
+            = link_to post_index_admin_posts_path(person_id: person.id) do
+              = "#{person.posts.count} posts"
+          td
+            .admin-action
+              .action-admin.il class="_red"
+                = link_to admin_person_path(person), method: :delete, data: {confirm: "Are you sure?"} do
+                  span Remove
+              .action-admin.il class="_ffc107"
+                = link_to 'Ban', user_approved_group_path(@group, person_id: person.id), method: :post, remote: true
+              .action-admin.il class="_940bdd"
+                = link_to 'Mute', user_approved_group_path(@group, person_id: person.id), method: :post, remote: true
+- else  
+  p There's no members

@@ -22,6 +22,16 @@ class GroupsController < ApplicationController
 
   def edit
     @posts = @group.posts.all
+    case params[:option]
+    when 'approved'
+      @unapprove_members = @group.unapprove_members   
+    when 'members'
+      @members = @group.members   
+    end
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def new
@@ -52,8 +62,13 @@ class GroupsController < ApplicationController
         @group.unapprove_members << current_person
       end
     else
-    	@group.members << current_person
-      current_person.join_groups << @group
+      if @group.members.include?(current_person)
+       @group.members.delete(current_person)
+        current_person.join_groups.delete(@group)
+      else
+    	 @group.members << current_person
+        current_person.join_groups << @group
+      end
     end
     respond_to do |format|
       format.html
@@ -67,6 +82,7 @@ class GroupsController < ApplicationController
       redirect_to :root
     else
       @group.members.delete current_person
+      current_person.join_groups.delete(@group)
       respond_to do |format|
         format.html
         format.js {render :join}
@@ -74,16 +90,40 @@ class GroupsController < ApplicationController
     end
   end
 
+  def user_approved
+    @person = Person.find_by(id: params[:person_id])
+    @group.unapprove_members.delete(@person)
+    @group.members << @person
+    params[:option] = 'approved'
+    unapprove_members = @group.unapprove_members
+    respond_to do |format|
+        format.html
+        format.js {render :edit}
+    end
+  end
 
-  # def create_post
-  #   @group = Group.find(params[:id])
-  #   @post = Post.create!(post_params)
-  #   @post.image = post_params[:image] unless post_params[:image].nil?
-  #   @group.posts << @post
-  #   @group.save!
-  #   current_person.posts << @post
-  #   current_person.save!
-  # end
+  def manage_user
+  end
+
+  def user_banned
+    @person = Person.find_by(id: params[:person_id])
+    @group.members.delete @person
+    @group.banned_members << @person
+    respond_to do |format|
+      format.html
+      format.js {render :edit}
+    end
+  end
+
+  def user_muted
+    @person = Person.find_by(id: params[:person_id])
+    @group.members.delete @person
+    @group.muted_members << @person
+    respond_to do |format|
+      format.html
+      format.js {render :edit}
+    end
+  end
 
   private
   def get_group
