@@ -22,6 +22,7 @@ class Group
 	has_many :in, :banned_members, type: :banned, model_class: :Person
 	has_many :in, :muted_members, type: :muted, model_class: :Person
 	has_many :in, :posts, origin: :belong_to
+  has_many :in, :unapprove_posts, type: :unapprove_post, model_class: :Post
 
   enum type: [:public, :restricted, :private], _default: :public
 

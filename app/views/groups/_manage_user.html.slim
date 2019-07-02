@@ -1,10 +1,10 @@
 - if persons.any?
-  table class="table-bordered table table-striped" data-sort-name="name" data-sort-order="desc"
+  table class="table-bordered table table-striped white" data-sort-name="name" data-sort-order="desc"
     thead
       tr
         th data-field="name" data-sortable="true" Email
         th data-field="age" data-sortable="true" Full Name
-        th data-field="age" data-sortable="true" Posts
+        th data-field="age" data-sortable="true" Status
         th data-field="age" Action
     tbody
       - persons.each do |person|
@@ -13,16 +13,20 @@
             = link_to person.email, overview_person_path(person)
           td = person.full_name
           td
-            = link_to post_index_admin_posts_path(person_id: person.id) do
-              = "#{person.posts.count} posts"
+            - if @group.banned_members.include?(person)
+              .action-admin.il._ffc107.tb.c_white Banned
+            - if @group.muted_members.include?(person)
+              .action-admin.il._940bdd.tb.c_white Muted
+            - elsif !@group.banned_members.include?(person) && !@group.muted_members.include?(person)
+              .action-admin.il._28a745.tb.c_white Approved
           td
             .admin-action
               .action-admin.il class="_red"
                 = link_to admin_person_path(person), method: :delete, data: {confirm: "Are you sure?"} do
                   span Remove
-              .action-admin.il class="_ffc107"
-                = link_to 'Ban', user_approved_group_path(@group, person_id: person.id), method: :post, remote: true
-              .action-admin.il class="_940bdd"
-                = link_to 'Mute', user_approved_group_path(@group, person_id: person.id), method: :post, remote: true
-- else  
+              .action-admin.il.btn-ban
+                = link_to "#{@group.banned_members.include?(person) ? 'Unban': 'Ban'}", manage_user_group_path(@group, person_id: person.id, option: 'ban'), method: :post, remote: true, class:"tb"
+              .action-admin.il.btn-ban
+                = link_to "#{@group.muted_members.include?(person) ? 'Unmute' : 'Mute'}", manage_user_group_path(@group, person_id: person.id, option: 'mute'), method: :post, remote: true, class:"tb"
+- else
   p There's no members

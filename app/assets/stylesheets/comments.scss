@@ -18,7 +18,7 @@
 	.reply-comment{
 		margin-left: 50px;
 		.reply{
-			width: 750px;
+			width: 100%;
 		}
 		.btn-submit-reply{
 			margin-top: 10px;
@@ -63,6 +63,7 @@
 			cursor: pointer;
 		}
 		.comment-text{
+			margin-left: 15px;
 			margin-bottom: 0;
 		}
 	}

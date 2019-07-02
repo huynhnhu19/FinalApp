@@ -21,12 +21,20 @@ class GroupsController < ApplicationController
   end
 
   def edit
-    @posts = @group.posts.all
+    @posts = @group.unapprove_posts
     case params[:option]
+    when 'mod_queue'
+      @posts = @group.unapprove_posts
+    when 'unpprove_posts'
+      @posts = @group.unapprove_posts
     when 'approved'
-      @unapprove_members = @group.unapprove_members   
+      @unapprove_members = @group.unapprove_members
     when 'members'
-      @members = @group.members   
+      @members = @group.members
+    when 'banned'
+      @members = @group.banned_members
+    when 'muted'
+      @members = @group.muted_members
     end
     respond_to do |format|
       format.html
@@ -95,7 +103,7 @@ class GroupsController < ApplicationController
     @group.unapprove_members.delete(@person)
     @group.members << @person
     params[:option] = 'approved'
-    unapprove_members = @group.unapprove_members
+    @unapprove_members = @group.unapprove_members
     respond_to do |format|
         format.html
         format.js {render :edit}
@@ -103,25 +111,65 @@ class GroupsController < ApplicationController
   end
 
   def manage_user
-  end
-
-  def user_banned
     @person = Person.find_by(id: params[:person_id])
-    @group.members.delete @person
-    @group.banned_members << @person
+    case params[:option]
+    when 'ban'
+      if @group.banned_members.include?(@person)
+        @group.banned_members.delete @person
+      else
+        @group.banned_members << @person
+      end
+    when "mute"
+      if @group.muted_members.include?(@person)
+        @group.muted_members.delete @person
+      else
+        @group.muted_members << @person
+      end
+    end
+    @members = @group.members
+    params[:option] = 'members'
     respond_to do |format|
       format.html
       format.js {render :edit}
     end
   end
 
-  def user_muted
+  def user_banned
     @person = Person.find_by(id: params[:person_id])
-    @group.members.delete @person
-    @group.muted_members << @person
+    if @group.banned_members.include?(@person)
+      @group.banned_members.delete @person
+    else
+      @group.banned_members << @person
+    end
+    @members = @group.banned_members
     respond_to do |format|
       format.html
-      format.js {render :edit}
+      format.js {render}
+    end
+  end
+
+  def user_muted
+    @person = Person.find_by(id: params[:person_id])
+    if @group.muted_members.include?(@person)
+      @group.muted_members.delete @person
+    else
+      @group.muted_members << @person
+    end
+    @members = @group.muted_members
+    respond_to do |format|
+      format.html
+      format.js {render}
+    end
+  end
+
+  def post_approved
+    @post = Post.find_by(id: params[:post_id])
+    if @group.unapprove_posts.include?(@post)
+      @group.unapprove_posts.delete(@post)
+      @group.posts << @post
+    else
+      @group.unapprove_posts << (@post)
+      @group.posts.delete @post
     end
   end
 

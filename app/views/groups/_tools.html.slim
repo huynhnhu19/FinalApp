@@ -2,21 +2,21 @@
 	.tool-title
 		= fa_icon 'sun-o', class:"mr5"
 		span.s12 QUEUES
-	= link_to edit_group_path(@group, option: :mod_queue), class: 'c_gray' do
-		.tool-option.p6 Mod queue
-	= link_to edit_group_path(@group, option: :report), class: 'c_gray' do
+	= link_to edit_group_path(@group, option: :mod_queue), remote: true, class: 'c_gray' do
+		.tool-option.p6#mod_queue.group-focus Mod queue
+        = link_to edit_group_path(@group, option: :unpprove_posts), remote: true, remote: true, class: 'c_gray' do
+          .tool-option.p6#unpprove_posts Unpprove posts
+	= link_to edit_group_path(@group, option: :report), remote: true, class: 'c_gray' do
 		.tool-option.p6 Report
-	= link_to edit_group_path(@group, option: :span), class: 'c_gray' do
-		.tool-option.p6 Spam
 	.tool-title
 		= fa_icon 'user', class:"mr5"
 		span.s12 USER MANAGEMENT
 	= link_to edit_group_path(@group, option: :members), remote: true, class: 'c_gray' do
-		.tool-option.p6 Members
+		.tool-option.p6#members Members
 	= link_to edit_group_path(@group, option: :approved), remote: true, class: 'c_gray' do
-		.tool-option.p6 Approved
-	= link_to edit_group_path(@group, option: :banned), class: 'c_gray' do
-		.tool-option.p6 Banned
-	= link_to edit_group_path(@group, option: :muted), class: 'c_gray' do
-		.tool-option.p6 Muted
+		.tool-option.p6#approved Unpprove members
+	= link_to edit_group_path(@group, option: :banned), remote: true, class: 'c_gray' do
+		.tool-option.p6#banned Banned members
+	= link_to edit_group_path(@group, option: :muted), remote: true, class: 'c_gray' do
+		.tool-option.p6#muted Muted members
 

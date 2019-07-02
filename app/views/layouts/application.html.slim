@@ -74,8 +74,6 @@ body
             li = link_to "Sign up", new_person_registration_path(), class: "btn btn-signup"
 
   #main
-    - flash.each do |name, msg|
-      = content_tag :div, msg, class:"alert alert-#{name}"
     = yield
   #alert
 #modal-window class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"

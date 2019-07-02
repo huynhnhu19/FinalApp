@@ -6,8 +6,24 @@
 		    		.group-icon.mr5
 		            	= image_tag  group.icon_url if  group.icon.present?
 			      	.communinty
-			      		= link_to group_path(group), class:'post-group unset-text tmol' do
-			        		.title.il.s12.mr5.black.tb700 = group.group_name
+                        - if group.type == :private && !group.members.include?(current_person)
+                            = link_to alert_path(message: "This group is private. You need to join first!"), remote: true, class:'post-group unset-text tmol' do
+                                .title.il.s12.mr5.black.tb700 = group.group_name
+                                - if group.type == :private
+                                  = fa_icon 'lock' , class:'c_fd7e14'
+                                - elsif group.type == :public
+                                  = fa_icon 'user' , class:'c_17a2b8'
+                                - else
+                                  = fa_icon 'eye' , class:'c_104939'
+                        - else
+    			      		= link_to group_path(group), class:'post-group unset-text tmol' do
+    			        		.title.il.s12.mr5.black.tb700 = group.group_name
+                                - if group.type == :private
+                                  = fa_icon 'lock' , class:'c_fd7e14'
+                                - elsif group.type == :public
+                                  = fa_icon 'user' , class:'c_17a2b8'
+                                - else
+                                  = fa_icon 'eye' , class:'c_104939'
 			        	.title.il.s12.mr5.black = t('group.members', members: group.members.count)
     		.col-md-7
     			.group-description.s12.c_gray
@@ -15,15 +31,13 @@
 		    .col-md-2
 		      .il.pull-right style="width: 85%"
                 - if person_signed_in?
-        		      - if group.members.include?(current_person)
-        		        = link_to "JOINED", leave_group_path(group), method: :delete , remote: true, class: "btn btn-joined  btn-leave-small tmol mb0"
-        	  	    	= link_to "JOIN", join_group_path(group), method: :post, remote: true, class: "btn btn-join-small s12 de-active"
-        		      - else
-        	  	    	= link_to "JOIN", join_group_path(group), method: :post, remote: true, class: "btn btn-join-small s12"
-        		        = link_to "JOINED", leave_group_path(group), method: :delete , remote: true, class: "btn btn-joined  btn-leave-small tmol de-active mb0"
+                      - if group.members.include?(current_person)
+                        = link_to "JOINED", leave_group_path(group), method: :delete , remote: true, class: "btn btn-joined  btn-leave-small tmol mb0"
+                      - elsif group.unapprove_members.include?(current_person)
+                        = link_to "SENDED", join_group_path(group), method: :post, remote:true, class: "btn btn-join-small s12"
+                      - else
+                        = link_to "JOIN", join_group_path(group), method: :post, remote: true, class: "btn btn-join-small s12"
                 - else
                   = link_to "JOIN", person_session_path, {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class:'btn btn-join-small-login s12'}
 .search-post
   = render partial: "list_posts_search", locals: {posts: @posts}
-
-

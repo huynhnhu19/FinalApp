@@ -92,6 +92,9 @@ class CommentsController < ApplicationController
     end
   end
 
+  def report
+    
+  end
 	private
 
   def get_post

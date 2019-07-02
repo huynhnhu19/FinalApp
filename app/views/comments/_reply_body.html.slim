@@ -21,7 +21,7 @@
           span.tmol.s12.c_gray = reply.to_pretty
         .comment-text class="'mb15"
           = reply.content
-        = render partial: 'comments/comment_option', locals: {type: "reply"}
+        = render partial: 'comments/comment_option', locals: {type: "reply", comment: reply}
         = render partial: "replies/reply_comment", locals: {new_reply: new_reply, comment: reply, post: comment.post}
         .list-comment-reply
             = render partial: "comments/reply_body", locals: {comment: reply, new_reply: new_reply}

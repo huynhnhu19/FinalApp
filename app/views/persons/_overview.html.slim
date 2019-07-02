@@ -4,11 +4,18 @@
       .user-post-box id="#{value.id}"
         .post-box.user-box
           .post-voted
-            = link_to vote_post_path(value, vote: :upvote), method: :post, remote: true do
-              = fa_icon "arrow-up", class:"#{value.upvote.include?(current_person) ? 'upvoted' : ""}"
-            span.tc.vote-number = value.votes
-            = link_to vote_post_path(value, vote: :downvote), method: :post, remote: true do
-              = fa_icon "arrow-down", class:"#{value.downvote.include?(current_person) ? 'downvoted' : ""}"
+            - if current_person
+              = link_to vote_post_path(value, vote: :upvote), method: :post, remote: true do
+                = fa_icon "arrow-up", class:"#{value.upvote.include?(current_person) ? 'upvoted' : ""}"
+              span.tc.vote-number = value.votes
+              = link_to vote_post_path(value, vote: :downvote), method: :post, remote: true do
+                = fa_icon "arrow-down", class:"#{value.downvote.include?(current_person) ? 'downvoted' : ""}"
+            - else
+              = link_to alert_path(message: "You need sign up first to vote this post!"), remote: true do
+                = fa_icon "arrow-up"
+              span.tc.vote-number = value.votes
+              = link_to alert_path(message: "You need sign up first to vote this post!"), remote: true do
+                = fa_icon "arrow-down"
         .post-overview-content
           - if value.image.present?
             .post-image.display-flex
@@ -45,7 +52,11 @@
 
               span.s12.tmol.mr5 Posted by
               .post-author.tmol
-                .user.user-email = link_to value.author.email, overview_person_path(value.author), class: "c_gray"
+                - if current_person
+                  .user.user-email = link_to value.author.email, overview_person_path(value.author), class: "c_gray"
+                - else
+                  = link_to alert_path(message: "You need sign up first to view user profile!"), remote: true do
+                    .user.user-email.c_gray = value.author.email
               span.tmol.s12.c_gray = value.to_pretty
             .post-user-info
             = render partial: 'home/post_option', locals: {post: value}

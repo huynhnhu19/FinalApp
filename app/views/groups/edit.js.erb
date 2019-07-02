@@ -1,6 +1,21 @@
+$(".group-focus").removeClass("group-focus");
 <%case params[:option]%>
+<%when 'mod_queue'%>
+  $("#view-group").html("<%=j render :partial => 'groups/mod_queue', :locals => { posts: @posts, group: @group } %>");
+  $("#mod_queue").addClass("group-focus");
+<%when 'unpprove_posts'%>
+  $("#view-group").html("<%=j render :partial => 'groups/mod_queue', :locals => { posts: @posts, group: @group } %>");
+  $("#unpprove_posts").addClass("group-focus");
 <%when 'approved'%>
 	$("#view-group").html("<%=j render :partial => 'groups/user_approve', :locals => { unapprove_members: @unapprove_members, group: @group } %>");
+  $("#approved").addClass("group-focus");
 <%when 'members'%>
 	$("#view-group").html("<%=j render :partial => 'groups/members', :locals => { members: @members, group: @group } %>");
+  $("#members").addClass("group-focus");
+<%when 'banned'%>
+  $("#view-group").html("<%=j render :partial => 'groups/banned_members', :locals => { members: @members, group: @group } %>");
+  $("#banned").addClass("group-focus");
+<%when 'muted'%>
+  $("#view-group").html("<%=j render :partial => 'groups/muted_members', :locals => { members: @members, group: @group } %>");
+  $("#muted").addClass("group-focus");
 <%end%>

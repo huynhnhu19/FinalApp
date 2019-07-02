@@ -7,20 +7,18 @@
     span = fa_icon "share"
     span Share
   .approve.option-style
-    span  = fa_icon 'check'
-    span Approve
+    = link_to post_approved_group_path(@group, post_id: post.id), method: :post do
+      span  = fa_icon 'check'
+      span Approve
   .remove.option-style
     span  = fa_icon 'trash'
-    span Remove
+    span Delete
   .remove.option-style
     span  = fa_icon 'window-close'
     span Spam
   .save.option-style
     span = fa_icon "bookmark"
     span Save
-  .hide.option-style
-    span = fa_icon "ban"
-    span Hide
   .btn-group
     button.btn.dropdown-toggle data-toggle="dropdown"
      .user-name.tb700 ...

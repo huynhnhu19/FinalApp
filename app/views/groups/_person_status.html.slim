@@ -1,0 +1,34 @@
+.group-box-info
+  .group-header.tmol
+    .title USER STATUS
+  .trending-communities
+  	.person-status
+  		- if group.muted_members.include?(current_person)
+  			.message
+  				span.mr5 Your have been
+            	.action-admin-user.il._940bdd.tb.c_white Muted
+  				span.ml5 from this community!
+  			.user-cannot.ml15
+  				.span.s12.tb You cannot:
+				ul
+					li.s12.tb Comment on post
+					li.s12.tb Reply on Comment
+					li.s12.tb Share post or comment/reply
+  		- if group.banned_members.include?(current_person)
+  			.message
+				span.mr5 Your have been
+	        	.action-admin-user.il._ffc107.tb.c_white Banned
+				span.ml5 from this community!
+  			.user-cannot.ml15
+  				.span.s12.tb All actions is deny until you are an approved member!
+  		- if !group.muted_members.include?(current_person) && !group.banned_members.include?(current_person)
+  			.message.s14.tb
+				span.mr5 Your are an
+	        	.action-admin-user.il._28a745.tb.c_white Approved
+				span.ml5 member. Congratulation!
+		- else
+			br
+  			.message.tc
+				span Please contact the leader for more infor!
+
+

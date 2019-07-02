@@ -26,6 +26,7 @@ input[type="button"]:focus{
   font-size: 12px;
   font-weight: bold;
   color: rgb(120, 124, 126);
+  a{text-decoration: none; color: gray}
   span{
     padding-right: 3px;
   }
@@ -185,6 +186,10 @@ input[type="button"]:focus{
 .focus{
   color: rgb(0, 121, 211) !important;
   border-bottom: 5px solid rgb(0, 121, 211)
+}
+.group-focus{
+  color: rgb(0, 121, 211) !important;
+  border-right: 5px solid rgb(0, 121, 211)
 }
 
 .btn-style{

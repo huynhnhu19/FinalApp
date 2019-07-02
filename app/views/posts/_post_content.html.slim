@@ -1,10 +1,17 @@
 .post-box id="#{@post.id}"
   .post-voted
-    = link_to vote_post_path(@post, vote: :upvote), method: :post, remote: true do
-      = fa_icon "arrow-up", class:"#{@post.upvote.include?(current_person) ? 'upvoted' : ""}"
-    span.tc.vote-number = @post.votes
-    = link_to vote_post_path(@post, vote: :downvote), method: :post, remote: true do
-      = fa_icon "arrow-down", class:"#{@post.downvote.include?(current_person) ? 'downvoted' : ""}"
+    - if current_person
+      = link_to vote_post_path(@post, vote: :upvote), method: :post, remote: true do
+        = fa_icon "arrow-up", class:"#{@post.upvote.include?(current_person) ? 'upvoted' : ""}"
+      span.tc.vote-number = @post.votes
+      = link_to vote_post_path(@post, vote: :downvote), method: :post, remote: true do
+        = fa_icon "arrow-down", class:"#{@post.downvote.include?(current_person) ? 'downvoted' : ""}"
+    - else
+      = link_to alert_path(message: "You need sign up first to vote this post!"), remote: true do
+        = fa_icon "arrow-up"
+      span.tc.vote-number = @post.votes
+      = link_to alert_path(message: "You need sign up first to vote this post!"), remote: true do
+        = fa_icon "arrow-down"
   .col-md-9.p0.tmol.mb10
     .post-header-index.display-flex
       - if @post.belong_to.present?
@@ -14,7 +21,11 @@
           .title.il.s12.tb.mr5.black = @post.belong_to.group_name
       span.s12.tmol.mr5 Posted by
       .post-author
-        .user.user-email = link_to @post.author.email, overview_person_path(@post.author), class: "c_gray"
+        - if current_person
+          .user.user-email = link_to @post.author.email, overview_person_path(@post.author), class: "c_gray"
+        - else
+          = link_to alert_path(message: "You need sign up first to view user profile!"), remote: true do
+            .user.user-email.c_gray = @post.author.email
       span.tmol.s12.c_gray = @post.to_pretty
   .post-content
     - if @post.is_question

@@ -14,9 +14,9 @@ body#admin
         #logo.navbar-brand.app-name.tmol
           = link_to "Health Social", root_path()
       .admin-action.tmol
-        .admin-menu-icon
-          = link_to root_path() do
-            span Dashboard
+        / .admin-menu-icon
+        /   = link_to root_path() do
+        /     span Dashboard
         .admin-menu-icon
           = link_to admin_persons_path() do
             span Users
@@ -39,15 +39,13 @@ body#admin
             ul.dropdown-menu.menu-user
               p.heading my stuff
               .dropdown-divider
-              = link_to destroy_person_session_path(),method: :delete do
+              = link_to destroy_admin_admin_session_path(),method: :delete do
                 li.dropdown-item.box-option-user
                   span.icon-profile = fa_icon "sign-out"
                   span Log out
         - else
           ul.nav.navbar-right.nav-right-custom
-            li = link_to "login", person_session_path(), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'btn btn-login'}
-            / li = link_to "Log in", new_person_session_path(), class: "btn btn-login"
-            li = link_to "Sign up", new_person_registration_path(), class: "btn btn-signup"
+            li = link_to "login", admin_admin_session_path(), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'btn btn-login'}
 
   #main
     = yield

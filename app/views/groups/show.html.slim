@@ -6,6 +6,10 @@
       = render "home/index", locals: {posts: @posts}
     .col-md-4
       = render partial: "group_info", locals: {group: @group}
+      br
+      - if current_person
+	      = render partial: "person_status", locals: {group: @group}
+
 javascript:
  Group.run()
 

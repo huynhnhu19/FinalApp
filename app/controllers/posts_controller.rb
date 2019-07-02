@@ -24,17 +24,17 @@ class PostsController < ApplicationController
     @post.upvote << current_person
   	@post.save!
   	current_person.posts << @post
-  	current_person.save!
 
 		if @group
-			@group = Group.find(params[:group_id ])
-    	@group.posts << @post
-  		@group.save!
+      if @group.type.in?([:private, :restricted])
+        @group.unapprove_posts << @post
+      else
+        @group.post << @post
+      end
 		end
     if @category
       @post.category = @category
       @category.posts << @post
-      @post.save 
     end
 
 		redirect_to overview_person_path(current_person)
@@ -51,7 +51,7 @@ class PostsController < ApplicationController
     if @category
       @post.category = @category
       @category.posts << @post
-      @post.save 
+      @post.save
     end
     redirect_to overview_person_path(current_person)
   end

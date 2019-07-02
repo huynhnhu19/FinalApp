@@ -20,6 +20,7 @@ Rails.application.routes.draw do
       post :user_banned
       post :user_muted
       post :manage_user
+      post :post_approved
     end
   end
 
@@ -61,6 +62,7 @@ Rails.application.routes.draw do
   resources :comments do
     member do
       post 'vote'
+      post 'report'
     end
     collection do
       post "reply"
@@ -74,6 +76,7 @@ Rails.application.routes.draw do
   end
 
   get "/search", to: "home#search"
+  get "/alert", to: "home#alert"
 
   namespace :admin do
     devise_for :admins, skip: :registrations

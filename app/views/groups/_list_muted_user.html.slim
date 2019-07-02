@@ -4,7 +4,7 @@
       tr
         th data-field="name" data-sortable="true" Email
         th data-field="age" data-sortable="true" Full Name
-        th data-field="age" data-sortable="true" Posts
+        th data-field="age" data-sortable="true" Status
         th data-field="age" Action
     tbody
       - persons.each do |person|
@@ -13,17 +13,19 @@
             = link_to person.email, overview_person_path(person)
           td = person.full_name
           td
-            = link_to post_index_admin_posts_path(person_id: person.id) do
-              = "#{person.posts.count} posts"
+            - if @group.banned_members.include?(person)
+              .action-admin.il._ffc107.tb.c_white Banned
+            - if @group.muted_members.include?(person)
+              .action-admin.il._940bdd.tb.c_white Muted
           td
             .admin-action
               .action-admin.il class="_red"
                 = link_to admin_person_path(person), method: :delete, data: {confirm: "Are you sure?"} do
                   span Remove
-              .action-admin.il class="_28a745"
-                = link_to 'Approve', user_approved_group_path(@group, person_id: person.id), method: :post, remote: true
+              .action-admin.il.btn-ban
+                = link_to "#{@group.muted_members.include?(person) ? 'Unmute' : 'Mute'}", user_muted_group_path(@group, person_id: person.id, option: 'mute'), method: :post, remote: true, class:"tb"
 - else
   .empty
     .description
-      = fa_icon "user-times" , class: "mb10"
-      .s18.tb700.c_gray There's no unapprove members!
+      = fa_icon "window-close" , class: "mb10"
+      .s18.tb700.c_gray There's no members muted!

@@ -9,10 +9,20 @@
       span Reply
   .share.option-style
     span Share
-  - if current_person
+  - if comment.author == current_person
     .edit-post.option-style
       span Edit
   .save.option-style
-    span#save-post Save
-  .report.option-style
-    span Report
+    - if current_person
+        span#save-post Save
+    - else
+      = link_to alert_path(message: "You need sign up first to do this action!"), remote: true do
+        span#save-post Save
+  - unless @comment.author == current_person
+    .report.option-style
+      - if current_person
+        = link_to report_comment_path(comment), method: :post do
+          span Report
+      - else
+        = link_to alert_path(message: "You need sign up first to comment!"), remote: true do
+          span Report
