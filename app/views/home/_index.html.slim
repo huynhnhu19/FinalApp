@@ -1,5 +1,5 @@
 - @posts.each do |post|
-  span.display-block.box-click id="#{person_post_path(post.author, post)}"
+  span.display-block.box-click id="#{post.author ? person_post_path(post.author, post) : ''}"
     .post-box.post-box-index id="#{post.id}"
       .post-voted
         - if current_person

@@ -46,3 +46,9 @@ Our project is about a Social Network for Health by using Graph DB.
   2. Ability to upload a Post that have: title, content( text, pic, video), comments
   ...
 
+#### Open Vitual 
+- cd Desktop
+- ssh -i "finalapp.pem" ubuntu@ec2-3-1-8-100.ap-southeast-1.compute.amazonaws.com
+- cd FinalApp 
+- rails s -p 3001 -b 0.0.0.0
+- browser: http://52.221.179.58:3001/

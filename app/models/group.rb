@@ -17,12 +17,12 @@ class Group
 	property :updated_at, type: DateTime
 
 	has_one :out, :author, type: :create_by, model_class: :Person
-	has_many :in, :members, type: :joins, model_class: :Person
-	has_many :in, :unapprove_members, type: :unapprove, model_class: :Person
-	has_many :in, :banned_members, type: :banned, model_class: :Person
-	has_many :in, :muted_members, type: :muted, model_class: :Person
-	has_many :in, :posts, origin: :belong_to
-  has_many :in, :unapprove_posts, type: :unapprove_post, model_class: :Post
+	has_many :in, :members, type: :joins, model_class: :Person, dependent: :destroy
+	has_many :in, :unapprove_members, type: :unapprove, model_class: :Person, dependent: :destroy
+	has_many :in, :banned_members, type: :banned, model_class: :Person, dependent: :destroy
+	has_many :in, :muted_members, type: :muted, model_class: :Person, dependent: :destroy
+	has_many :in, :posts, origin: :belong_to, dependent: :destroy
+	  has_many :in, :unapprove_posts, type: :unapprove_post, model_class: :Post, dependent: :destroy
 
   enum type: [:public, :restricted, :private], _default: :public
 

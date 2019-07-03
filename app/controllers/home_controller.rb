@@ -12,9 +12,16 @@ class HomeController < ApplicationController
 	  		@hidden_post = current_person.posts_hidden
 	  		@posts = @posts.to_a - @hidden_post.to_a
 	  	end
-		@posts = @posts.sort { |x, y | y.created_at <=> x.created_at } if params[:order_sort] == 'new'
-		@posts = @posts.sort { |x, y | y.upvotes <=> x.upvotes } if params[:order_sort] == 'hot'
-		@posts = @posts.order(controversial: :desc) if params[:order_sort] == 'controversial'
+	  	case params[:order_sort]
+	  	when 'new'
+	  		@posts = @posts.sort { |x, y | y.created_at <=> x.created_at }
+	  	when 'most_commentted'
+	  		@posts = @posts.sort { |x, y | y.comments.count <=> x.comments.count }	
+	  	when 'most_voted'
+	  		@posts = @posts.sort { |x, y | x.total_votes <=> y.total_votes }
+	  	else
+	  		@posts = @posts.sort { |x, y | y.best_post? <=> x.best_post? }
+  		end	
 		if params[:subject]
 			@posts = @posts.select { |x| x.category && x.category.title == params[:subject] }
 		end
@@ -40,5 +47,9 @@ class HomeController < ApplicationController
         format.html
         format.js
       end
+  end
+
+  def list_categories
+  	@list_categories = Category.all
   end
 end

@@ -5,13 +5,13 @@
   = form_for @group, url: person_groups_path(current_person) do |f|
     .customize-profile
       span.c_gray.tb700 Community Name
-      = f.text_field :group_name, class: "form-control mt5", placeholder: 'Community Name'
+      = f.text_field :group_name, class: "form-control mt5", placeholder: 'Community Name', required: true
       .note-thing.tmol
         .s12.c_gray.mr5 Community names including capitalization cannot be changed.
         = fa_icon 'info-circle', 'data-toggle':"tooltip", title:"Name cannot have space, must be between 3-21 characters and underscores ( _ ) is only special character allowed.", class:""
     .customize-profile
       span.c_gray.tb700.mb5 Community Description
-      = f.text_area :about, class: 'form-control mt5', placeholder: "Community Description"
+      = f.text_area :about, class: 'form-control mt5', placeholder: "Community Description", required: true
       .note-thing.tmol
         .s12.c_gray.mr5 This is how new members come to understand your community.
         = fa_icon 'info-circle', 'data-toggle':"tooltip", title:"Hooray!"

@@ -65,13 +65,14 @@
   }
 }
 .group-option{
+  padding-left: 100px;
   background-color: #ebe5f6;
     .option{
-    height: 40px;
+      padding-right: 20px;
+      height: 40px;
     a{
     text-decoration: none;
     font-weight: bold;
-    margin: 0 100px;
     }
     a:visited{border-bottom: 4px solid #ebe5f6;}
   }
@@ -252,4 +253,23 @@
 .btn-ban{
   a{color: black !important;}
   border: 0.5px solid;
+}
+
+.about-group{
+  padding: 10px;
+  .header {
+    font-size: 20px;
+  }
+}
+.list-categoris{
+  padding: 20px;
+  margin-top: 20px;
+  background-color: white;
+  .subject{
+    margin-bottom: 10px;
+  }
+  .subject-about{
+    font-size: 15px;
+    color: gray;
+  }
 }

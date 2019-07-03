@@ -14,6 +14,9 @@
             = render "persons/user_box_info"
           - else
             = render partial: "persons/follow_box", locals: {person: @post.author}
+        - if current_person
+          = render partial: "groups/person_status", locals: {group: @post.belong_to}
+
 
 javascript:
   ReplyComment.run()

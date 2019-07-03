@@ -1,0 +1,9 @@
+.container
+  .row
+    .col-md-9#home-index
+  		= render partial: "list_categories", locals: {categories: @list_categories}
+    .col-md-3
+      = render "home/footer"
+javascript:
+ Group.run()
+ Index.run()

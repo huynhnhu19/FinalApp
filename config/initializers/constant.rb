@@ -1,8 +1,8 @@
 SORT_PARAMS = {
 	best: ['rocket', 'BEST'],
-	hot: ['fire', 'HOT'],
+	most_commentted: ['fire', 'MOST_COMMENTTED'],
 	new: ['star', 'NEW'],
 	controversial: ['bolt', 'CONTROVERSIAL'],
-	top: ['thumbs-up', 'TOP'],
+	most_voted: ['thumbs-up', 'MOST_VOTED'],
 	raising: ['chevron-circle-up', 'RAISING']
 }

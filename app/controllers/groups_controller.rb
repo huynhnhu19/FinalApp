@@ -10,13 +10,25 @@ class GroupsController < ApplicationController
     @comment = @post.comments.new
     @reply = @comment.replies.new
     @posts = @group.posts.all
-    @posts = @posts.order(created_at: :desc) if params[:order_sort] == 'new'
-    @posts = @posts.order(upvotes: :desc) if params[:order_sort] == 'hot'
-    @posts = @posts.order(controversial: :desc) if params[:order_sort] == 'controversial'
-
+    case params[:order_sort]
+    when 'new'
+      @posts = @posts.sort { |x, y | y.created_at <=> x.created_at }
+    when 'most_commentted'
+      @posts = @posts.sort { |x, y | y.comments.count <=> x.comments.count }  
+    when 'most_voted'
+      @posts = @posts.sort { |x, y | x.total_votes <=> y.total_votes }
+    else
+      @posts = @posts.sort { |x, y | y.best_post? <=> x.best_post? }
+    end 
+    case params[:view]
+    when 'posts'
+    when 'about'
+    when 'members'
+      members = @group.members
+    end
     respond_to do |format|
       format.html
-      format.js
+      format.js {render :index}
     end
   end
 
@@ -30,7 +42,7 @@ class GroupsController < ApplicationController
     when 'approved'
       @unapprove_members = @group.unapprove_members
     when 'members'
-      @members = @group.members
+      @members = @group.members.select {|x| !x.groups.include?(@group)} 
     when 'banned'
       @members = @group.banned_members
     when 'muted'
@@ -86,8 +98,11 @@ class GroupsController < ApplicationController
 
   def leave
     if @group.author == current_person
-      flash[:error] = "You are the Leader of this Community. Cannot leave!"
-      redirect_to :root
+      @message = "You are the Leader of this Community. Cannot leave!"
+      respond_to do |format|
+        format.html
+        format.js {render "home/alert"}
+      end
     else
       @group.members.delete current_person
       current_person.join_groups.delete(@group)
@@ -126,7 +141,7 @@ class GroupsController < ApplicationController
         @group.muted_members << @person
       end
     end
-    @members = @group.members
+    @members = @group.members.select {|x| !x.groups.include?(@group)}
     params[:option] = 'members'
     respond_to do |format|
       format.html

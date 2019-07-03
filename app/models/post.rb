@@ -22,8 +22,16 @@ class Post
 	has_many :in, :upvote, type: :upvoted_by, model_class: :Person
 	has_many :in, :downvote, type: :downvoted_by, model_class: :Person
 
+	def best_post?
+		self.upvotes + self.comments.count	
+	end
+
   	def votes
     	self.upvotes - self.downvotes
+  	end
+
+  	def total_votes
+		self.upvotes + self.downvotes
   	end
 
 	def controversial

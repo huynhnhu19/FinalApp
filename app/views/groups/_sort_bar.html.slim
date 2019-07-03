@@ -38,32 +38,24 @@
           	- order = order_sort ? order_sort : 'best'
           	- value = SORT_PARAMS[order.to_sym]
           	span.icon-profile = fa_icon value[0], class:"c#{@group.check_color}"
-           	span class="c#{@group.check_color}" #{value[1]}
+           	span class="c#{@group.check_color}" #{value[1].titleize.upcase}
           ul.dropdown-menu.menu-user
             = link_to group_path(@group, view: view, order_sort: 'best'), remote: true do
 	            li.dropdown-item.box-option-user
 		          	span.icon-profile = fa_icon "rocket"
 		           	span Best
-		    = link_to group_path(@group, view: view, order_sort: 'hot'), remote: true  do
-	            li.dropdown-item.box-option-user
-	          		span.icon-profile = fa_icon "fire"
-	           		span HOT
             = link_to group_path(@group, view: view, order_sort: 'new'), remote: true  do
 	            li.dropdown-item.box-option-user
 		          		span.icon-profile = fa_icon "star"
 		           		span NEW
-            = link_to group_path(@group, view: view, order_sort: 'controversial'), remote: true  do
+		    = link_to group_path(@group, view: view, order_sort: 'most_commentted'), remote: true  do
 	            li.dropdown-item.box-option-user
-		          		span.icon-profile = fa_icon "bolt"
-		           		span Controversial
-            = link_to group_path(@group, view: view, order_sort: 'top'), remote: true  do
+	          		span.icon-profile = fa_icon "fire"
+	           		span MOST COMMENTTED
+            = link_to group_path(@group, view: view, order_sort: 'most_voted'), remote: true  do
 		        li.dropdown-item.box-option-user
 		          		span.icon-profile = fa_icon "thumbs-up"
-		           		span TOP
-            = link_to group_path(@group, view: view, order_sort: 'raising'), remote: true  do
-	            li.dropdown-item.box-option-user
-		          		span.icon-profile = fa_icon "chevron-circle-up"
-		           		span Raising
+		           		span MOST VOTED
     	span style="margin-left: 30px;"
     	= render partial: "home/subject"
 

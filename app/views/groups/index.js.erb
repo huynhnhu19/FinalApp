@@ -1,0 +1,19 @@
+<%case params[:view]%>
+<%when "posts"%>
+	$("#view-group").html("<%=j render :partial => 'home/index', :locals => { posts: @posts } %>");
+	$(".sort-bar-header").removeClass("de-active")
+	$(".group-option").css("marginBottom", "0")
+<%when "about"%>
+	$("#view-group").html("<%=j render :partial => 'groups/group_about', :locals => { group: @group } %>");
+	$(".sort-bar-header").addClass("de-active")
+	$(".group-option").css("marginBottom", "20px")
+<%when "members"%>
+	$("#view-group").html("<%=j render :partial => 'groups/group_members', :locals => { group: @group } %>");
+	$(".sort-bar-header").addClass("de-active")
+	$(".group-option").css("marginBottom", "20px")
+<%end%>
+<%if params[:order_sort]%>
+	$(".sort-bar-header").html("<%=j render :partial => 'sort_bar', :locals => {view: 'large', order_sort: params[:order_sort]} %>");
+	$("#view-group").html("<%=j render :partial => 'home/index', :locals => { posts: @posts, order_sort: params[:order_sort]} %>");	
+<%end%>
+

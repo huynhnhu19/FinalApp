@@ -6,6 +6,15 @@
   .group-name id="#{@group.check_them}"
     .name.tmol
       span = @group.group_name
-.group-option class="b#{@group.check_them}"
+.group-option.tmol class="b#{@group.check_them}"
   .option.tmol
-    = link_to "Posts", group_posts_path(@group), class:"c#{@group.check_color}"
+    = link_to "Posts", group_path(@group, view: 'posts'), remote: true, class:"c#{@group.check_color}"
+  .option.tmol
+    = link_to "About", group_path(@group, view: 'about'), remote: true, class:"c#{@group.check_color}"
+  - if current_person && @group.members.include?(current_person)
+    .option.tmol
+      = link_to "Members", group_path(@group, view: 'members' ), remote: true, class:"c#{@group.check_color}"
+  - else
+    .option.tmol
+      = link_to "Members", alert_path(message: "You must join to the group first!"), remote: true
+

@@ -29,7 +29,7 @@ class PostsController < ApplicationController
       if @group.type.in?([:private, :restricted])
         @group.unapprove_posts << @post
       else
-        @group.post << @post
+        @group.posts << @post
       end
 		end
     if @category

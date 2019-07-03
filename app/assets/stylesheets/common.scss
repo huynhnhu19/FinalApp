@@ -207,6 +207,7 @@ input[type="button"]:focus{
 }
 
 .list-subject{
+  margin-left: 75px;
   .subject-style{
     color: white;
     font-weight: bold;
@@ -214,10 +215,11 @@ input[type="button"]:focus{
     border-radius: 5px;
     border: 0.5px solid;
     margin-right: 10px;
+    line-height: 10px;
     span{
       text-transform: uppercase;
       margin: 0px;
-      font-size: 14px;
+      font-size: 12px;
     }
   }
 }

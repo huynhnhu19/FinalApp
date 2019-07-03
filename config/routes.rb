@@ -77,6 +77,7 @@ Rails.application.routes.draw do
 
   get "/search", to: "home#search"
   get "/alert", to: "home#alert"
+  get "/list_categories", to: "home#list_categories"
 
   namespace :admin do
     devise_for :admins, skip: :registrations

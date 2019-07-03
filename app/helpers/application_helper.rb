@@ -18,8 +18,8 @@ module ApplicationHelper
 
   def list_category
     list_category = Category.all
-    list_category = list_category.select { |c| c.posts.any?}
     list_category = list_category.sort {|x, y | y.posts.count <=> x.posts.count }
+    list_category = list_category.first(4)
   end
 
 end

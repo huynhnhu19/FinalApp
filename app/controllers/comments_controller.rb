@@ -9,18 +9,27 @@ class CommentsController < ApplicationController
 		@post = Post.find(params[:id])
 		@comment = @post.comments.new
 	end
+
 	def create
 		@post = Post.find(params[:post_id])
-		@comment = Comment.create!(params_comment)
-		@post.comments << @comment
-		current_person.comments << @comment
-    @comment.add_upvote(current_person)
-    @new_reply = Comment.new
-    @list_post_comments = @post.comments.where(type: :comment)
-
-    respond_to do |format|
-      format.html
-      format.js
+    @group = @post.belong_to
+    if @group && @group.muted_members.include?(current_person)
+      @message = "You have been MUTED in this group!"
+      respond_to do |format|
+        format.html
+        format.js {render "home/alert"}
+      end
+    else
+  		@comment = Comment.create!(params_comment)
+  		@post.comments << @comment
+  		current_person.comments << @comment
+      @comment.add_upvote(current_person)
+      @new_reply = Comment.new
+      @list_post_comments = @post.comments.where(type: :comment)
+      respond_to do |format|
+        format.html
+        format.js
+      end
     end
 	end
 

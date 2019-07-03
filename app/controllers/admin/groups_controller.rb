@@ -21,7 +21,7 @@ class Admin::GroupsController < Admin::ApplicationController
   end
 
   def destroy
-    @group.destroy
+    @group.destroy_all
     redirect_to admin_groups_path()
   end
   private

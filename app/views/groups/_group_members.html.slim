@@ -1,0 +1,34 @@
+.white.p10
+  - group.author
+    .mod-header.mb10
+      span Leader
+      .
+        span.mr5 Full Name:
+        = group.author&.full_name
+      .
+        span.mr5 Email:
+        = link_to group.author&.email, overview_person_path(group.author)
+      .
+        span.mr5 Contact:
+  .mod-header
+  	span Members
+  br
+  - if @group.members.any?
+    table class="table table-striped white" data-sort-name="name" data-sort-order="desc"
+      thead
+        tr
+          th data-field="age" data-sortable="true" Full Name
+          th data-field="name" data-sortable="true" Email
+      tbody
+        - @group.members.each do |person|
+          tr
+            td = person.full_name
+            td style="width: 33%"
+              = link_to person.email, overview_person_path(person)
+  - else
+    .empty
+      .description
+        = fa_icon "user-times" , class: "mb10"
+        .s18.tb700.c_gray There's no unapprove members!
+  	    = render partial: 'group_members', locals: {persons: @members}
+      .col-md-1
