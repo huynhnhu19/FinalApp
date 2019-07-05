@@ -133,8 +133,8 @@ class PersonsController < ApplicationController
   end
 
   def report_post
-    byebug
   end
+
   private
 
   def get_user

@@ -70,6 +70,8 @@ class Person
 
   has_many :in, :followings, type: :following, model_class: :Person
   has_many :in, :followers, type: :followed_by, model_class: :Person
+  has_many :in, :post_reportions, type: :report_post, model_class: :Post
+  has_many :in, :reportions, type: :report, model_class: :Report
 
 
   after_create :add_default_images

@@ -17,13 +17,14 @@ class Post
 
 	has_many :in, :comments, origin: :post, dependent: :destroy
 	has_one :out, :author, type: :author, model_class: :Person
-  	has_one :out, :category, type: :type_category, model_class: :Category
+	has_one :out, :category, type: :type_category, model_class: :Category
 	has_one :out, :belong_to, type: :belong_to, model_class: :Group
 	has_many :in, :upvote, type: :upvoted_by, model_class: :Person
 	has_many :in, :downvote, type: :downvoted_by, model_class: :Person
+  has_many :in, :reports, type: :have_report, model_class: :Report
 
 	def best_post?
-		self.upvotes + self.comments.count	
+		self.upvotes + self.comments.count
 	end
 
   	def votes
