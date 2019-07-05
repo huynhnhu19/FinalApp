@@ -45,6 +45,7 @@ Rails.application.routes.draw do
       post 'feed_setting'
       post 'follow'
       post "post_options"
+      post 'report_post'
     end
   end
 

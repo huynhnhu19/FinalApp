@@ -67,7 +67,7 @@ class PersonsController < ApplicationController
   end
 
   def post_options
-  	case params[:option] 
+  	case params[:option]
     when "save"
       if current_person.posts_saved.include?(@post)
         current_person.posts_saved.delete(@post)
@@ -132,6 +132,9 @@ class PersonsController < ApplicationController
     end
   end
 
+  def report_post
+    byebug
+  end
   private
 
   def get_user

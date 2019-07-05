@@ -1,0 +1,34 @@
+.modal-withdraw-transaction.modal
+  .modal-dialog.modal-sm
+    .modal-content
+      .modal-title
+      .modal-body
+        .modal-body-content
+          .header Report post
+          hr
+        .title.mb10 We're sorry something's wrong. How can we help?
+        = form_tag '#', method: :post, class: "modal-report-post", id: "report-post"
+          .report-option
+            = radio_button_tag :report, 0, checked: true
+            span.ml5 It's a Spam
+          .report-option
+            = radio_button_tag :report, 1
+            span.ml5 It infringes my copyright
+          .report-option
+            = radio_button_tag :report, 2
+            span.ml5 It's targeted harassment
+          .report-option
+            = radio_button_tag :report, 3
+            span.ml5 It's rude, vulgar or offensive
+          .report-option
+            = radio_button_tag :report, 4
+            span.ml5 It's sexual or suggestive content involving minors
+          .report-option
+            = radio_button_tag :report, 5
+            span.ml5 Other Reason
+          .report-option
+            = text_field_tag :reason_report, nil, class:"form-control", placeholder: "Please tell us your thinking!"
+          br
+          .group-button-actions
+            = button_tag "Report", type: :button, class: 'btn btn-success  float-right'
+            = button_tag "Cancel", type: :button, class: 'btn btn-create-group btn-cancel-report float-right mr5', 'data-dismiss': 'modal'

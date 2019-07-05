@@ -7,6 +7,8 @@ window.Group =
       tickColorWhenLoad()
       searchAdmin()
       closeAlertError()
+      showModalReport()
+      showBoxReport()
 tickColorWhenLoad = ->
   color = $("#category_color").val()
   $("##{color}").find("i").addClass("them-checked")
@@ -22,7 +24,7 @@ tickThem = ->
     $(".them-checked").removeClass("them-checked")
     $(this).find("i").addClass("them-checked")
     $("#category_color").val($(this).attr('id'))
-    
+
 upvoteTick = ->
   $(".up-vote, .down-vote").click (e) ->
     e.preventDefault()
@@ -56,3 +58,23 @@ searchAdmin = ->
 
 closeAlertError = ->
   $("body .alert-error").delay(3000).slideUp(200)
+
+showModalReport = ->
+  $("body").on "click", ".report-post", ->
+    url = $(this).data("url")
+    $(".modal-report-post").attr("action", url)
+    $(".modal-withdraw-transaction").modal("show")
+
+showBoxReport =->
+  $("input[type=radio]").on "click", (e) ->
+    if $(this).val() == "5"
+      $("#reason_report").css("display", "inline-block")
+    else
+      $("#reason_report").css("display", "none")
+
+
+
+
+
+
+

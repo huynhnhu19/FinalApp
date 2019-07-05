@@ -34,8 +34,11 @@
       = link_to person_session_path(), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window'} do
         span#hidden-post = fa_icon "ban"
         span Hide
-  .delete.option-style
-    - if person_signed_in? && current_person == post.author
+  - if person_signed_in? && current_person == post.author
+    .delete.option-style
       = link_to post_options_person_path(current_person, post_id: post.id, option: "delete"), data: {confirm: "Are you sure?"}, method: :post, remote: true do
         span#hidden-post = fa_icon "trash"
         span Delete
+  .report-post.option-style data-url="#{report_post_person_path(current_person, post_id: post.id)}"
+    span#report-post = fa_icon "flag"
+    span Report
