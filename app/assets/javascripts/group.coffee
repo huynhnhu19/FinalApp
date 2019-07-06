@@ -9,6 +9,7 @@ window.Group =
       closeAlertError()
       showModalReport()
       showBoxReport()
+      submitReport()
 tickColorWhenLoad = ->
   color = $("#category_color").val()
   $("##{color}").find("i").addClass("them-checked")
@@ -73,7 +74,9 @@ showBoxReport =->
       $("#reason_report").css("display", "none")
 
 
-
+submitReport =->
+  $(".button-report").on 'click', ->
+    $(".modal-report-post").trigger('submit.rails')
 
 
 

@@ -4,6 +4,9 @@
     .col-md-10
       .mod-header
         span User Muted
+        .back-to-group.il.float-right
+          = link_to "Back to #{@group.group_name}", person_group_path(current_person, @group), class:" btn"
+
       br
       .chec-box-list.white.mb10.display-flex
         = check_box :all, nil, class:'bigger-checkbox m10'

@@ -8,6 +8,7 @@
           hr
         .title.mb10 We're sorry something's wrong. How can we help?
         = form_tag '#', method: :post, class: "modal-report-post", id: "report-post"
+          = hidden_field_tag :authenticity_token, form_authenticity_token
           .report-option
             = radio_button_tag :report, 0, checked: true
             span.ml5 It's a Spam
@@ -27,8 +28,8 @@
             = radio_button_tag :report, 5
             span.ml5 Other Reason
           .report-option
-            = text_field_tag :reason_report, nil, class:"form-control", placeholder: "Please tell us your thinking!"
+            = text_field_tag :reason_report, nil, class:"form-control", placeholder: "Please tell us your thinking!", required: true
           br
           .group-button-actions
-            = button_tag "Report", type: :button, class: 'btn btn-success  float-right'
+            = submit_tag "Report", type: :button, class: 'btn btn-success button-report float-right'
             = button_tag "Cancel", type: :button, class: 'btn btn-create-group btn-cancel-report float-right mr5', 'data-dismiss': 'modal'

@@ -39,6 +39,14 @@
       = link_to post_options_person_path(current_person, post_id: post.id, option: "delete"), data: {confirm: "Are you sure?"}, method: :post, remote: true do
         span#hidden-post = fa_icon "trash"
         span Delete
-  .report-post.option-style data-url="#{report_post_person_path(current_person, post_id: post.id)}"
-    span#report-post = fa_icon "flag"
-    span Report
+
+  - if person_signed_in?
+    .report-post.option-style data-url="#{report_post_person_path(current_person, post_id: post.id)}"
+      span#report-post = fa_icon "flag"
+      span Report
+
+  - if person_signed_in? && post.belong_to && (current_person == post.belong_to.author)
+    .approve.option-style
+      = link_to post_unreport_group_path(post.belong_to, post_id: post.id), method: :post do
+        span  = fa_icon 'check'
+        span Approve

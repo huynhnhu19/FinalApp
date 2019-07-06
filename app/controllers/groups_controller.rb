@@ -14,12 +14,12 @@ class GroupsController < ApplicationController
     when 'new'
       @posts = @posts.sort { |x, y | y.created_at <=> x.created_at }
     when 'most_commentted'
-      @posts = @posts.sort { |x, y | y.comments.count <=> x.comments.count }  
+      @posts = @posts.sort { |x, y | y.comments.count <=> x.comments.count }
     when 'most_voted'
       @posts = @posts.sort { |x, y | x.total_votes <=> y.total_votes }
     else
       @posts = @posts.sort { |x, y | y.best_post? <=> x.best_post? }
-    end 
+    end
     case params[:view]
     when 'posts'
     when 'about'
@@ -39,10 +39,12 @@ class GroupsController < ApplicationController
       @posts = @group.unapprove_posts
     when 'unpprove_posts'
       @posts = @group.unapprove_posts
+    when 'report'
+      @posts = @group.posts.select {|x| x.reports}
     when 'approved'
       @unapprove_members = @group.unapprove_members
     when 'members'
-      @members = @group.members.select {|x| !x.groups.include?(@group)} 
+      @members = @group.members.select {|x| !x.groups.include?(@group)}
     when 'banned'
       @members = @group.banned_members
     when 'muted'
@@ -182,10 +184,26 @@ class GroupsController < ApplicationController
     if @group.unapprove_posts.include?(@post)
       @group.unapprove_posts.delete(@post)
       @group.posts << @post
+      @post.reports.map do |x|
+        x.destroy if x.type == "user_report"
+      end
+      @post.reports = []
+      @post.save
     else
       @group.unapprove_posts << (@post)
       @group.posts.delete @post
     end
+    redirect_to request.referrer
+  end
+
+  def post_unreport
+    @post = Post.find_by(id: params[:post_id])
+    @post.reports.map do |x|
+      x.destroy if x.type == "user_report"
+    end
+    @post.reports = []
+    @post.save
+    redirect_to request.referrer
   end
 
   private

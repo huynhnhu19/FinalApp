@@ -4,19 +4,8 @@
     .col-md-10
     	.mod-header
     		span Members
+        .back-to-group.il.float-right
+          = link_to "Back to #{@group.group_name}", person_group_path(current_person, @group), class:" btn"
         br
-    	.chec-box-list.white.mb10.display-flex
-	    	= check_box :all, nil, class:'bigger-checkbox m10'
-	    	.tmol.mr10 = fa_icon 'sort-desc'
-            #tool-option.display-flex.display-none
-    	    	.approve.tmol.mr10
-    	    		.mr5 = fa_icon 'check'
-    	    		span.s12.tb700 Approve
-    	    	.remove.tmol.mr10
-    	    		.mr5 = fa_icon 'trash'
-    	    		span.s12.tb700 Remove
-    	    	.remove.tmol.mr10
-    	    		.mr5 = fa_icon 'window-close'
-    	    		span.s12.tb700 Spam
 	    = render partial: 'manage_user', locals: {persons: @members}
     .col-md-1

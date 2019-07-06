@@ -6,6 +6,9 @@ $(".group-focus").removeClass("group-focus");
 <%when 'unpprove_posts'%>
   $("#view-group").html("<%=j render :partial => 'groups/mod_queue', :locals => { posts: @posts, group: @group } %>");
   $("#unpprove_posts").addClass("group-focus");
+<%when 'report'%>
+  $("#view-group").html("<%=j render :partial => 'groups/report_posts', :locals => { posts: @posts, group: @group } %>");
+  $("#report").addClass("group-focus");
 <%when 'approved'%>
 	$("#view-group").html("<%=j render :partial => 'groups/user_approve', :locals => { unapprove_members: @unapprove_members, group: @group } %>");
   $("#approved").addClass("group-focus");

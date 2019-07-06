@@ -6,6 +6,7 @@
       .col-md-9.center-block
         .post-form
         	= render "post_content", locals: {post: @post, comment: @comment, new_reply: @new_reply}
+            = render partial: "home/report"
       .col-md-3
         - if @post.belong_to
           = render partial: "groups/group_info", locals: {group: @post.belong_to}
@@ -16,7 +17,11 @@
             = render partial: "persons/follow_box", locals: {person: @post.author}
         - if current_person
           = render partial: "groups/person_status", locals: {group: @post.belong_to}
+        - if @post.belong_to && @post.belong_to.author == current_person && @post.reports.present?
+          = render partial: "groups/post_status", locals: {post: @post}
+
 
 
 javascript:
   ReplyComment.run()
+  Group.run()

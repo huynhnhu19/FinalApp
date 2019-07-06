@@ -133,6 +133,27 @@ class PersonsController < ApplicationController
   end
 
   def report_post
+    case params[:report]
+    when "5"
+      @report = Report.create(content: params[:reason_report], type: :user_report)
+      @post.reports << @report   
+    when "4"
+      @report = Report.find_by(type: :sex)
+      @post.reports << @report
+    when "3"
+      @report = Report.find_by(type: :rude)
+      @post.reports << @report
+    when "2"
+      @report = Report.find_by(type: :harassment)
+      @post.reports << @report
+    when "1"
+      @report = Report.find_by(type: :copyright)
+      @post.reports << @report
+    when "0"
+      @report = Report.find_by(type: :spam)
+      @post.reports << @report
+    end
+    redirect_to request.referrer
   end
 
   private

@@ -2,9 +2,11 @@
   .row
     .col-md-1
     .col-md-10
-    	.mod-header
-    		  span User Unapprovement
-        br
+      .mod-header
+        span Posts Report
+        .back-to-group.il.float-right
+          = link_to "Back to #{@group.group_name}", person_group_path(current_person, @group), class:" btn"
+      br
     	.chec-box-list.white.mb10.display-flex
 	    	= check_box :all, nil, class:'bigger-checkbox m10'
 	    	.tmol.mr10 = fa_icon 'sort-desc'
@@ -18,7 +20,8 @@
     	    	.remove.tmol.mr10
     	    		.mr5 = fa_icon 'window-close'
     	    		span.s12.tb700 Spam
-	    = render partial: 'list_user', locals: {persons: @unapprove_members}
+	    = render partial: 'list_post/posts_reported', locals: {posts: @posts}
+
     .col-md-1
 
 

@@ -243,3 +243,7 @@ input[type="button"]:focus{
   background-color: pink;
   font-weight: bold;
 }
+.reported{
+  color: red;
+  .fa {color: red}
+}

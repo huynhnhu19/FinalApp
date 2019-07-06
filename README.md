@@ -51,4 +51,4 @@ Our project is about a Social Network for Health by using Graph DB.
 - ssh -i "finalapp.pem" ubuntu@ec2-3-1-8-100.ap-southeast-1.compute.amazonaws.com
 - cd FinalApp 
 - rails s -p 3001 -b 0.0.0.0
-- browser: http://52.221.179.58:3001/
+- browser: http://18.138.253.167:3001/

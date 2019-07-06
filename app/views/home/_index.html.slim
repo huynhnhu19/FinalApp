@@ -1,6 +1,7 @@
 - @posts.each do |post|
+  - reported = post.belong_to && (post.belong_to.author == current_person) && post.reports.present?
   span.display-block.box-click id="#{post.author ? person_post_path(post.author, post) : ''}"
-    .post-box.post-box-index id="#{post.id}"
+    .post-box.post-box-index id="#{post.id}" class="#{reported ? 'post-reported' : ""}"
       .post-voted
         - if current_person
           = link_to vote_post_path(post, vote: :upvote, view: "index"), method: :post, remote: true do
@@ -30,10 +31,14 @@
                 = link_to alert_path(message: "You need sign up first to view user profile!"), remote: true do
                   .user.user-email.c_gray = post.author.email
             span.tmol.s12.c_gray = post.to_pretty
-            - if post.belong_to&.type.in?([:private, :restricted])
+            - if post.belong_to&.type.in?([:private, :restricted]) && !reported
               span.tmol.s12.c_gray.ml5
                 = fa_icon "check", class:"c_28a745"
                 span.c_28a745 Approved
+            - elsif reported
+              span.tmol.s12.ml5.reported
+                = fa_icon "flag"
+                span.ml5 Reported
         .col-md-3
           - if person_signed_in?
             - if post.belong_to.present?

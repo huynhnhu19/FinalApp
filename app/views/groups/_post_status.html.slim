@@ -1,0 +1,27 @@
+br
+  .group-box-info
+    .group-header.tmol
+      .title POST STATUS
+    .trending-communities
+    	.person-status
+			.message
+				span.mr5 This post have these reports:
+				ul
+					- if spam_post = post.reports.select {|x| x.type == "spam"} 
+						- if !spam_post.blank?
+							li.s12.tb.c_red = "It's a Spam (#{spam_post.count})"
+					- if copyright_post = post.reports.select {|x| x.type == "copyright"} 
+						- if !copyright_post.blank?
+							li.s12.tb.c_red = "#{copyright_post.last.content} (#{copyright_post.count})"
+					- if harassment_post = post.reports.select {|x| x.type == "harassment"} 
+						- if !harassment_post.blank?
+							li.s12.tb.c_red = "#{harassment_post.last.content} (#{harassment_post.count})"
+					- if rude_post = post.reports.select {|x| x.type == "rude"} 
+						- if !rude_post.blank?
+							li.s12.tb.c_red = "#{rude_post.last.content} (#{rude_post.count})"
+					- if sex_post = post.reports.select {|x| x.type == "sex"} 
+						- if !sex_post.blank?
+							li.s12.tb.c_red = "#{sex_post.last.content} (#{sex_post.count})"
+					- if user_report_post = post.reports.select {|x| x.type == "user_report"} 
+						- user_report_post.each do |report|
+							li.s12.tb.c_red = "#{report.content}"

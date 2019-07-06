@@ -21,6 +21,7 @@ Rails.application.routes.draw do
       post :user_muted
       post :manage_user
       post :post_approved
+      post :post_unreport
     end
   end
 

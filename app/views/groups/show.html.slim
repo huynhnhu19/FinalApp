@@ -4,6 +4,8 @@
   .row
     .col-md-8#view-group
       = render "home/index", locals: {posts: @posts}
+	  = render partial: "home/report"
+
     .col-md-4
       = render partial: "group_info", locals: {group: @group}
       br
@@ -12,4 +14,4 @@
 
 javascript:
  Group.run()
-
+ Index.run()

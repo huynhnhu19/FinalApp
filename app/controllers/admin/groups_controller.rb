@@ -29,3 +29,4 @@ class Admin::GroupsController < Admin::ApplicationController
     @group = Group.find_by(id: params[:id])
   end
 end
+  
