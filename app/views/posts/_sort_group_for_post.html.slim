@@ -1,9 +1,1 @@
 - if person_signed_in?
-	.input-group.sort-group-post
-        .input-search-group.dropdown-toggle.tmol data-toggle="dropdown"
-        	span.icon-search = fa_icon "circle-thin"
-        	input.form-control placeholder="Choose a Community" type="text"
-	    ul.dropdown-menu.menu-user
-	      - current_person.groups.each do |group|
-	      	li.dropdown-item.box-user-action
-	        	span = group.group_name

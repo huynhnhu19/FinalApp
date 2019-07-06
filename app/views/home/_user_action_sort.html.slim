@@ -6,10 +6,11 @@
           span Home
     ul.dropdown-menu.menu-user
       p.heading feeds
-      = link_to root_path() do
-        li.dropdown-item.box-user-action
-          span.icon-profile = fa_icon "home"
-          span Home
+      - if current_person
+        = link_to overview_person_path(current_person) do
+          li.dropdown-item.box-user-action
+            span.icon-profile = fa_icon "home"
+            span Home
       = link_to root_path() do
         li.dropdown-item.box-user-action
           span.icon-profile = fa_icon "line-chart"

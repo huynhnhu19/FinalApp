@@ -37,7 +37,11 @@ class PostsController < ApplicationController
       @category.posts << @post
     end
 
-		redirect_to overview_person_path(current_person)
+    if @group
+		  redirect_to group_path(@group)
+    else
+      redirect_to overview_person_path(current_person)
+    end
 	end
 
   def edit

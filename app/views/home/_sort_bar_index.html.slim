@@ -22,18 +22,6 @@
 						td
 					tr class="#{active}"
 						td
-		= link_to root_path(view: "small", order_sort: order_sort), remote:true do
-			- active = "#{params[:view] == 'small' ? '_0079d3' : 'gray'}"
-			.view-small
-				table
-					tr.line-split class="#{active}"
-						td
-					tr.line-split class="#{active}"
-						td
-					tr.line-split class="#{active}"
-						td
-					tr class="#{active}"
-						td
 		span style="margin-left: 30px;" SORT
 		.btn-group#group-sort-btn
           button.btn.dropdown-toggle.user-info data-toggle="dropdown"
